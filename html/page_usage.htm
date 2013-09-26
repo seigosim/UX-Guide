@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>UX + Design Guidelines - Page Types - Benefit/Concern</title>
+	<link rel="shortcut icon" href="http://www.arbonne.com/favicon.png" type="image/x-icon" />
+
+    <link href='../css/camera.css' rel='stylesheet' type='text/css'> 
+	<link href="../css/brand.css" rel="stylesheet" type="text/css">
+
+	<link href="../css/ui.css" rel="stylesheet" type="text/css" >
+	<link href="../css/styleguide.css" rel="stylesheet" type="text/css" >
+
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/brand.js"></script>
+<script src="../js/ui.js"></script>
+
+
+	<script src="../js/includes.js"></script>
+
+    <script type='text/javascript' src='../js/jquery.easing.1.3.js'></script> 
+    <script type='text/javascript' src='../js/camera.js'></script> 
+
+
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+	});
+
+</script>
+
+
+</head>
+<body>
+
+
+<div id="container">
+
+	<div class="header_content">
+		<!-- Login Bar - START -->
+		<div id="loginbarinclude"></div>
+
+		<!-- Login Bar - END -->
+
+		<!-- Logo Area - START --> 
+		<!-- Logo Area - START --> 
+		<div id="logoinclude"></div>
+		<!-- Logo Area - END --> 
+		<!-- Logo Area - END --> 
+		<!-- start nav -->
+
+		<!-- Main Navigation - START -->
+			<!-- include mainnav -->
+		<div id="mainnav"></div>
+		<!-- Main Navigation - END -->
+	</div>
+	<!-- end header -->
+
+<!-- main content -->
+
+	<div id="centerrow">
+
+		<!-- side navbar -->
+		<div id="sidenavinclude"></div>
+
+		<!-- center content -->
+		<div id="center_content">
+			<div class="row space_before">
+				<ul class="breadcrumbs">
+					<li><a href="index.htm">Home</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Web</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Page Types</a></li>
+					<li class="separator">/</li>
+					<li class="active"><a href="#">Benefit/Concern</a></li>
+				</ul>
+			</div>
+
+			<div class="row space_after space_before overflow-visible" >
+
+				<h2>Benefit/Concern</h2>
+				<h6><a href="../prototypes/usage.htm">Live Sample</a></h6>
+				<p>The Benefit/Concern page provides instructions on the use of a product. This page type is a part of the Shop Online hierarchy and uses the side navigation column. The page components are:
+
+					<ol>
+						<li>Brand Banner</li>
+						<li>Tab group (4 Steps)</li>
+						<li>3 Featured Products</li>
+						<li>Tab group (4 tabs)</li>
+					</ol>
+
+				</p>
+
+				
+
+				<div class="row space_before overflow-visible">
+					<div class="drawbox" style="width:500px; height: 620px; position:relative">
+						<div class="drawbox" style="width:498px; height: 20px"><b class="right-align">LOGIN BAR</b></div>
+						<div class="drawbox" style="width:498px; height: 40px; top: 22px"><b>LOGO AREA</b></div>
+						<div class="drawbox" style="width:498px; height: 30px; top: 65px"><b>MAIN NAV</b></div>
+
+						<div class="drawbox" style="width:100px; height: 400px; top: 97px; left: 56px"><b>SIDE NAV</b></div>
+						<div class="component" style="width:264px; height: 30px; top: 97px; left: 167px"><b>TITLE</b></div>
+						<div class="component" style="width:264px; height: 75px; top: 137px; left: 167px"><b>BANNER</b></div>
+						<div class="component" style="width:264px; height: 120px; top: 214px; left: 167px"><b>TAB GROUP</b></div>
+						<div class="component" style="width:86px; height: 90px; top: 336px; left: 167px"><b>CONTENT MODULE</b></div>
+						<div class="component" style="width:86px; height: 90px; top: 336px; left: 255px"><b>CONTENT MODULE</b></div>
+						<div class="component" style="width:86px; height: 90px; top: 336px; left: 345px"><b>CONTENT MODULE</b></div>
+
+
+						<div class="component" style="width:264px; height: 160px; top: 428px; left: 167px"><b>TAB GROUP</b></div>
+						<div class="drawbox" style="width:498px; height: 60px; bottom: 1px"><b>FOOTER</b></div>
+
+					</div>
+
+
+				</div>
+
+				<div class="space_before">
+
+					<h6> CMS Template</h6>
+
+<code><pre>
+&lt;div id="benefitpage_content"&gt;
+  &lt;h1 class="underline"&gt;&lt;*PAGETITLE*&gt;&lt;/h1&gt;
+
+  &lt;*BANNER_MODULE*&gt;
+
+  &lt;*TABGROUP_MODULE class="rows"*&gt;
+
+  &lt;*FEATURED_PRODUCTS_MODULE*&gt;
+
+  &lt;*TABGROUP_MODULE class="columns"*&gt;
+
+&lt;/div&gt;
+</pre></code>
+
+				</div>
+				
+
+
+			</div>
+
+
+		
+			<div class="row space_before ">&nbsp;</div>
+
+		</div>
+		<!-- end center content -->
+	</div>
+
+<!-- end main content -->
+
+<!-- footer -->
+	<div id="footerinclude"></div>
+<!-- end footer -->
+
+</div>
+
+
+
+
+</body>
+</html>

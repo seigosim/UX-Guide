@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>UX + Design Guidelines - Web - Basic - Buttons</title>
+	<link rel="shortcut icon" href="http://www.arbonne.com/favicon.png" type="image/x-icon" />
+
+	<link href="../css/brand.css" rel="stylesheet" type="text/css">
+
+	<link href="../css/ui.css" rel="stylesheet" type="text/css" >
+	<link href="../css/styleguide.css" rel="stylesheet" type="text/css" >
+
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/brand.js"></script>
+	<script src="../js/ui.js"></script>
+
+
+	<script src="../js/includes.js"></script>
+
+
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+		// attach the menu to two links
+		$('#hovMenu1').hoverMenu('#hovLink1').hoverMenu('#hovLink2');
+	});
+
+
+
+
+
+</script>
+
+
+<style>
+
+
+</style>
+
+</head>
+<body>
+
+
+<div id="container">
+
+	<div class="header_content">
+		<!-- Login Bar - START -->
+		<div id="loginbarinclude"></div>
+
+		<!-- Login Bar - END -->
+
+		<!-- Logo Area - START --> 
+		<!-- Logo Area - START --> 
+		<div id="logoinclude"></div>
+		<!-- Logo Area - END --> 
+		<!-- Logo Area - END --> 
+		<!-- start nav -->
+
+		<!-- Main Navigation - START -->
+			<!-- include mainnav -->
+		<div id="mainnav"></div>
+		<!-- Main Navigation - END -->
+	</div>
+	<!-- end header -->
+
+<!-- main content -->
+
+	<div id="centerrow">
+
+		<!-- side navbar -->
+		<div id="sidenavinclude"></div>
+
+		<!-- center content -->
+		<div id="center_content">
+			<div class="row space_before">
+				<ul class="breadcrumbs">
+					<li><a href="index.htm">Home</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Web</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Basic</a></li>
+					<li class="separator">/</li>
+					<li class="active"><a href="#">Buttons</a></li>
+				</ul>
+			</div>
+
+			<div class="row space_after space_before  overflow-visible" >
+
+				<h2 class="underline">Buttons</h2>
+					<p>Block elements or &lt;a&gt; elements can be styled as a button with class="button". </p>
+
+					<h5 class="space_after">Standard Style</h5>
+					<div class="row space_after overflow-visible">
+						<div class="column two">
+							<a class="button primary" href="#">Primary</a>
+						</div>
+						<div class="column two">
+							<a class="button" href="#">Secondary</a>
+						</div>
+						<div class="column two">
+							<a class="button disabled" href="#">Disabled</a>
+						</div>
+						<div class="column five">
+<code><pre>
+&lt;a class="button primary"&gt;Primary&lt;/a&gt;
+&lt;a class="button"&gt;Secondary&lt;/a&gt;
+&lt;a class="button disabled"&gt;Disabled&lt;/a&gt;
+</pre></code></div>
+
+
+					</div>
+					
+
+
+					<div class="spacer"></div>
+
+					<h5 class="space_after">Form Buttons</h5>
+					<div class="row space_after overflow-visible">
+					<form>
+					<strong>class="primary"</strong><br>
+					<input type="submit" class=" primary" value="Submit">
+					<input type="submit" class=" primary" value="Disabled" disabled>
+
+					<input type="button" class=" primary" value="Button">
+					<input type="button" class=" primary" value="Disabled" disabled>
+					<br><br>
+
+					<strong>default</strong>
+					<br>
+					<input type="submit" value="Submit">
+					<input type="submit"  value="Disabled" disabled>
+
+					<input type="button" value="Button">
+					<input type="button" value="Disabled" disabled>
+					</form>	
+					</div>
+
+
+					
+					<div class="spacer"></div>
+
+
+					<div class="spacer"></div>
+
+					<h5 class="underline space_after">Compound Buttons</h5>
+					<div class="row space_after overflow-visible">
+						<div class="column four">
+							<div class="compound_button"><a class="button primary" href="#">A</a><a  class="button primary" href="#">B</a><a  class="button primary" href="#">C</a><a  class="button primary" href="#">D</a></div>	
+						</div>
+
+						<div class="column four">
+							<div class="compound_button"><a class="button" href="#">A</a><a  class="button" href="#">B</a><a  class="button" href="#">C</a><a  class="button" href="#">D</a></div>	
+						</div>
+
+
+					</div>
+<code><pre>
+&lt;div class="compound_button"&gt;
+ &lt;a class="button primary" href="#"&gt;A&lt;/a&gt;
+ &lt;a class="button primary" href="#"&gt;B&lt;/a&gt;
+ &lt;a class="button primary" href="#"&gt;C&lt;/a&gt;
+ &lt;a class="button primary" href="#"&gt;D&lt;/a&gt;
+&lt;/div&gt;
+</pre></code>
+
+
+					<div class="spacer"></div>
+
+					<h5 class="underline space_after">Compound Buttons with attached drop-down menu</h5>
+					<div class="row space_after overflow-visible">
+						<div class="column three">
+							<div class="compound_button"><a class="button primary" href="#">Consultants</a><div class="button primary downarrow"><a href="javascript:void(0)"  id="hovLink1">&nbsp;</a></div></div>	
+						</div>
+						<div class="column three">	
+							<div class="compound_button"><a class="button" href="#">Consultants</a><div class="button downarrow"><a href="javascript:void(0)"  id="hovLink2">&nbsp;</a></div></div>
+						</div>
+						<div class="hoverMenu" id="hovMenu1">
+							<div class="inner">
+								<ul class="nav rows">
+									<li><a href="#">Webstats</a></li>
+									<li><a href="#">Host Rewards</a></li>
+									<li><a href="#">The Source</a></li>
+								</ul>
+							</div>
+						</div>
+
+
+<code><pre>
+&lt;div class="compound_button"&gt;
+ &lt;a class="button primary" href="#"&gt;Consultants&lt;/a&gt;
+  &lt;div class="button primary downarrow"&gt;
+   &lt;a href="javascript:void(0)" id="hovLink1"&gt;&nbsp;&lt;/a&gt;
+  &lt;/div&gt;
+ &lt;/div&gt;	
+
+&lt;div class="hoverMenu" id="hovMenu1"&gt;
+ &lt;div class="inner"&gt;
+  &lt;ul class="nav rows"&gt;
+   &lt;li&gt;&lt;a href="#"&gt;Webstats&lt;/a&gt;&lt;/li&gt;
+   &lt;li&gt;&lt;a href="#"&gt;Host Rewards&lt;/a&gt;&lt;/li&gt;
+   &lt;li&gt;&lt;a href="#"&gt;The Source&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+ &lt;/div&gt;
+&lt;/div&gt; 
+
+Javascript:
+$(document).ready(function(){
+  $('#hovMenu1').hoverMenu('#hovLink1');
+});
+</pre></code>
+						
+
+
+					</div>
+
+					
+
+
+			</div>
+		
+			<div id="debug"></div>
+
+			<div class="row space_before ">&nbsp;</div>
+
+		</div>
+		<!-- end center content -->
+	</div>
+
+<!-- end main content -->
+
+<!-- footer -->
+	<div id="footerinclude"></div>
+<!-- end footer -->
+
+</div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>UX + Design Guidelines - Prototype - Offices</title>
+	<link rel="shortcut icon" href="http://www.arbonne.com/favicon.png" type="image/x-icon" />
+
+	<link href="../css/brand.css" rel="stylesheet" type="text/css">
+
+	<link href="../css/ui.css" rel="stylesheet" type="text/css" >
+	<link href="../css/styleguide.css" rel="stylesheet" type="text/css" >
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/brand.js"></script>
+<script src="../js/ui.js"></script>
+
+	<script src="../js/real_includes.js"></script>
+
+
+	<script type="text/javascript">
+
+
+
+	$(document).ready(function(){
+
+
+		var modal1 =$('#office01_map').modalWindow($('#office01_maplink'),{'windowtype':'rounded','callback': function(){
+			$(this).find('iframe').prop('src','https://maps.google.com/maps?oe=utf-8&q=9400+Jeronimo+Road+Irvine,+CA+92618&output=embed');
+		}});
+		var modal2 =$('#office02_map').modalWindow($('#office02_maplink'),{'windowtype':'rounded','callback': function(){
+			$(this).find('iframe').prop('src','https://maps.google.com/maps?q=1+Wonderland+Drive+Eastern+Creek+NSW+2766&output=embed');
+		}});
+		var modal3 =$('#office03_map').modalWindow($('#office03_maplink'),{'windowtype':'rounded','callback': function(){
+			$(this).find('iframe').prop('src','https://www.google.com/search?q=7135+Kennedy+RoadMississauga%2C+OntarioL5S+0A6&output=embed');
+		}});
+		var modal4 =$('#office04_map').modalWindow($('#office04_maplink'),{'windowtype':'rounded','callback': function(){
+			$(this).find('iframe').prop('src','https://maps.google.com/maps?q=16+Basset+Court,+Loake+Close,+Grange+Park,+Northampton+NN4+5EZ,+UK&output=embed');
+		}});
+
+
+
+
+		// setup toggles for the nav squares 
+
+		var $topLink = $('#topLink');
+		$topLink.addClass('active'); // set default as active
+		var $radioGroup = $('*[data-radiogroup]');
+
+
+		var toggleRadioGroup = function(thisLink,group){
+			// toggle one active link across this group
+			if($(thisLink).hasClass('active') == false) {
+				$('*[data-radiogroup="' + group + '"]').removeClass('active');
+				$(thisLink).addClass('active');
+			}
+		};
+
+		$radioGroup.each(function(){
+			var thisgroup = $(this).data('radiogroup');
+			$(this).on('click',function(){
+				toggleRadioGroup(this,thisgroup);
+			});
+		});
+
+		// fixed navigation block
+		var startOffset = -136; // when does nav stick
+		$('.scroll_fixed').each(function(){
+			$(this).sticky({'startOffset': startOffset,'offset':0,onStick:function(){
+				$('.scroll_fixed').css('opacity',0).animate({'opacity':1},{duration:350});
+				$('.nav .nav_logo').show();
+			}, offStick: function(){
+				$('.scroll_fixed').css('opacity',0).animate({'opacity':1},{duration:150});
+				$('.nav .nav_logo').hide();
+			}});
+		});	
+
+
+		$('.quad_nav .nav_logo').scrollto('body',{useTopLinker:false});
+		
+
+		// set navigation links to scroll
+		var scrollOffset = 176; // offset for the nav bar
+
+		$('*[data-scrollto]').each(function(){
+			// set scroll link targets
+			var target = $(this).data('scrollto');
+			$(this).scrollto(target,{'offset' : scrollOffset, topCallback: function(){
+				toggleRadioGroup($topLink);
+			}});
+			// create in view elements to trigger nav bar link highlighting
+			var theLink = '*[data-scrollto="'+target+'"]';
+			var thisgroup = $(this).data('radiogroup');
+			$(target).inview(scrollOffset*2,function(){
+				toggleRadioGroup(theLink,thisgroup);
+			});
+
+		});
+
+
+
+
+
+	});
+
+	function scrolltotop() {
+		$(window).scrollTop(0);
+		//return false;
+	}
+
+
+	</script>
+
+	<style>
+
+
+	.offices .nav {height: 280px; background-color:transparent; background-image: url('../img/officesbackground.png'); background-repeat: no-repeat;background-position: 50% 0;}
+	.scroll_container .nav {position: relative;}
+	.scroll_container .nav .background {position:absolute; bottom:0; left: 0; width: 100%; height: 100%; background-color: #6FC93A;opacity:0.6;  filter:alpha(opacity=60);}
+	.scroll_container .nav .nav_block {position: relative; width: 280px ;height: 100%;}
+	.scroll_container .nav .nav_block ul {position:absolute; top:52px; left: 0px; z-index: 2; width: 100%; height: 280px;list-style: none; margin: 0; padding: 0;}
+	.scroll_container .nav .nav_block li {display:block; float: left; width: 44%; min-height: 100px; margin: 2.5%;  list-style: none;  border: 1px solid #FFFFFF;  cursor:pointer;  -webkit-transition: background-color 0.1s linear; -moz-transition: background-color 0.1s linear; transition: background-color 0.1s linear;}
+
+	.scroll_container .nav .nav_block li:hover,.quad_nav .nav_block li.active  {background-color: #66944B}
+	.scroll_container .nav .nav_block li > .inner {padding: 6px;color: #FFFFFF;}
+
+	.scroll_container .nav .nav_block li strong {display:block; margin-top: 16px;font-size:13px; line-height: 1.1em;}
+
+
+
+
+	.nav .nav_logo {display:none;position:absolute; top: 0px; left: -220px; background-color:#FFFFFF; height:80px; width:220px; ;}
+	.nav .nav_logo a {display:block; margin:24px 8px;}
+
+
+	.scroll_style_odd {background-color: #F1F1F1;}
+	.scroll_style_odd .office_info {background-color: #FFFFFF;}
+	.scroll_style_even {background-color: #FFFFFF;}
+	.scroll_style_even .office_info {background-color: #F1F1F1;}
+
+	.scroll_body .padded {padding:24px;}
+
+	.office_img {width: 100%; max-width:100%;}
+	.offices .office_info { padding:16px 8px;font-size:14px; line-height: 1.2em;}
+	.offices .office_info address {font-style:normal; display: block; margin-bottom: 10px;}
+	.offices .office_info dl {margin-top: 12px;}
+	.offices .office_info dd {font-size:17px ;color: #888888; margin:0; padding: 0;}
+	.offices .office_info dt {font-size: 12px; color: #777777; margin-top: 6px;}
+	.offices .office_info h3 {font-size: 16px;margin-bottom: 10px;}
+	.offices .padded p {font-size: 14px; line-height: 1.6em;}
+	.offices .padded h2 {font-size: 21px; }
+
+
+	.office_popup  {height: 600px; width: 720px;}
+
+
+	.scrollto_toplinker {position: fixed; bottom:16px; width:100%;}
+	.scrollto_toplinker .inner {max-width:1000px;margin:0 auto; position: relative;}
+	.scrollto_toplinker a {float:right; width: 40px; height: 30px; -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.6); -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.6); box-shadow:  0px 2px 2px rgba(0, 0, 0, 0.6);display:block;  padding: 6px; color: #FFFFFF; background-color: #66944B; font-size: 14px; font-weight: bold; text-transform: uppercase; }
+	.scrollto_toplinker a:hover {background-color: #77AD57; text-decoration: underline}
+
+
+@media only screen and (max-width:768px) {
+	.scroll_item.row .col5 {width: 66%;}
+}
+
+
+	</style>
+
+</head>
+<body>
+
+
+<div id="container">
+
+	<div class="header_content">
+		<!-- Login Bar - START -->
+		<div id="loginbarinclude"></div>
+
+		<!-- Login Bar - END -->
+
+		<!-- Logo Area - START --> 
+		<div id="logoinclude"></div>
+		<!-- Logo Area - END --> 
+		<!-- Logo Area - END --> 
+		<!-- start nav -->
+
+		<!-- Main Navigation - START -->
+			<!-- include mainnav -->
+		<div id="mainnav"></div>
+		<!-- Main Navigation - END -->
+	</div>
+	<!-- end header -->
+
+<!-- main content -->
+
+	<div id="centerrow">
+
+		<!-- side navbar -->
+			<div id="sidenavbar" >
+
+
+			<ul class="nav rows">
+				<li class="heading">Company Information</li>
+				<li>
+					<a href="proto_discover.htm">Discover Arbonne</a>
+				</li>
+				<li>
+					<a href="proto_leadership.htm">Leadership</a>
+				</li>
+				<li class="active">
+					<a href="proto_offices.htm">Offices</a>
+				</li>
+				<li>
+					<a href="proto_careers.htm">Careers</a>
+				</li>
+			</ul>
+
+
+			</div>
+
+		<!-- center content -->
+		<div id="center_content">
+				<h1 class="space_above">Offices</h1>
+				<div class="scroll_container offices">
+					<div class="scroll_fixed">
+						
+						<div class="nav">
+							<div class="nav_logo">
+							<a href="javascript:void(0)" ><img src="../img/arbonne_logo.png" /></a>
+							</div>
+							<div class="nav_block">
+								<div class="background"></div>
+								<ul>
+								<li data-scrollto="#office01" data-radiogroup="group1" id="topLink"><div class="inner"><span>01</span><strong>Irvine, California<br/>USA</strong></div></li>
+								<li data-scrollto="#office02" data-radiogroup="group1"><div class="inner"><span>02</span><strong>Rhodes, New South Wales<br/>Australia</strong></div></li>
+								<li data-scrollto="#office03" data-radiogroup="group1"><div class="inner"><span>03</span><strong>Mississauga, Ontario<br/>Canada</strong></div></li>
+								<li data-scrollto="#office04" data-radiogroup="group1"><div class="inner"><span>04</span><strong>Grange Park, Northampton<br/>UK</strong></div></li>
+
+								</ul>
+							</div>
+						</div>
+
+					</div>
+
+					<div id="office01" class="scroll_body row scroll_style_odd">
+							<div class="col7">
+								<div class="inner padded">
+								<h2>Irvine, California, USA</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur
+									adipiscing elit. Integer nec odio. Praesent
+									libero. Sed cursus ante dapibus diam. Sed
+									nisi. Nulla quis sem at nibh elementum
+									imperdiet.</p>
+
+								<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
+										himenaeos. Curabitur sodales ligula in
+										libero. Sed dignissim lacinia nunc.
+										Curabitur tortor. Pellentesque nibh.
+										Aenean quam. In scelerisque sem at
+										dolor. Maecenas mattis. Sed convallis
+										tristique sem. Proin ut ligula vel nunc
+										egestas porttitor. Morbi lectus risus,
+										iaculis vel, suscipit quis, luctus non,
+										massa. Fusce ac turpis quis ligula lacinia
+										aliquet. Mauris ipsum.</p>
+								</div>
+							</div>
+							<div class="col5">
+								<div class="inner">
+								<img src="../img/Arbonne_Irvine_Offices.jpg" class="office_img">
+								<div class="office_info">
+								<h3>Irvine, California, USA</h3>
+								<address>9400 Jeronimo Road<br/>Irvine, CA 92618</address>
+								<p>1.800.ARBONNE</p>
+								<a href="https://maps.google.com/maps?oe=utf-8&q=9400+Jeronimo+Road+Irvine,+CA+92618" target="_blank"  id="office01_maplink" class="map_link">View Map</a>
+								<dl class="additional_info">
+									<dt>Employees</dt>
+									<dd>250+</dd>
+									<dt>Serving Irvine Since</dt>
+									<dd>1980</dd>
+									<dt>Square Footage</dt>
+									<dd>35,000</dd>
+								</dl>
+								</div>
+
+
+								</div>
+						</div>
+
+
+					</div>
+
+					<div class="divider"></div>
+
+					<div id="office02" class="scroll_body row scroll_style_even">
+							<div class="col7">
+								<div class="inner padded">
+								<h2>Rhodes, New South Wales<br/>Australia</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur
+									adipiscing elit. Integer nec odio. Praesent
+									libero. Sed cursus ante dapibus diam. Sed
+									nisi. Nulla quis sem at nibh elementum
+									imperdiet.</p>
+
+								<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
+										himenaeos. Curabitur sodales ligula in
+										libero. Sed dignissim lacinia nunc.
+										Curabitur tortor. Pellentesque nibh.
+										Aenean quam. In scelerisque sem at
+										dolor. Maecenas mattis. Sed convallis
+										tristique sem. Proin ut ligula vel nunc
+										egestas porttitor. Morbi lectus risus,
+										iaculis vel, suscipit quis, luctus non,
+										massa. Fusce ac turpis quis ligula lacinia
+										aliquet. Mauris ipsum.</p>
+								</div>
+							</div>
+							<div class="col5">
+								<div class="inner">
+								<img src="../img/Aus_office_fpo.jpg" class="office_img">
+								<div class="office_info">
+								<h3>Arbonne Australia Pty Ltd.</h3>
+								<address>1 Wonderland Drive<br/>
+										Eastern Creek<br/>
+										NSW 2766</address>
+								<p>1800 650 760</p>
+								<a href="https://maps.google.com/maps?q=1+Wonderland+Drive+Eastern+Creek+NSW+2766" id="office02_maplink" target="_blank" class="map_link">View Map</a>
+								<dl class="additional_info">
+									<dt>Employees</dt>
+									<dd>56</dd>
+									<dt>Serving Australia Since</dt>
+									<dd>1999</dd>
+									<dt>Square Footage</dt>
+									<dd>20,000</dd>
+								</dl>
+								</div>
+
+
+								</div>
+						</div>
+
+
+					</div>
+
+
+					<div class="divider"></div>
+
+
+					<div id="office03" class="scroll_body row scroll_style_odd">
+							<div class="col7">
+								<div class="inner padded">
+								<h2>Mississauga, Ontario<br/>Canada</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur
+									adipiscing elit. Integer nec odio. Praesent
+									libero. Sed cursus ante dapibus diam. Sed
+									nisi. Nulla quis sem at nibh elementum
+									imperdiet.</p>
+
+								<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
+										himenaeos. Curabitur sodales ligula in
+										libero. Sed dignissim lacinia nunc.
+										Curabitur tortor. Pellentesque nibh.
+										Aenean quam. In scelerisque sem at
+										dolor. Maecenas mattis. Sed convallis
+										tristique sem. Proin ut ligula vel nunc
+										egestas porttitor. Morbi lectus risus,
+										iaculis vel, suscipit quis, luctus non,
+										massa. Fusce ac turpis quis ligula lacinia
+										aliquet. Mauris ipsum.</p>
+								</div>
+							</div>
+							<div class="col5">
+								<div class="inner">
+								<img src="../img/arbonne_canada_fpo.jpg" class="office_img">
+								<div class="office_info">
+								<h3>Canadian Home Office</h3>
+								<address>7135 Kennedy Road<br/>
+										Mississauga, Ontario<br/>
+										L5S 0A6</address>
+								<p>888.ARBONNE</p>
+
+								
+								<a href="https://www.google.com/search?q=7135+Kennedy+RoadMississauga%2C+OntarioL5S+0A" target="_blank"  id="office03_maplink" class="map_link">View Map</a>
+								<dl class="additional_info">
+									<dt>Employees</dt>
+									<dd>125</dd>
+									<dt>Serving Canada Since</dt>
+									<dd>1993</dd>
+									<dt>Square Footage</dt>
+									<dd>28,000</dd>
+								</dl>
+								</div>
+
+
+								</div>
+						</div>
+
+				</div>
+
+
+					<div class="divider"></div>
+
+
+					<div id="office04" class="scroll_body row scroll_style_even">
+							<div class="col7">
+								<div class="inner padded">
+								<h2>Grange Park, Northampton<br/>UK</h2>
+								
+								<p>Lorem ipsum dolor sit amet, consectetur
+									adipiscing elit. Integer nec odio. Praesent
+									libero. Sed cursus ante dapibus diam. Sed
+									nisi. Nulla quis sem at nibh elementum
+									imperdiet.</p>
+
+								<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
+										himenaeos. Curabitur sodales ligula in
+										libero. Sed dignissim lacinia nunc.
+										Curabitur tortor. Pellentesque nibh.
+										Aenean quam. In scelerisque sem at
+										dolor. Maecenas mattis. Sed convallis
+										tristique sem. Proin ut ligula vel nunc
+										egestas porttitor. Morbi lectus risus,
+										iaculis vel, suscipit quis, luctus non,
+										massa. Fusce ac turpis quis ligula lacinia
+										aliquet. Mauris ipsum.</p>
+								</div>
+							</div>
+							<div class="col5">
+								<div class="inner">
+								<img src="../img/arbonne_uk_fpo.jpg" class="office_img">
+								<div class="office_info">
+								<h3>Arbonne UK</h3>
+								<address>16 Basset Court<br/>
+										Loake Close	<br/>
+										Grange Park<br/>
+										Northampton<br/>
+										 NN4 5EZ</address>
+								<p>0800 977 5721</p>
+
+								
+								<a href="https://maps.google.com/maps?q=16+Basset+Court,+Loake+Close,+Grange+Park,+Northampton+NN4+5EZ,+UK" target="_blank" id="office04_maplink"  class="map_link">View Map</a>
+								<dl class="additional_info">
+									<dt>Employees</dt>
+									<dd>186</dd>
+									<dt>Serving the U.K. Since</dt>
+									<dd>1996</dd>
+									<dt>Square Footage</dt>
+									<dd>68,000</dd>
+								</dl>
+								</div>
+
+
+								</div>
+						</div>
+
+				</div>
+
+				<div class="hide" id="office01_map">
+					<iframe class="office_popup" src="" ></iframe>
+				</div>
+
+				<div class="hide" id="office02_map">
+					<iframe class="office_popup" src="" ></iframe>
+				</div>
+
+				<div class="hide" id="office03_map">
+					<iframe class="office_popup" src="" ></iframe>
+				</div>
+
+				<div class="hide" id="office04_map">
+					<iframe class="office_popup" src="" ></iframe>
+				</div>				
+
+	
+			</div>
+
+			<div class="spacer"></div>
+
+
+			<div class="row space_before ">&nbsp;</div>
+
+
+		</div>
+		<!-- end center content -->
+	</div>
+
+<!-- end main content -->
+
+<!-- footer -->
+	<div id="footerinclude"></div>
+<!-- end footer -->
+
+</div>
+
+
+
+
+</body>
+</html>

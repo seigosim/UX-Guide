@@ -1,0 +1,11 @@
+#centerrow {min-height: 860px;}
+
+
+
+/*  drawing tools */
+
+.drawbox {position:absolute; background-color:#AAAAAA; border: 1px solid #E1E1E1;}
+.drawbox > .drawbox {background-color:#888888;}
+.drawbox > .drawbox > .drawbox {background-color:#666666;}
+.drawbox > .component {position:absolute; background-color:#5D856B;border: 1px solid #E1E1E1;}
+.drawbox > b, .drawbox .component > b {display: block; padding: 3px; color: #FFFFFF;}

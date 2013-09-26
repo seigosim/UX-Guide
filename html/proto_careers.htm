@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>UX + Design Guidelines - Prototype - Careers</title>
+	<link rel="shortcut icon" href="http://www.arbonne.com/favicon.png" type="image/x-icon" />
+
+	<link href="../css/brand.css" rel="stylesheet" type="text/css">
+
+	<link href="../css/ui.css" rel="stylesheet" type="text/css" >
+	<link href="../css/camera-min.css" rel="stylesheet" type="text/css" >
+	<link href="../css/styleguide.css" rel="stylesheet" type="text/css" >
+
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/brand.js"></script>
+	<script src="../js/ui.js"></script>
+	 <script type='text/javascript' src='../js/jquery.easing.1.3.js'></script> 
+	<script src="../js/camera.js"></script>
+
+	<script src="../js/real_includes.js"></script>
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+
+		var modal1 =$('#video_popup1').modalWindow($('#warehouseVideo'),{'windowtype':'rounded','callback': function(){
+			$(this).find('iframe').prop('src','http://www.youtube.com/embed/ID3W4kVBDIA');
+		}});
+
+	});
+
+</script>
+
+<style>
+.header_img {display: block; border-bottom: 3px solid #417630; margin-bottom: 24px;}
+
+.career_pane {background-color: #727272;height:300px;position:relative;overflow:hidden;height:100%;}
+.career_pane .background {position:relative;z-index:1;width:100%;}
+
+.career_pane .details {position:absolute;z-index:2;bottom:0px; left: 0px;text-align:center; width:100%;margin-bottom:-6px; }
+.career_pane .details > .inner {display: inline-block;}
+.career_pane .details .inset {max-width:140px;height:120px;overflow:hidden;float:left;}
+.career_pane .details .inset a {display:block; position:relative;}
+
+.career_pane .details .inset img {width:100%;}
+.career_pane .details .body {padding:16px;width:320px;height:120px;float:left; background-color: #636363; opacity:0.8;filter:alpha(opacity=80); } 
+.career_pane .details .body .credit {color: #FFFFFF; margin:0; margin-top:6px;}
+.career_pane .details .body .quote { color: #FFFFFF;font-size: 17px; margin:0;}
+
+.camera_thumbs_cont ul li {display:block;float:left;width:100px; height:100px; overflow:hidden;}
+.camera_thumbs_cont ul li > img {width:100%;}
+.camera_thumbs_cont {background-color:#FFFFFF; border-top:1px solid #AAAAAA;-webkit-box-shadow: inset 0px 8px 8px -8px rgba(0,0,0,0.4); -moz-box-shadow: inset 0px 8px 8px -8px rgba(0,0,0,0.4); box-shadow: inset 0px 8px 8px -8px rgba(0,0,0,0.4);}
+
+ .careers .button {position:relative;padding-right: 32px;}
+ .careers .button > span.linkOpensNewWindow {width:16px; height: 16px; position: absolute; right:6px ; top:4px;  background-image: url('../img/icon_openinwindow_white.png');background-repeat: no-repeat; background-position: 100% 30% }
+
+
+
+a > .playarrow {position:absolute; top: 50% ;left: 50%; margin-top:-16px; margin-left:-16px;background-image:url('../img/video_icon.png');background-repeat: no-repeat; background-position:0 0; width: 32px; height: 32px;;}
+a:hover > .playarrow {background-position:-54px 0}
+
+
+ @media only screen and (max-width:768px) {
+ 	.career_pane .details .inset {height:80px; width:80px;}
+ 	.career_pane .details .body {padding:10px;width:220px;height:80px;} 
+ 	.career_pane .details .body .quote {font-size: 14px;}
+ 	.camera_thumbs_cont ul li {width:80px; height:80px;}
+}
+
+</style>
+
+
+</head>
+<body>
+
+
+<div id="container">
+
+	<div class="header_content">
+		<!-- Login Bar - START -->
+		<div id="loginbarinclude"></div>
+
+		<!-- Login Bar - END -->
+
+		<!-- Logo Area - START --> 
+		<!-- Logo Area - START --> 
+		<div id="logoinclude"></div>
+		<!-- Logo Area - END --> 
+		<!-- Logo Area - END --> 
+		<!-- start nav -->
+
+		<!-- Main Navigation - START -->
+			<!-- include mainnav -->
+		<div id="mainnav"></div>
+		<!-- Main Navigation - END -->
+	</div>
+	<!-- end header -->
+
+<!-- main content -->
+
+	<div id="centerrow">
+
+		<!-- side navbar -->
+	<div id="sidenavbar" >
+
+
+	<ul class="nav rows">
+		<li class="heading">Company Information</li>
+
+		<li>
+			<a href="proto_discover.htm">Discover Arbonne</a>
+		</li>
+		<li>
+			<a href="proto_leadership.htm">Leadership</a>
+		</li>
+		<li>
+			<a href="proto_offices.htm">Offices</a>
+		</li>
+		<li class="active">
+			<a href="proto_careers.htm">Careers</a>
+		</li>
+	</ul>
+
+
+</div>
+
+
+		<!-- center content -->
+		<div id="center_content" class="careers">
+
+
+			<h1 class="space_above">Careers</h1>
+
+			<div class="clearfix space_below ">
+				<div class="right"><a class="button primary" href="http://jobsearch.monster.com/jobs/?co=xarbonnex" target="_blank" title="Link opens in a new window">Search Jobs<span class="linkOpensNewWindow"></span></a></div>
+			</div>
+			<div class="row">
+				<div class="camera_wrap camera_white_skin camera_thumbnails">
+					 <div data-src="../img/blank.gif" data-thumb="../img/careers/joe.png">
+					  <div class="career_pane camera_effected">
+					 	 <img src="../img/careers/Arbonne_rt.jpg" style="top:-80px" class="background" />
+						  <div class="details">
+						  	<div class="inner">
+						  	<div class="inset">
+						  		<img src="../img/careers/joe.png" />
+						  	</div>
+						  	<div class="body">
+						  		<p class="quote">"I enjoy working with incredible people on a daily basis"</p>
+						  		<p class="credit">Joe, Business Analyst</p>
+						  	</div>
+						  	</div>
+						  </div>
+					  </div>
+					 </div>
+
+					 <div data-src="../img/blank.gif" data-thumb="../img/careers/warehouse_worker.png">
+					  <div class="career_pane camera_effected">
+					 	 <img src="../img/careers/warehouse.png" style="top:-80px" class="background" />
+						  <div class="details">
+						  	<div class="inner">
+						  	<div class="inset">
+						  		<a href="" id="warehouseVideo" ><img src="../img/careers/warehouse_worker.png" /><span class="playarrow"></span></a>
+						  	</div>
+						  	<div class="body">
+						  		<p class="quote">"My training will help me grow in my career"</p>
+						  		<p class="credit">Chris, Warehouse Operations</p>
+						  	</div>
+						  	</div>
+						  </div>
+					  </div>
+					 </div>
+					 <div data-src="../img/blank.gif" data-thumb="../img/careers/businessman.png">
+					  <div class="career_pane camera_effected">
+					 	 <img src="../img/careers/office.png" style="top:-80px" class="background" />
+						  <div class="details">
+						  	<div class="inner">
+							  	<div class="inset">
+							  		<img src="../img/careers/businessman.png" />
+							  	</div>
+							  	<div class="body">
+							  		<p class="quote">"I am challenged to excell every day!"</p>
+							  		<p class="credit">Larry, Marketing Associate</p>
+							  	</div>
+						 	 </div>
+						  </div>
+					  </div>
+					 </div>
+					 <div data-src="../img/blank.gif" data-thumb="../img/careers/lab2.png">
+					  <div class="career_pane camera_effected">
+					 	 <img src="../img/careers/lab.png" class="background" />
+						  <div class="details">
+						  	<div class="inner">
+						  	<div class="inset">
+						  		<img src="../img/careers/lab2.png" />
+						  	</div>
+						  	<div class="body">
+						  		<p class="quote">"I work with state-of-the-art equipment and techniques."</p>
+						  		<p class="credit">Julie, Lab Technician</p>
+						  	</div>
+						  	</div>
+						  </div>
+					  </div>
+					 </div>
+
+				</div>
+				
+			</div>
+
+			<div class="row space_above">
+			<h6>Why work for Arbonne?</h6>
+
+ 
+
+			<p>Because it doesn’t feel like work! Working for Arbonne is a truly unique experience — there’s no other company quite like it. Working with great people — from Consultants to co-workers — in a welcoming, dynamic environment is just the beginning. On a daily basis you’ll get the opportunity to learn a wide range of new things and to contribute your talents to a dynamic team of people. These are exciting times for Arbonne! Our company is in the midst of extraordinary growth and we’re looking for the right people to become a part of it. People like you!</p>
+
+ 			<h6 class="space_above">Find your niche at Arbonne</h6>
+
+			<p>Our company consistently looks for ways to reward its employees. Arbonne associates enjoy an excellent benefits program, medical, dental and life insurance, a 401k plan, an employee product discount and room for career advancement.</p>
+
+			<p>Arbonne International is an equal opportunity employer. All qualified applicants will receive consideration for employment without regard to race, national origin, gender, age, religion, disability, sexual orientation, veteran status, marital status or any other class protected by state and federal law.</p>
+ 
+
+			<h6 class="space_above">Does Arbonne sound like a fit for you?</h6>
+
+			 
+
+			<p>If so, apply today! Please send your resume via e-mail to: <a href="mailto:jobs@arbonne.com">jobs@arbonne.com</a>.</p>
+
+			 
+
+			<p><a href="http://jobsearch.monster.com/jobs/?co=xarbonnex" target="_blank" class="linkOpensNewWindow" title="Link opens in a new window">Browse all open positions.</a></p> 
+
+			</div>
+			<div class="row space_above"></div>
+
+
+			<div id="video_popup1" class="hide">
+				<iframe width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+			</div>
+
+  
+
+		</div>
+		<!-- end center content -->
+	</div>
+
+<!-- end main content -->
+
+<!-- footer -->
+	<div id="footerinclude"></div>
+<!-- end footer -->
+
+</div>
+
+
+
+
+</body>
+</html>

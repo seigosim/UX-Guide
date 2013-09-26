@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>UX + Design Guidelines - Web - Typography</title>
+	<link rel="shortcut icon" href="http://www.arbonne.com/favicon.png" type="image/x-icon" />
+
+    <link href='../css/camera.css' rel='stylesheet' type='text/css'> 
+	<link href="../css/brand.css" rel="stylesheet" type="text/css">
+
+	<link href="../css/ui.css" rel="stylesheet" type="text/css" >
+	<link href="../css/styleguide.css" rel="stylesheet" type="text/css" >
+
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/brand.js"></script>
+<script src="../js/ui.js"></script>
+
+
+	<script src="../js/includes.js"></script>
+
+    <script type='text/javascript' src='../js/jquery.easing.1.3.js'></script> 
+    <script type='text/javascript' src='../js/camera.js'></script> 
+
+
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+	});
+
+</script>
+
+
+</head>
+<body>
+
+
+<div id="container">
+
+	<div class="header_content">
+		<!-- Login Bar - START -->
+		<div id="loginbarinclude"></div>
+
+		<!-- Login Bar - END -->
+
+		<!-- Logo Area - START --> 
+		<!-- Logo Area - START --> 
+		<div id="logoinclude"></div>
+		<!-- Logo Area - END --> 
+		<!-- Logo Area - END --> 
+		<!-- start nav -->
+
+		<!-- Main Navigation - START -->
+			<!-- include mainnav -->
+		<div id="mainnav"></div>
+		<!-- Main Navigation - END -->
+	</div>
+	<!-- end header -->
+
+<!-- main content -->
+
+	<div id="centerrow">
+
+		<!-- side navbar -->
+		<div id="sidenavinclude"></div>
+
+		<!-- center content -->
+		<div id="center_content">
+			<div class="row space_before">
+				<ul class="breadcrumbs">
+					<li><a href="index.htm">Home</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Web</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Basic</a></li>
+					<li class="separator">/</li>
+					<li class="active"><a href="#">Typography</a></li>
+				</ul>
+			</div>
+
+			<div class="row space_after space_before" >
+
+				<h2>Typography</h2>
+				<p>To keep typography consistent across the web properties, most font parameters are controlled by the site global stylesheet. When building content, you should use HTML tags that represents the semantic intent of the content. This means that you should build structure using headings, subheadings, paragraphs and list elements where appropriate. The global stylesheet will automatically apply the appropriate visual styling.</p>
+
+				<p>When you need more control over the styling, you may use the pre-defined typography classes. Avoid adding style delcarations within HTML tags.
+
+				</p>
+				<div class="spacer"></div>
+
+					
+					<h3 class="underline">Headings</h3>
+
+					<h1>H1 Heading</h1>
+					<h2>H2 Heading</h2>
+					<h3>H3 Heading</h3>
+					<h4>H4 Heading</h4>
+					<h5>H5 Heading</h5>
+					<h6>H6 Heading</h6>
+
+					<h3 class="underline space_before">Body Copy</h3>
+					<p><strong>Default size is 12 pixels with 1.3em line-height. Paragraphs have 1.5em line-height and 1.5em space after.</strong></p>
+					<p>Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula.</p>
+
+					<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+
+					<p>Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+
+					<strong>Large Class is 14 pixels</strong><br>
+					<p class="large">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+
+					<strong>Small Class is 11 pixels</strong><br>
+					<p class="small">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+
+					<strong>Tiny Class is 9px, the smallest you should ever use</strong><br>
+					<p class="tiny">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+
+
+					<h3 class="underline space_before">Text Alignment</h3>
+
+					<p class="left_align"><strong>Left align using class="left_align"</strong> Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+					<p class="center_align"><strong>Center align using class="center_align"</strong> Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+					<p class="right_align"><strong>Right align using class="right_align"</strong> Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+					<p class="justify"><strong>Justified using class="justify"</strong> Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+					<p class="tall"><strong>Add class="tall" for 1.5em line-height. </strong> Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit</p>
+
+					<p></p>
+					<p><strong>Strong: Use &lt;strong&gt; to bold text.</strong></p>
+					<p><em>Em: Use &lt;em&gt; to apply italics</em></p>
+
+
+					<h3 class="underline space_before">Text Styles</h3>
+					<p>These styles deal with text. You can combine more than one.</p>
+					<div class="row tall">
+						<div class="column three"><b>allcaps</b> </div><div class="column eight">Converts all text within the element to upper-case</div>
+					</div>
+					<div class="row tall">
+						<div class="column three"><b>text-shadow</b> </div><div class="column eight">Adds a light drop shadow to text</div>
+					</div>
+					<div class="row tall">
+						<div class="column three"><b>text-inset</b> </div><div class="column eight">Makes text appear indented by adding a slight shadow to the upper left. Use with a background color.</div>
+					</div>
+					<div class="row tall">
+						<div class="column three"><b>underline</b> </div><div class="column eight">Underline the text</div>
+					</div>
+					<div class="row tall">
+						<div class="column three"><b>highlight</b> </div><div class="column eight">Yellow highlighter background</div>
+					</div>
+					<div class="row tall">
+						<div class="column three"><b>nowrap</b> </div><div class="column eight">Text will be forced on one line. This will also force blocks to be wider than specified, so use sparingly!</div>
+					</div>
+					<div class="row tall">
+						<div class="column three"><b>active</b> </div><div class="column eight">The active nav item. Bolder and usually different background color</div>
+					</div>
+					<div class="row tall">
+						<div class="column three"><b>error</b> </div><div class="column eight">Use for warnings and notifications</div>
+					</div>
+					<div class="row tall">
+						<div class="column three"><b>notice</b> </div><div class="column eight">Use for notifications</div>
+					</div>
+
+					<div class="row space_before">
+					<p class="column half error"><strong class="block">Error:</strong> This is an error message block.  </p>
+					<p class="column half notice"><strong class="block">Note:</strong> This is a notification message block.  </p>
+					</div>
+
+
+			</div>
+
+
+		
+			<div class="row space_before ">&nbsp;</div>
+
+		</div>
+		<!-- end center content -->
+	</div>
+
+<!-- end main content -->
+
+<!-- footer -->
+	<div id="footerinclude"></div>
+<!-- end footer -->
+
+</div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>UX + Design Guidelines - Web - Best Practices</title>
+	<link rel="shortcut icon" href="http://www.arbonne.com/favicon.png" type="image/x-icon" />
+
+
+	<link href="../css/brand.css" rel="stylesheet" type="text/css">
+
+	<link href="../css/ui.css" rel="stylesheet" type="text/css" >
+	<link href="../css/styleguide.css" rel="stylesheet" type="text/css" >
+
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/brand.js"></script>
+<script src="../js/ui.js"></script>
+
+
+	<script src="../js/includes.js"></script>
+
+
+
+
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+	});
+
+</script>
+
+
+</head>
+<body>
+
+
+<div id="container">
+
+	<div class="header_content">
+		<!-- Login Bar - START -->
+		<div id="loginbarinclude"></div>
+
+		<!-- Login Bar - END -->
+
+		<!-- Logo Area - START --> 
+		<!-- Logo Area - START --> 
+		<div id="logoinclude"></div>
+		<!-- Logo Area - END --> 
+		<!-- Logo Area - END --> 
+		<!-- start nav -->
+
+		<!-- Main Navigation - START -->
+			<!-- include mainnav -->
+		<div id="mainnav"></div>
+		<!-- Main Navigation - END -->
+	</div>
+	<!-- end header -->
+
+<!-- main content -->
+
+	<div id="centerrow">
+
+		<!-- side navbar -->
+		<div id="sidenavinclude"></div>
+
+		<!-- center content -->
+		<div id="center_content">
+			<div class="row space_before">
+				<ul class="breadcrumbs">
+					<li><a href="index.htm">Home</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Web</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Basic</a></li>
+					<li class="separator">/</li>
+					<li class="active"><a href="#">Best Practices</a></li>
+				</ul>
+			</div>
+
+			<div class="row space_after space_before" >
+
+				<h2>HTML &amp; CSS Best Practices</h2>
+				<p>For developing web content, our goal should be to write code that achieves the desired rendered output while using the least amount of source code that can be easily modified.</p>
+
+				<p>These are the essential parts of the goal:</p>
+
+				<ul>
+					<li>Efficient, semantic HTML source code - represents structure only.</li>
+					<li>All presentation in the stylesheets.</li>
+					<li>Global declarations for font family, font size, colors.</li>
+					<li>All other styles based on classes and leveraging inheritance.</li>
+					<li>Document layout flow adheres to content flow.</li>
+					<li>Avoid fixed sizes, documents should be flexible.</li>
+				</ul> 
+
+				<h5 class="space_above">Separate Layout and Presentation</h5>
+				<p>Avoid specifying any presentation properties within HTML source. Do not use any style attributes or any other display attributes. The reason for this is to allow external stylesheets to retain control over the presentation. Inline styles greatly reduce the effectiveness of stylesheets which ultimately resuts in more work to make any changes to the display of the document at a later time.</p>
+
+				<p>Add classes to HTML elements that require non-default styling. Determining which elements need classes is not always easy. Work on the stylesheet at the same time as the HTML source to know which classes are needed and which would be redundant.</p>
+
+				<p>It is usually easier to set classes on a parent element and build styles that use tag selectors to target the child elements.</p>
+
+				<p>If you find yourself setting the same classes on many elements, you should rethink the situation and see if a parent element can take the class instead.</p>
+
+
+				<h5 class="space_above">Global Styles</h5>
+
+				<p>Styles can basically be divided into two groups, structural which defines dimensions and margins of elements, and skin which defines look and feel.</p>
+
+				<p>For the skin, or "look and feel" styles, we would like to have a few as possible style declarations for the document to preserve the easy modification of the sitewide skin. An example of this would be the selection of a sitewide font family. If we define the font family in many style declarations, it becomes difficult to ever change and we run the risk of missing some declarations and having stray elements with the wrong font family. The same problem can happen with colors that become very difficult to change if they are sprinkled all over the stylesheet or even worse, in inline styles.</p>
+
+				<p>The global styles serve to set a default for the document so all text, headings and links will have the desired styles when they are unclassed. Global styles also extend to the main page structures so that overall page dimensions carry through to all pages on the site.</p>
+
+				<h5 class="space_above">Structural Styles</h5>
+
+				<p>Structural styles generally relate to layout of page elements so these would be width and height, margins, padding, floats and positioning.</p>
+
+				<p>Widths of structural elements should be percentage-based where the maximum width of an element is contrained by its parent. When a hard limit is needed, use min-width pixel values taking into consideration the smallest expected page size.</p>
+
+				<p>Specifying the height of elements is almost always a bad idea. Web content needs to flow in the vertical direction and limiting the height of elements can result in content overflowing in unexpected ways. We should plan to have elements expand in the vertical direction to accomodate dynamic content.</p>
+
+				<p>Margins and padding should be specified by pixels. Using percentages results in a very odd behavior when the page width changes. One caveat with margin and padding is that it will effect the overall dimensions of an element.</p>
+
+				<p>When using percentage-based side-by-side elements, adding any margin or padding will cause the elements to break to the next line. The solution is to add an inner block element and apply margin or padding to that.</p>
+
+				<style>
+				.example1_half {width:50%; float:left; margin: 6px; background-color:#EAEAEA; padding: 6px;}
+				.example2_half {width:50%; float:left;}
+				.example2_half .inner { margin: 6px; background-color:#EAEAEA; padding: 6px;}
+				</style>
+
+				<div class="row">
+					<div class="example1_half">Example 1</div><div class="example1_half">Example 1</div>
+
+				</div>
+
+
+				<div class="row">
+					<div class="example2_half"><div class="inner">Example 2</div></div><div class="example2_half"><div class="inner">Example 2</div></div>
+				</div>
+
+				<h5 class="space_above">Modular Classes</h5>
+
+				<p>Many of the base classes are designed to affect one style characteristic and more than one class can be applied to an element to build a composite style. The idea here is that it doesn't matter where an element is located, it will respond to the modular classes the same way.</p>
+
+
+				<h5 class="space_above">Block vs. Inline Elements</h5>
+				<p>It is important to understand which HTML element tags are classified as block level elements and which are inline elements and how this affects the way they respond to styles.</p>
+
+				<p>These are the block level elements:</p>
+
+				<div class="row">
+					<div class="col6">
+						&lt;address&gt;
+						<br> &lt;article&gt; (HTML5)
+						<br> &lt;aside&gt; (HTML5)
+						<br> &lt;audio&gt; (HTML5)
+						<br> &lt;blockquote&gt;
+						<br> &lt;canvas&gt; (HTML5)
+						<br> &lt;dd&gt;
+						<br> &lt;div&gt;
+						<br> &lt;dl&gt;
+						<br> &lt;fieldset&gt;
+						<br> &lt;figcaption&gt; (HTML5)
+						<br> &lt;figure&gt; (HTML5)
+						<br> &lt;footer&gt; (HTML5)
+						<br> &lt;form&gt;
+						<br> &lt;h1&gt;, &lt;h2&gt;, &lt;h3&gt;, &lt;h4&gt;, &lt;h5&gt;,&lt;h6&gt;
+						
+
+					</div>
+					<div class="col6">
+						&lt;header&gt; (HTML5)
+						<br> &lt;hgroup&gt; (HTML5)
+						<br> &lt;hr&gt;
+
+						<br> &lt;noscript&gt;
+						<br> &lt;ol&gt;
+						<br> &lt;output&gt; (HTML5)
+						<br> &lt;p&gt;
+						<br> &lt;pre&gt;
+						<br> &lt;section&gt; (HTML5)
+						<br> &lt;table&gt;
+						<br> &lt;tfoot&gt;
+						<br> &lt;ul&gt;
+						<br> &lt;video&gt; (HTML5)
+
+					</div>
+				</div>
+
+				<p>Block elements by default are formatted with a line break before and after so they break flow. They can be given height, width, margin and padding. If no width is specified, these elements will be 100% of their container's width. </p>
+
+
+				<p>Inline elements:</p>
+			<div class="row">
+				<div class="col6">
+					&lt;b&gt; <br> &lt;big&gt; <br> &lt;i&gt; <br> &lt;small&gt;<br> &lt; tt
+					<br> &lt;abbr&gt; <br> &lt;acronym&gt; <br> &lt;cite&gt; <br> &lt;code&gt; <br> &lt;dfn&gt; <br> &lt;em&gt; <br> &lt;kbd&gt; <br> &lt;strong&gt; <br> &lt;samp&gt; <br> &lt;var
+					<br> &lt;a&gt; <br>
+				<div class="col6">
+				 &lt;bdo&gt; <br> &lt;br&gt; <br> &lt;img&gt; <br> &lt;map&gt; <br> &lt;object&gt; <br> &lt;q&gt; <br> &lt;script&gt; <br> &lt;span&gt; <br> &lt;sub&gt; <br> &lt;sup
+				<br> &lt;button&gt; <br> &lt;input&gt; <br> &lt;label&gt; <br> &lt;select&gt; <br> &lt;textarea
+								</div>
+				</div>
+			</div>
+				<p>Inline elements do not have a line break by default and do not respond to dimensional styles unless they are forced to display as a block element.</p>
+
+
+				
+
+
+			</div>
+
+
+		
+			<div class="row space_before ">&nbsp;</div>
+
+		</div>
+		<!-- end center content -->
+	</div>
+
+<!-- end main content -->
+
+<!-- footer -->
+	<div id="footerinclude"></div>
+<!-- end footer -->
+
+</div>
+
+
+
+
+</body>
+</html>

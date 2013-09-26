@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>UX + Design Guidelines - Web - Top Toolbar</title>
+	<link rel="shortcut icon" href="http://www.arbonne.com/favicon.png" type="image/x-icon" />
+
+    <link href='../css/camera.css' rel='stylesheet' type='text/css'> 
+	<link href="../css/brand.css" rel="stylesheet" type="text/css">
+
+	<link href="../css/ui.css" rel="stylesheet" type="text/css" >
+	<link href="../css/styleguide.css" rel="stylesheet" type="text/css" >
+
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/brand.js"></script>
+<script src="../js/ui.js"></script>
+
+
+	<script src="../js/includes.js"></script>
+
+
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+		// init new popups by specifying the popupWindow ID and the target link ID
+		$('#languageSelector').popupWindow('#clickCountry');
+		$('#languageSelector2').popupWindow('#clickCountry2');
+		$('#languageSelector3').popupWindow('#clickCountry3');
+		$('#loginPopup').popupWindow('#clickLogin');
+		$('#loginPopup3').popupWindow('#clickLogin3');
+
+		// attach to language selector links 
+		$('.language_selector a').each(function() {
+
+			var href = $(this).attr('href');
+			var linkparts = href.match(/(https?:\/\/[^\/]*)([^?|#]*)?(\?lang=[^#|&]*)?/);
+			var locparts = window.location.href.match(/(https?:\/\/[^\/]*)([^?|#]*)?(\?[^#]*)?/);
+			
+
+			if(locparts && locparts.length  && linkparts && linkparts.length){
+				// combine scheme and hostname from the link with the path from the current document location
+				href = linkparts[1] + locparts[2];
+				if(locparts[3] && linkparts[3]) {
+					// replace location lang param with one from link
+					href += locparts[3].replace(/[\?|&]lang=[^&]*/,'');
+					href += linkparts[3].replace('?','&');
+				} else if(locparts[3]) {
+					// append query from location if present
+						href += locparts[3];
+				} else if (linkparts[3]){
+					// append query from link if present
+					href += linkparts[3];
+				}
+				$(this).attr('href', href);
+			}
+		});
+	});
+
+</script>
+
+
+</head>
+<body>
+
+
+<div id="container">
+
+	<div class="header_content">
+		<!-- Login Bar - START -->
+		<div id="loginbarinclude"></div>
+
+		<!-- Login Bar - END -->
+
+		<!-- Logo Area - START --> 
+		<!-- Logo Area - START --> 
+		<div id="logoinclude"></div>
+		<!-- Logo Area - END --> 
+		<!-- Logo Area - END --> 
+		<!-- start nav -->
+
+		<!-- Main Navigation - START -->
+			<!-- include mainnav -->
+		<div id="mainnav"></div>
+		<!-- Main Navigation - END -->
+	</div>
+	<!-- end header -->
+
+<!-- main content -->
+
+	<div id="centerrow" >
+
+		<!-- side navbar
+		<div id="sidenavinclude"></div> -->
+
+		<!-- center content -->
+		<div id="center_content_full">
+			<div class="row space_before">
+				<ul class="breadcrumbs">
+					<li><a href="index.htm">Home</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Web</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Sections</a></li>
+					<li class="separator">/</li>
+					<li class="active"><a href="#">Top Toolbar</a></li>
+				</ul>
+			</div>
+
+			<div class="row space_after space_before" >
+				<h4>Top Toolbar</h4>
+				<div class="column eight"><div class="inner">
+					<p>The Top Toolbar is a component of the sitewide header and always appears anchored to the top edge of the browser window.</p>
+					<p>The state of the toolbar is different when a consultant or preferred client is logged in.</p>
+				</div>
+
+				</div>	
+				<div class="two-across"><p class="inner"></p>
+				</div>
+			</div>
+
+
+
+			<h6>State: Guest</h6>
+			<div class="row space_after" style="overflow:visible">
+
+				<div class="login_section_outer">
+					<div class="login_section">
+						<ul>
+
+							<li class="logged_no arrow">
+								<a id="clickLogin" href="javascript:void(0);" rel=".login_popup" class="login" title="Login">Login</a>
+								<span class="dropdown_arrow"></span><div class="separator"></div>
+								<!-- login popup -->
+								<div id="loginPopup" class="login_popup popupWindow">
+										
+									<div class="title_bar">
+										Login
+										<a class="close_button button" href="javascript:void(0);" title="Close">X</a>
+									</div>
+
+									<div class="inner">
+										<form  method="post" action="/icOnline/login.asp" id="frmSiteHeaderLogin" name="frmSiteHeaderLogin">
+											<div class="forgot_button login_box float1">
+												<label>Arbonne Id</label>
+												
+												<input type="text" name="CID" id="CID" value="" tabindex="1" maxlength="9" size="9" placeholder="enter user id" />
+												<a href="/shop_online/forgot_logon.asp" class="forgot" id="forgotIDLink">Forgot?</a> 
+											</div>
+											<div class="forgot_button login_box float2">
+												<label>Pin</label>
+												
+												<input type="password" name="PIN" id="PIN" value="" tabindex="2" maxlength="4" size="4" placeholder="enter pin" />
+												<a href="javascript:window.open('/icOnline/getpw/getpw.asp','getpw','status=yes,menubar=yes,scrollbars=yes,resizable=yes,width=600,height=400');" class="forgot" id="forgotPinLink">Forgot?</a> 
+											</div>
+											<div class="float3">
+												<input type="hidden" name="logon" value="CON" />
+												<input type="submit" class="tiny button poplight" as="#?w=900" rel="popup_name"  name="tnheaderlogin" value="GO" tabindex="3" />
+											</div>
+										</form>
+									</div>	
+								</div>
+								<!-- end login popup -->
+
+							</li>
+							<li>
+								<a href="/">Home</a><div class="separator"></div>
+							</li>								
+							<li>
+								<a href="/icOnline/contact_us.asp">Contact Us</a><div class="separator"></div>
+							</li>							
+																
+							<li class="country_selector arrow last">
+								<a id="clickCountry" href="javascript:void(0);" rel=".language_selector" title="Country/Language Selector">
+								<img class="dropdown_flag" src="http://arbonne.c../img
+/international/flags/us.gif" border="0" width="16" height="11"/>US - English
+								</a><span class="dropdown_arrow"></span>
+								<!-- Country Popup - START --> 
+								<div id="languageSelector" class="language_selector popupWindow">
+									
+									<div class="title_bar">
+										Country/Language Selector
+										<a class="close_button button" href="javascript:void(0);">X</a>
+									</div>
+									<div class="inner">
+										<div class="flagbackground US">
+											<h6>United States</h6>
+											<a href="http://www.arbonne.com/index.asp?lang=eng">English</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.arbonne.com/index.asp?lang=spa">Spanish</a>
+										</div>
+										
+										<div class="flagbackground CA">
+											<h6>Canada</h6>
+											<a href="http://www.arbonne.ca/index.asp?lang=eng">English</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.arbonne.ca/index.asp?lang=fre">Fran&ccedil;ais</a>
+										</div>
+										<div class="flagbackground AU">
+											<h6>Australia</h6>
+											<a href="http://www.arbonneinternational.com.au/index.asp?lang=eng">English</a>
+										</div>
+										<div class="flagbackground UK">
+											<h6>United Kingdom</h6>
+											<a href="http://www.arbonneinternational.co.uk/index.asp?lang=eng">English</a>
+										</div>
+									</div>
+								</div>
+								<!-- Country Popup - END -->
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- Login Bar - END -->
+
+			</div>
+
+			<div class="spacer"></div>
+
+			<h6>State: Consultant Logged In</h6>
+			<div class="row space_after" style="overflow:visible">
+
+				<div class="login_section_outer">
+					<div class="login_section">
+						<ul>
+							<li class="logged_yes first">
+								<a href="/iconline/logout.asp?ui=shop">Logout</a><div class="separator"></div>
+							</li> 
+
+
+							<li>
+								<a href="/">Home</a><div class="separator"></div>
+							</li>								
+							<li>
+								<a href="/icOnline/contact_us.asp">Contact Us</a><div class="separator"></div>
+							</li>							
+																
+							<li class="country_selector arrow last">
+								<a id="clickCountry2" href="javascript:void(0);" rel=".language_selector" title="Country/Language Selector">
+								<img class="dropdown_flag" src="http://arbonne.c../img
+/international/flags/us.gif" border="0" width="16" height="11"/>US - English
+								</a><span class="dropdown_arrow"></span>
+								<!-- Country Popup - START --> 
+								<div id="languageSelector2" class="language_selector popupWindow">
+									
+									<div class="title_bar">
+										Country/Language Selector
+										<a class="close_button button" href="javascript:void(0);">X</a>
+									</div>
+									<div class="inner">
+										<h6>NORTH AMERICA</h6>
+										
+										<div class="flagbackground US">
+											<h6>United States</h6>
+											<a href="http://www.arbonne.com/index.asp?lang=eng">English</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.arbonne.com/index.asp?lang=spa">Spanish</a>
+										</div>
+										
+										<div class="flagbackground CA">
+											<h6>Canada</h6>
+											<a href="http://www.arbonne.ca/index.asp?lang=eng">English</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.arbonne.ca/index.asp?lang=fre">Fran&ccedil;ais</a>
+										</div>
+
+											<h6>ASIA PACIFIC</h6>
+
+										<div class="flagbackground AU">
+											<h6>Australia</h6>
+											<a href="http://www.arbonneinternational.com.au/index.asp?lang=eng">English</a>
+										</div>
+
+											<h6>EUROPE</h6>
+
+										<div class="flagbackground UK">
+											<h6>United Kingdom</h6>
+											<a href="http://www.arbonneinternational.co.uk/index.asp?lang=eng">English</a>
+										</div>
+									</div>
+								</div>
+								<!-- Country Popup - END -->
+							</li>
+						</ul>
+						<ul class="logged_yes">		
+							<li class="nowrap"><span>Welcome, <a href="/icOnline/myAccount/myAccount.asp">Area Manager Status Arbonne Test Account</a> 35% Discount</span><div class="separator"></div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- Login Bar - END -->
+
+			</div>
+
+			<div class="spacer"></div>
+
+			<div class="row space_after" style="overflow:visible">
+				<div class="column six">
+					<h4><br>Login Popup Window</h4>
+					<p>The login popup window is displayed when the <a id="clickLogin3" href="javascript:void(0)">login link</a> in the toolbar is clicked.</p>
+
+
+					<div class="row" style="overflow:visible">
+							<div style="position: absolute; top:-20px; left:160px">
+								<!-- login popup -->
+								<div id="loginPopup3" class="login_popup popupWindow" style="display:block">
+										
+									<div class="title_bar">
+										Login
+										<a class="close_button button" href="javascript:void(0);" title="Close">X</a>
+									</div>
+
+									<div class="inner">
+										<form  method="post" action="/icOnline/login.asp" id="frmSiteHeaderLogin" name="frmSiteHeaderLogin">
+											<div class="forgot_button login_box float1">
+												<label>Arbonne Id</label>
+												
+												<input type="text" name="CID" id="CID" value="" tabindex="1" maxlength="9" size="9" placeholder="enter user id" />
+												<a href="/shop_online/forgot_logon.asp" class="forgot" id="forgotIDLink">Forgot?</a> 
+											</div>
+											<div class="forgot_button login_box float2">
+												<label>Pin</label>
+												
+												<input type="password" name="PIN" id="PIN" value="" tabindex="2" maxlength="4" size="4" placeholder="enter pin" />
+												<a href="javascript:window.open('/icOnline/getpw/getpw.asp','getpw','status=yes,menubar=yes,scrollbars=yes,resizable=yes,width=600,height=400');" class="forgot" id="forgotPinLink">Forgot?</a> 
+											</div>
+											<div class="float3">
+												<input type="hidden" name="logon" value="CON" />
+												<input type="submit" class="tiny button poplight" as="#?w=900" rel="popup_name"  name="tnheaderlogin" value="GO" tabindex="3" />
+											</div>
+										</form>
+									</div>	
+								</div>
+								<!-- end login popup -->
+									</div>
+							</div>
+					</div>
+				</div>
+				<div class="column five right">
+					<h4>Country Select Popup Window</h4>
+					<p>The Country Select is displayed when the <a id="clickCountry3" href="javascript:void(0)">Language link</a> in the toolbar is clicked.</p>
+
+					<div class="row" style="overflow:visible">
+							<div style="position: absolute; top:-20px; left:260px">
+										<!-- Country Popup - START --> 
+											<div id="languageSelector3" class="language_selector popupWindow" style="display:block">
+												
+												<div class="title_bar">
+													Country/Language Selector
+													<a class="close_button button" href="javascript:void(0);">X</a>
+												</div>
+												<div class="inner">
+													<h6>NORTH AMERICA</h6>
+													
+													<div class="flagbackground US">
+														<h6>United States</h6>
+														<a href="http://www.arbonne.com/index.asp?lang=eng">English</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.arbonne.com/index.asp?lang=spa">Spanish</a>
+													</div>
+													
+													<div class="flagbackground CA">
+														<h6>Canada</h6>
+														<a href="http://www.arbonne.ca/index.asp?lang=eng">English</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.arbonne.ca/index.asp?lang=fre">Fran&ccedil;ais</a>
+													</div>
+
+														<h6>ASIA PACIFIC</h6>
+
+													<div class="flagbackground AU">
+														<h6>Australia</h6>
+														<a href="http://www.arbonneinternational.com.au/index.asp?lang=eng">English</a>
+													</div>
+
+														<h6>EUROPE</h6>
+
+													<div class="flagbackground UK">
+														<h6>United Kingdom</h6>
+														<a href="http://www.arbonneinternational.co.uk/index.asp?lang=eng">English</a>
+													</div>
+												</div>
+											</div>
+											<!-- Country Popup - END -->
+							</div>
+					</div>
+
+
+				</div>
+
+			</div>
+		
+			<div class="row space_before ">&nbsp;</div>
+
+		</div>
+		<!-- end center content -->
+	</div>
+
+<!-- end main content -->
+
+<!-- footer -->
+	<div id="footerinclude"></div>
+<!-- end footer -->
+
+</div>
+
+
+
+
+</body>
+</html>

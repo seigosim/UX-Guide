@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>UX + Design Guidelines - Web - Basic - Layout</title>
+	<link rel="shortcut icon" href="http://www.arbonne.com/favicon.png" type="image/x-icon" />
+
+    <link href='../css/camera.css' rel='stylesheet' type='text/css'> 
+	<link href="../css/brand.css" rel="stylesheet" type="text/css">
+
+	<link href="../css/ui.css" rel="stylesheet" type="text/css" >
+	<link href="../css/styleguide.css" rel="stylesheet" type="text/css" >
+
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/brand.js"></script>
+<script src="../js/ui.js"></script>
+
+
+	<script src="../js/includes.js"></script>
+
+    <script type='text/javascript' src='../js/jquery.easing.1.3.js'></script> 
+    <script type='text/javascript' src='../js/camera.js'></script> 
+
+
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+	});
+
+</script>
+
+
+</head>
+<body>
+
+
+<div id="container">
+
+	<div class="header_content">
+		<!-- Login Bar - START -->
+		<div id="loginbarinclude"></div>
+
+		<!-- Login Bar - END -->
+
+		<!-- Logo Area - START --> 
+		<!-- Logo Area - START --> 
+		<div id="logoinclude"></div>
+		<!-- Logo Area - END --> 
+		<!-- Logo Area - END --> 
+		<!-- start nav -->
+
+		<!-- Main Navigation - START -->
+			<!-- include mainnav -->
+		<div id="mainnav"></div>
+		<!-- Main Navigation - END -->
+	</div>
+	<!-- end header -->
+
+<!-- main content -->
+
+	<div id="centerrow">
+
+		<!-- side navbar -->
+		<div id="sidenavinclude"></div>
+
+		<!-- center content -->
+		<div id="center_content">
+			<div class="row space_before">
+				<ul class="breadcrumbs">
+					<li><a href="index.htm">Home</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Web</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Basic</a></li>
+					<li class="separator">/</li>
+					<li class="active"><a href="#">Layout</a></li>
+				</ul>
+			</div>
+
+			<div class="row space_after space_before" >
+
+				<h2 class="underline">Layout</h2>
+				<p>Layout styles are used for the "block" elements that have a defined size or position. Using the grid system, you can create multi-column layouts and control how elements flow in the document. </p>
+
+
+
+<h4 class="underline space_before">Twelve-column Grid Layout</h4>
+
+<div class="row space_after">
+
+<p>The grid is divided into twelve equal columns across a containing element. The default behavior of the page types is to have columns that have a minimum and maximum width but can be dynamically sized as the browser window changes. </p>
+
+<p>Because of this flexible layout, try to avoid dividing the available space into too many columns. Try using two or three columns at the most. You can take advantage of unequal width columns by selecting the appropriate column width classes.</p>
+
+<div class="column six">
+	All grids start with a "row" element. Within the row, you add the column elements. The example to the right shows two equal columns. The &lt;div&gt; element generally gives you the most flexibility to use the grid system but any block-type element will work.
+</div>
+
+<div class="column five margin-left">
+	<code><pre>Grid Example:
+&lt;div class="row"&gt;
+ &lt;div class="column six"&gt;Column 1&lt;/div&gt;
+ &lt;div class="column six"&gt;Column 2&lt;/div&gt;
+&lt;/div&gt;</pre>
+	</code>
+</div>
+</div>
+
+<p class="space_before">
+	Here are some of the column classes. They are named "one" to "twelve".
+</p>
+<div class="row space_before">
+	<div class="column one bordered center-align">one</div>
+	<div class="column one bordered center-align">one</div>
+	<div class="column one bordered center-align">one</div>
+	<div class="column one bordered center-align">one</div>
+	<div class="column one bordered center-align">one</div>
+	<div class="column one bordered center-align">one</div>
+	<div class="column one bordered center-align">one</div>
+	<div class="column one bordered center-align">one</div>
+	<div class="column one bordered center-align">one</div>
+	<div class="column one bordered center-align">one</div>
+	<div class="column one bordered center-align">one</div>
+	<div class="column one bordered center-align">one</div>
+</div>
+
+<div class="row space_before">
+	<div class="column one bordered center-align">one</div>
+	<div class="column two bordered center-align">two</div>
+	<div class="column three bordered center-align">three</div>
+	<div class="column four bordered center-align">four</div>
+	<div class="column one bordered center-align">one</div>
+	<div class="column one bordered center-align">one</div>
+</div>
+
+<div class="row space_before">
+	<div class="column five bordered center-align">five</div>
+	<div class="column six bordered center-align">six</div>
+	<div class="column one bordered center-align">one</div>
+</div>
+
+<div class="row space_before">
+	<div class="column eight bordered center-align">eight</div>
+	<div class="column four bordered center-align">four</div>
+</div>
+
+
+
+
+<div class="row space_before">
+
+<p><strong>There are also some special-purpose classes for two and three equal-width column layouts. </strong></p>
+
+<div class="two_across"><div class="inner"><p><strong>Two Across style</strong> (class="two_across") This style will give you two equal columns but to allow for the gutter space, adding blocks within the columns with class="inner" will assign the correct padding between columns.<p>
+<p><strong>Three Across</strong> (class="three_across") You can also have three equal columns using the three_across style. Remember to include inner blocks to allow the padding to apply correctly.
+</div></div>
+<div class="two_across">
+	<div class="inner">
+	<code><pre>Two Across Example:
+&lt;div class="row"&gt;
+ &lt;div class="two_across"&gt;
+  &lt;div class="inner"&gt;Column 1&lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class="two_across"&gt;
+  &lt;div class="inner"&gt;Column 2&lt;/div&gt;
+ &lt;/div&gt;
+&lt;/div&gt;</pre>
+	</code>
+	</div>
+</div>
+</div>
+
+<div class="row">
+<strong class="block">Three Across Example</strong>
+<div class="three_across"><div class="inner">
+	Column 1</div></div>
+<div class="three_across"><div class="inner">Column 2</div></div>
+<div class="three_across"><div class="inner">Column 3</div></div>
+</div>
+
+
+<div class="row">
+	<p class="column half"><strong>Half Column</strong> This class creates two equal columns with variable gutter . Apply class="column half" to both columns</p>
+
+	<p class="column half">Each column takes 49% of the row and the right-hand column will be pushed to the right edge leaving a gutter down the middle.</p>
+</div>
+
+
+
+<div class="row space_before">
+	<h5>Padding and Margins</h5>
+	<p>By default, the column classes have no extra space between each other and no extra space within. This allows you to tightly pack blocks however, in most cases, you would like to have some space between elements.</p>
+
+	<p>To add space <strong>outside</strong> a block, use the margin classes. To add space <strong>within</strong> and element, padding classes are used.</p>
+
+	<p><strong>Note: </strong>margin and padding is added to the overall width of an element, so if you assign them to a column class, you may find that elements "wrap" to a new line. To avoid this, add a block element <i>inside</i> the column element and apply padding or margin to that.</p>
+
+	<p>In the example below, three columns with class="four" should fit across the row equally but since I added "margin-right" on the first two columns, their size has grown and exceeded the total width of the row causing the third column to wrap to a new line.</p>
+
+	<div class="row space_before space_after">
+		<div class="column four margin-right gray-background bordered">Column 1</div>
+		<div class="column four margin-right gray-background bordered">Column 2</div>
+		<div class="column four gray-background bordered">Column 3</div>
+	</div>
+
+	<p>To fix this, I added an element within each column to assign the margin. I also used the "padded" class to provide more room for the text inside.</p>
+
+	<div class="row space_before">
+		<div class="column four"><div class="margin-right padded gray-background bordered">Column 1</div></div>
+		<div class="column four"><div class="margin-right padded gray-background bordered">Column 2</div></div>
+		<div class="column four"><div class="padded gray-background bordered">Column 3</div></div>
+	</div>
+</div>
+
+<div class="row space_before">
+<code><pre>
+Example 1:
+&lt;div class="row space_before space_after"&gt;
+  &lt;div class="column four margin-right gray-background bordered"&gt;Column 1&lt;/div&gt;
+  &lt;div class="column four margin-right gray-background bordered"&gt;Column 2&lt;/div&gt;
+  &lt;div class="column four gray-background bordered"&gt;Column 3&lt;/div&gt;
+&lt;/div&gt;
+
+Example 2:
+&lt;div class="row space_before"&gt;
+  &lt;div class="column four"&gt;&lt;div class="margin-right padded gray-background bordered"&gt;Column 1&lt;/div&gt;&lt;/div&gt;
+  &lt;div class="column four"&gt;&lt;div class="margin-right padded gray-background bordered"&gt;Column 2&lt;/div&gt;&lt;/div&gt;
+  &lt;div class="column four"&gt;&lt;div class="padded gray-background bordered"&gt;Column 3&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+</pre></code>
+</div>
+	
+	<div class="row space_before">
+		<p>Margin and padding can be applied to all sides of the element or only on specified sides. To add some space above or below a row, use the class="space_before" and class="space_after" on row elements.</p>
+
+	</div>
+
+</div>
+
+
+
+
+<div class="row space_before">
+	<h5>Grid Styles</h5>
+<p class="col4 right boxed margin-left">This is an example of a boxed element. To create this block, use class="boxed". It can be used on block level elements or inline elements.</p>
+	<p>These classes that can be added to grid elements. You can combine many of these styles to create many different results.</p> <p>Note, any styles that add padding, margins or borders can cause elements to bump down to the next line. (denoted&nbsp;by&nbsp;*) To avoid this, you should add a block within the column block that you can add and additional spacing styles</p>
+	
+</div>	
+
+<div class="row space_before">
+	<div class="column three"><b>padded *</b> </div><div class="column tall eight">Adds 8px of interior padding on all sides</div>
+</div>	
+<div class="row">
+	<div class="column three"><b>padding-left *</b> </div><div class="column tall eight">Adds 8px of interior padding to the left edge</div>
+</div>
+<div class="row">
+	<div class="column three"><b>padding-right *</b> </div><div class="column tall eight">Adds 8px of interior padding to the right edge</div>
+</div>
+<div class="row">
+	<div class="column three"><b>padding-top *</b> </div><div class="column tall eight">Adds 8px of interior padding to the top edge</div>
+</div>
+<div class="row">
+	<div class="column three"><b>padding-bottom *</b> </div><div class="column tall eight">Adds 8px of interior padding to the bottom edge</div>
+</div>
+<div class="row">
+	<div class="column three"><b>margin *</b> </div><div class="column tall eight">Adds 16px of exterior margin to all sides of the element</div>
+</div>
+<div class="row">
+	<div class="column three"><b>margin-left *</b> </div><div class="column tall eight">Adds 16px of exterior margin to the left of the element</div>
+</div>
+<div class="row">
+	<div class="column three"><b>margin-right *</b> </div><div class="column tall eight">Adds 16px of exterior margin to the right of the element</div>
+</div>
+<div class="row">
+	<div class="column three"><b>margin-top *</b> </div><div class="column tall eight">Adds 16px of exterior margin above the element</div>
+</div>
+<div class="row">
+	<div class="column three"><b>margin-bottom *</b> </div><div class="column tall eight">Adds 16px of exterior margin below the element</div>
+</div>
+<div class="row">
+	<div class="column three"><b>bordered *</b> </div><div class="column tall eight">Adds a gray border around the block</div>
+</div>
+<div class="row">
+	<div class="column three"><b>boxed *</b> </div><div class="column tall eight">Gray background, rounded corners and drop shadow</div>
+</div>
+<div class="row">
+	<div class="column three"><b>box-shadow</b> </div><div class="column tall eight">Adds a drop shadow</div>
+</div>
+<div class="row">
+	<div class="column three"><b>rounded </b> </div><div class="column tall eight">Rounded corners (4px_</div>
+</div>
+<div class="row">
+	<div class="column three"><b>rounded2 </b></div><div class="column tall eight">Slight rounded corners (2px)	</div>
+</div>
+<div class="row">
+	<div class="column three"><b>ghost </b></div><div class="column tall eight">Semi-transparent</div>
+</div>
+<div class="row">
+	<div class="column three"><b>left</b> </div><div class="column tall eight">Floated to the left of other content</div>
+</div>
+<div class="row">
+	<div class="column three"><b>right</b> </div><div class="column tall eight">Floated to the right of other content</div>
+</div>
+<div class="row">
+	<div class="column three"><b>block</b> </div><div class="column tall eight">Converts inline elements to block elements</div>
+</div>
+<div class="row">
+	<div class="column three"><b>inline</b> </div><div class="column tall eight">Converts block elements to inline elements</div>
+</div>
+<div class="row">
+	<div class="column three"><b>space_before</b> </div><div class="column tall eight">Adds some space above the element</div>
+</div>
+<div class="row">
+	<div class="column three"><b>space_after</b> </div><div class="column tall eight">Adds some space below the element</div>
+</div>
+<div class="row">
+	<div class="column three"><b>center</b> </div><div class="column tall eight">Block element will sit in the center of its container</div>
+</div>
+<div class="row">
+	<div class="column three"><b>underline</b> </div><div class="column tall eight">Adds a bottom border to the entire block</div>
+</div>
+<div class="row">
+	<div class="column three"><b>spacer</b> </div><div class="column tall eight">Use an empty block element to make some vertical space</div>
+</div>
+<div class="row">
+	<div class="column three"><b>divider</b> </div><div class="column  tall eight">Use an empty block element to make some vertical space including a bottom border</div>
+</div>
+<div class="row">
+	<div class="column three"><b>separator</b> </div><div class="column tall eight">Adds a gray vertical bar to the right of the element and some padding. Use class="column separator last" for the last element in the list which will remove the separator bar on the last element. (Works with columns or a float style)
+	<div class="space_before">
+		<div class="left separator"><a href="#">Item 1</a></div>
+		<div class="left separator"><a href="#">Item 2</a></div>
+		<div class="left separator"><a href="#">Item 3</a></div>
+		<div class="left separator last"><a href="#">Item 4</a></div>
+	</div>
+
+	</div>
+</div>
+
+<h4 class="underline space_before">List Styles</h4>
+<h6>Nav Styles</h6>
+<p>You can create quick horizontal or vertical navigation lists using the unordered list tags.</p>
+<strong class="block">Column-based Nav Lists:</strong>
+<div class="row">
+	<div class="two-across">
+		<div class="inner">
+			<ul class="nav columns space_before">
+				<li><a href="#">List Item 1</a></li>
+				<li><a href="#">List Item 2</a></li>
+				<li><a href="#">List Item 3</a></li>
+				<li><a href="#">List Item 4</a></li>
+			</ul>
+			<ul class="nav columns space_before">
+				<li class="separator"><a href="#">List Item 1</a></li>
+				<li class="separator"><a href="#">List Item 2</a></li>
+				<li class="separator"><a href="#">List Item 3</a></li>
+				<li class="separator"><a href="#">List Item 4</a></li>
+			</ul>
+			<ul class="nav columns space_before">
+				<li class="boxed"><a href="#">List Item 1</a></li>
+				<li class="boxed"><a href="#">List Item 2</a></li>
+				<li class="boxed"><a href="#">List Item 3</a></li>
+				<li class="boxed"><a href="#">List Item 4</a></li>
+			</ul>		
+		</div>
+	</div>
+	<div class="two-across">
+		<div class="inner">
+			<code>
+<pre>&lt;ul class="nav columns&gt;
+ &lt;li&gt;List Item 1&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul class="nav columns&gt;
+ &lt;li class="separator"&gt;List Item 1&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul class="nav columns&gt;
+ &lt;li class="boxed"&gt;List Item 1&lt;/li&gt;
+&lt;/ul&gt;
+
+</pre>
+</code>
+		</div>
+	</div>
+</div>
+
+<strong class="block">Row-based Nav Lists:</strong>
+<p>The width of the list blocks will be 100% by default. Add a width class to the ul or its container to set a control the width.</p>
+<div class="row">
+	<div class="three-across">
+		<div class="inner">
+			<ul class="nav rows col8">
+				<li><a href="#">List Item 1</a></li>
+				<li><a href="#">List Item 2</a></li>
+				<li><a href="#">List Item 3</a></li>
+				<li><a href="#">List Item 4</a></li>
+			</ul>
+		</div>
+	</div>			
+	<div class="three-across">
+		<div class="inner">
+			<ul class="nav rows col8">
+				<li class="boxed"><a href="#">List Item 1</a></li>
+				<li class="boxed"><a href="#">List Item 2</a></li>
+				<li class="boxed"><a href="#">List Item 3</a></li>
+				<li class="boxed"><a href="#">List Item 4</a></li>
+			</ul>		
+		</div>
+	</div>
+	<div class="three-across">
+		<div class="inner">
+			<code>
+<pre>&lt;ul class="nav rows col3&gt;
+ &lt;li&gt;List Item 1&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul class="nav rows col4&gt;
+ &lt;li class="boxed"&gt;List Item 1&lt;/li&gt;
+&lt;/ul&gt;
+
+</pre>
+</code>
+		</div>
+	</div>
+</div>
+
+<h6>Unordered and Ordered Lists</h6>
+
+<div class="row">
+	<div class="column six">
+		<ul>
+			<li>Item One</li>
+			<li>Item Two</li>
+			<li>Item Three</li>
+		</ul>
+	</div>
+	<div class="column six">
+		<ol>
+			<li>Item One</li>
+			<li>Item Two</li>
+			<li>Item Three</li>
+		</ol>
+	</div>
+
+</div>
+
+
+
+
+		
+			<div class="row space_before ">&nbsp;</div>
+
+		</div>
+		<!-- end center content -->
+	</div>
+
+<!-- end main content -->
+
+<!-- footer -->
+	<div id="footerinclude"></div>
+<!-- end footer -->
+
+</div>
+
+
+
+
+</body>
+</html>

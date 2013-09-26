@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>UX + Design Guidelines - Web  - Components - Breadcrumbs</title>
+	<link rel="shortcut icon" href="http://www.arbonne.com/favicon.png" type="image/x-icon" />
+
+    <link href='../css/camera.css' rel='stylesheet' type='text/css'> 
+	<link href="../css/brand.css" rel="stylesheet" type="text/css">
+
+	<link href="../css/ui.css" rel="stylesheet" type="text/css" >
+	<link href="../css/styleguide.css" rel="stylesheet" type="text/css" >
+
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/brand.js"></script>
+<script src="../js/ui.js"></script>
+
+
+	<script src="../js/includes.js"></script>
+
+    <script type='text/javascript' src='../js/jquery.easing.1.3.js'></script> 
+    <script type='text/javascript' src='../js/camera.js'></script> 
+
+
+
+</head>
+<body>
+
+
+<div id="container">
+
+	<div class="header_content">
+		<!-- Login Bar - START -->
+		<div id="loginbarinclude"></div>
+
+		<!-- Login Bar - END -->
+
+		<!-- Logo Area - START --> 
+		<div id="logoinclude"></div>
+		<!-- Logo Area - END --> 
+		<!-- start nav -->
+
+		<!-- Main Navigation - START -->
+			<!-- include mainnav -->
+		<div id="mainnav"></div>
+		<!-- Main Navigation - END -->
+	</div>
+	<!-- end header -->
+
+<!-- main content -->
+
+	<div id="centerrow">
+
+		<!-- side navbar -->
+		<div id="sidenavinclude"></div>
+
+		<!-- center content -->
+		<div id="center_content">
+			<div class="row space_before">
+				<ul class="breadcrumbs">
+					<li><a href="index.htm">Home</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Web</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Components</a></li>
+					<li class="separator">/</li>
+					<li class="active"><a href="#">Breadcrumbs</a></li>
+				</ul>
+			</div>
+
+			<div class="row space_after space_before" >
+				<h4 class="space_after">Breadcrumbs</h4>
+					<p>The <strong>Breadcrumbs component</strong> provides a list of links that represent the hierarchy of the current page.</p>
+
+	
+
+				<h6 class="space_before ">Example:</h6>		
+
+				<div class="row space_after">
+				<ul class="breadcrumbs">
+					<li><a href="index.htm">Home</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Web</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Components</a></li>
+					<li class="separator">/</li>
+					<li class="active"><a href="#">Breadcrumbs</a></li>
+				</ul>
+			</div>
+
+				</div>
+
+
+
+								
+				<h6 class="space_before">Usage:</h6>
+
+				<p>Breadcrumb links are built using an unordered list with the breadcrumbs class assigned. (&lt;ul class=""&gt;)</p>
+
+				<p>Each link is placed within a &lt;li&gt; element. The separator characters are placed in their own &lt;li&gt; element with a separator class. You may use any text character for a separator. </p>
+
+				<p>The final element gets a n "active" class which changes its styling</p>
+				
+
+
+<h6 class="space_before">Code Sample:</h6>
+<code><pre>
+&lt;ul class="breadcrumbs"&gt;
+  &lt;li&gt;&lt;a href="index.htm"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="separator"&gt;/&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Web&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="separator"&gt;/&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Components&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="separator"&gt;/&lt;/li&gt;
+  &lt;li class="active"&gt;&lt;a href="#"&gt;Breadcrumbs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre></code>						
+
+
+	
+
+
+				</div>
+
+
+
+
+			</div>
+		
+			<div class="row space_before ">&nbsp;</div>
+
+		</div>
+		<!-- end center content -->
+	</div>
+
+<!-- end main content -->
+
+<!-- footer -->
+	<div id="footerinclude"></div>
+<!-- end footer -->
+
+</div>
+
+
+
+
+</body>
+</html>

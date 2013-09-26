@@ -1,0 +1,95 @@
+/*  print stylesheet */
+
+
+/* color changes */
+
+body {background-color: #FFFFFF !important}
+body, p, td, th, textarea {color: #000000;}
+
+
+a, a:link {color:#000000; }
+a:visited {color:#000000;}
+a:active {color:#000000;}
+a:hover {color:#000000;}
+
+/* IC links */
+.ic a, .ic a:link {color:#000000;}
+.ic a:visited {color:#000000;}
+.ic a:active {color:#000000;}
+.ic a:hover {color:#000000; }
+
+.arbonne_green, .arbonne-green { color:#000000; }
+.light_blue, .light-blue { color:#000000; }
+.magenta { color:#000000; }
+.mid_grey, .mid_gray, .mid-grey, .mid-gray { color:#000000; }
+.dark_grey, .dark_gray, .dark-grey, .dark-gray { color:#000000; }
+.bright_green, .bright-green {color:#000000;}
+
+::selection {color:#000000; background-color: #FFFF80;}
+::-moz-selection {color:#000000; background-color: #FFFF80;}
+
+
+
+/* remove header elements*/
+.login_section_outer {display:none !important;}
+.search_cart {display:none !important;}
+.main_nav {display:none !important;}
+.tabs-outer {display:none !important;}
+.header_content .right_links {display:none !important;}
+
+
+/* remove footer section elements */
+.footer_section_outer  {display:none !important;}
+.verisignlogo  {display:none !important;}
+
+/* modify footer */
+.sub_footer_outer, .sub_footer {background-color:#FFFFFF !important;}
+
+
+/* remove navigation */
+#shopOnlineQuickShop  {display:none !important}
+#sidenavbar   {display:none !important;}
+#nav_tabs  {display:none !important;}
+#leftnav1 {display:none !important;}
+aside {display:none !important;}
+.message_box {display:none !important;}
+.left_nav_header {display:none !important;}
+.BaseMasterWidth .leftShadow  {display:none !important;}
+.BaseMasterWidth .rightShadow  {display:none !important;}
+#tblContentBase > tbody > tr > td.three  {display:none !important;}
+
+/* remove page elements */
+#main_banner {display:none !important;}
+.camera_wrap {display:none !important;}
+.featured_products_set a {display:none !important;}
+.featured_products_set .triangle_right {display:none !important;}
+.featured_product_module a.call_to_action {display:none !important;}
+.videoTab {display:none !important;}
+.noprint {display:none !important;}
+.printTab {display:none !important;}
+
+/* reset page size */
+.logo_area {width: 670px !important; margin: 0 8px !important;}
+#centerrow {width: 670px !important; margin: 0 8px !important;}
+#center_content { padding-left:0px !important; padding-right: 0px !important;}
+.sub_footer {width: 670px !important; margin: 0 8px !important;}
+.BaseMasterWidth  {width: 670px !important; margin: 0 8px !important;}
+.foundationCSS .row {max-width: 670px !important; min-width: 670px !important; }
+
+/* adjust ui elements */
+.featured_product_module {min-width:100px !important;}
+.featured_product_module .module_highlight {border:none;}
+
+ul.tabgroup.columns {margin:0;}
+ul.tabgroup.columns > li {position: relative; top:0;}
+ul.tabgroup.columns > li > a.title {display:none !important;}
+ul.tabgroup.columns > li > .body {display:block; border: none; padding: 8px 0px;}
+
+
+ul.tabgroup.accordion > li > a.title { padding:0;  border-bottom: none ; font-weight: bold; margin-bottom: 3px; }
+ul.tabgroup.accordion > li > a.title > .rowexpand {display:none !important;}
+ul.tabgroup.accordion > li > a.title > .rowcontract {display:none !important;}
+
+ul.tabgroup.accordion > li > a.title, ul.tabgroup.accordion > li > a.title:link, ul.tabgroup.accordion > li > a.title:visited, ul.tabgroup.accordion > li > a.title:hover {color: #000000 }
+ul.tabgroup.accordion > li.active > .title { font-weight: normal;padding: 0;}
+ul.tabgroup.accordion > li > .body {display:block; padding:0; margin-bottom: 16px;  padding-left:6px;}

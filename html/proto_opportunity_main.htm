@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>UX + Design Guidelines - Prototype - Opportunity</title>
+	<link rel="shortcut icon" href="http://www.arbonne.com/favicon.png" type="image/x-icon" />
+
+	<link href="../css/brand.css" rel="stylesheet" type="text/css">
+
+	<link href="../css/ui.css" rel="stylesheet" type="text/css" >
+	<link href="../css/styleguide.css" rel="stylesheet" type="text/css" >
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/brand.js"></script>
+<script src="../js/ui.js"></script>
+
+	<script src="../js/real_includes.js"></script>
+
+<script>
+
+
+	$(document).ready(function(){
+
+
+
+
+
+	});
+
+
+
+
+</script>
+
+	<style>
+	
+.opportunity header {padding:10px 16px;display:table;width:100%;}
+.opportunity header h2 {font-size:16px;display:table-cell; vertical-align: middle}
+header.learn{background-color:#9BBA7D; }
+header.plan {background-color:#8BC294}
+header.share {background-color:#9ED9D2}
+
+.square {position:relative;padding:0; padding-bottom:100%;height:0;}
+.square > .inner {position:absolute; top:0; left:0;width:100%; height:100%;}
+
+.row6 {position:relative;padding:0; padding-bottom:33.3333%;height:0;}
+.row6 > .inner {position:absolute; top:0; left:0;width:100%; height:100%;display:table;}
+
+/* 8 across */
+.grid .col2 {width:12.5%;} 
+
+.grid div > .inner {background-color:#CCCCCC;border-left:1px solid #F1F1F1;border-bottom:1px solid #F1F1F1;}
+.grid div > .inner.green-background {background-color: #417630}
+.grid div > .inner.gray-background {background-color: #EEEEEE}
+
+.grid div > .inner > * {display:block; width:100%; height: 100%;;position:absolute;top:0; left:0}
+.grid div > .inner > img {display:block; width:100%; height: 100%;position:absolute;top:0; left:0;-webkit-transition: opacity 0.2s; -moz-transition: opacity 0.2s; transition: opacity 0.2s}
+.grid div > .inner:hover > img {opacity:0.3;filter:alpha(opacity=30)}
+.grid div > .inner > .hov {opacity:0;filter:alpha(opacity=0);-webkit-transition: opacity 0.2s; -moz-transition: opacity 0.2s; transition: opacity 0.2s}
+.grid div >.inner:hover > .hov {opacity:1;filter:alpha(opacity=100);}
+
+.grid div > .inner > h2 {text-align:center;margin-top:12px;color:#777777; padding:0 6px;}
+.grid div > .inner > h2.white-text {color:#FFFFFF;text-shadow: 1px 1px 1px rgba(0,0,0,0.4)}
+.grid div > .inner:hover > h2.white-text {color:#777777;text-shadow:none}
+.grid div > .inner > h2.v-center {top: 50%;margin-top: -0.5em;height: auto;}
+
+.grid .row6 > .inner > img {height:auto;}
+.grid .col2 > .inner > img {height:auto;}
+
+
+.grid .col2  > .inner > img {top:-20px;}
+.grid .col2 b {display:block;position:absolute; bottom:-1px; left:0;  width:100%; padding:2px 0; text-align: center; color:#FFFFFF; ~background-color: #333; background-color: rgba(30,30,30,0.8) }
+
+.grid .col4.square {padding-bottom:33.3333%}
+.grid .col2.square {padding-bottom:12.5%}
+
+@media only screen and (max-width:768px) {
+	.grid .col4 {width:33.3333%;}
+	.grid .col2 {width:12.5%;}
+	.grid .col2 b {font-size:11px;}
+}
+
+@media only screen and (max-width:480px) {
+	.grid div > .inner > img {height:auto;}
+}
+
+
+
+	</style>
+
+</head>
+<body>
+
+
+<div id="container">
+
+	<div class="header_content">
+		<!-- Login Bar - START -->
+		<div id="loginbarinclude"></div>
+
+		<!-- Login Bar - END -->
+
+		<!-- Logo Area - START --> 
+		<div id="logoinclude"></div>
+		<!-- Logo Area - END --> 
+		<!-- Logo Area - END --> 
+		<!-- start nav -->
+
+		<!-- Main Navigation - START -->
+			<!-- include mainnav -->
+		<div id="mainnav"></div>
+		<!-- Main Navigation - END -->
+	</div>
+	<!-- end header -->
+
+<!-- main content -->
+
+	<div id="centerrow">
+
+	
+		<!-- center content -->
+		<div id="center_content_full">
+				<h1 class="space_above">Opportunity</h1>
+				
+		<div class="row opportunity">
+					<div class="col6 grid">
+						<header class="row learn"><h2>Learn</h2></header>
+
+						<div class="row row6"><div class="inner">
+							<img class="bg" src="../img/opportunity/discoverArbonne.jpg">
+							<h2 class="v-center white-text">What Makes Arbonne Different</h2>
+							<a href="proto_what_makes.htm">&nbsp;</a>
+							</div></div>
+
+						<div class="row row6"><div class="inner">
+							<img class="bg" src="../img/opportunity/hostrewards_header.jpg">
+							<h2 class="v-center white-text">Arbonne Opportunity</h2>
+							<a href="proto_opportunity.htm">&nbsp;</a>
+							</div></div>
+
+
+					</div>
+
+					<div class="col6 grid">
+						<header class="row plan"><h2>Plan</h2></header>
+						<div class="row">
+							<div class="col4 square"><div class="inner">
+								<div class="hov" style="background-color:#BAD9AB"></div>
+								<h2 class="v-center">Getting Started</h2>
+								<a href="proto_getting_started.htm">&nbsp;</a>
+							</div></div>
+							<div class="col4 square"><div class="inner gray-background">
+								<div class="hov" style="background-color:#BAD9AB"></div>
+								<h2 class="v-center">Preferred Client</h2>
+								<a href="proto_pc.htm">&nbsp;</a>
+							</div></div>
+							<div class="col4 square"><div class="inner">
+								<div class="hov" style="background-color:#BAD9AB"></div>
+								<h2 class="v-center">Independent Consultant</h2>
+								<a href="proto_ic.htm">&nbsp;</a>
+							</div></div>
+
+						</div>
+						<div class="row">
+							<div class="col4 square"><div class="inner gray-background">
+								<div class="hov" style="background-color:#BAD9AB"></div>
+								<h2 class="v-center">SuccessPlan</h2>
+								<a href="proto_success_plan.htm">&nbsp;</a>
+							</div></div>
+							<div class="col4 square"><div class="inner">
+								<div class="hov" style="background-color:#BAD9AB"></div>
+								<h2 class="v-center">Income Calculator</h2>
+								<a href="proto_income_calculator.htm">&nbsp;</a>
+							</div></div>
+							<div class="col4 square"><div class="inner green-background">
+								<div class="hov" style="background-color:#BAD9AB"></div>
+								<h2 class="v-center white-text" >Join Now</h2>
+								<a href="#">&nbsp;</a>
+							</div></div>
+						</div>		
+
+
+
+					</div>
+
+				</div>
+				<div class="row opportunity">
+					<header class="row share"><h2>Sharing Success</h2></header>
+
+					<div class="row grid">
+						<div class="col2 square"><div class="inner">
+							<img class="bg" src="../img/opportunity/c_aldrich.png">
+							<div><b>Christy Aldrich</b></div>
+							<a href="proto_consultant_stories.htm">&nbsp;</a>
+						</div></div>	
+						<div class="col2 square"><div class="inner">
+							<img class="bg" src="../img/opportunity/h_baker.png">
+							<div><b>Hope Baker</b></div>
+							<a href="proto_consultant_stories.htm">&nbsp;</a>
+						</div></div>	
+						<div class="col2 square"><div class="inner">
+							<img class="bg" src="../img/opportunity/k_barnes.png">
+							<div><b>Kim Barnes</b></div>
+							<a href="proto_consultant_stories.htm">&nbsp;</a>
+						</div></div>
+						<div class="col2 square"><div class="inner">
+							<img class="bg" src="../img/opportunity/c_egleston.png">
+							<div><b>Carol Egleston</b></div>
+							<a href="proto_consultant_stories.htm">&nbsp;</a>
+						</div></div>
+						<div class="col2 square"><div class="inner">
+							<img class="bg" src="../img/opportunity/s_evans.png">
+							<div><b>Susan Evans</b></div>
+							<a href="proto_consultant_stories.htm">&nbsp;</a>
+						</div></div>
+						<div class="col2 square"><div class="inner">
+							<img class="bg" src="../img/opportunity/s_graff.png">
+							<div><b>Shawn Graff</b></div>
+							<a href="proto_consultant_stories.htm">&nbsp;</a>
+						</div></div>
+						<div class="col2 square"><div class="inner">
+							<img class="bg" src="../img/opportunity/ml_harbin.png">
+							<div><b>Mary Leigh Harbin</b></div>
+							<a href="proto_consultant_stories.htm">&nbsp;</a>
+						</div></div>
+						<div class="col2 square"><div class="inner">
+							<div class="hov" style="background-color:#BAD9AB"></div>
+							<h2 class="v-center">More Stories</h2>
+							<a href="proto_consultant_stories.htm">&nbsp;</a>
+						</div></div>
+
+					</div>
+
+
+
+				</div>
+
+
+
+				<div class="spacer" style="height:300px"> </div>
+
+
+			<div class="row space_before ">&nbsp;</div>
+
+
+		</div>
+		<!-- end center content -->
+	</div>
+
+<!-- end main content -->
+
+<!-- footer -->
+	<div id="footerinclude"></div>
+<!-- end footer -->
+
+</div>
+
+
+
+
+</body>
+</html>

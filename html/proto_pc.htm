@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>UX + Design Guidelines - Prototype - Preferred Client</title>
+	<link rel="shortcut icon" href="http://www.arbonne.com/favicon.png" type="image/x-icon" />
+
+	<link href="../css/brand.css" rel="stylesheet" type="text/css">
+
+	<link href="../css/ui.css" rel="stylesheet" type="text/css" >
+	<link href="../css/styleguide.css" rel="stylesheet" type="text/css" >
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/brand.js"></script>
+<script src="../js/ui.js"></script>
+
+
+	<script src="../js/real_includes.js"></script>
+
+<script>
+
+
+	$(document).ready(function(){
+
+
+
+
+		// setup toggles for the nav squares 
+
+		var $topLink = $('#topLink');
+		$topLink.addClass('active'); // set default as active
+		var $radioGroup = $('*[data-radiogroup]');
+
+
+		var toggleRadioGroup = function(thisLink,group){
+			// toggle one active link across this group
+			if($(thisLink).hasClass('active') == false) {
+				$('*[data-radiogroup="' + group + '"]').removeClass('active');
+				$(thisLink).addClass('active');
+			}
+		};
+
+		$radioGroup.each(function(){
+			var thisgroup = $(this).data('radiogroup');
+			$(this).on('click',function(){
+				toggleRadioGroup(this,thisgroup);
+			});
+		});
+
+
+
+		// fixed navigation block
+
+		var startOffset = -100; // sets the top of the fixed nav
+
+		$('.scroll_fixed').each(function(){
+			$(this).sticky({'startOffset': startOffset,'offset':0,onStick:function(){
+				$('.scroll_container').css('margin-top','140px');
+				$('.scroll_fixed').addClass('stuck');
+				$('.scroll_fixed').css('opacity',0);
+				$('.scroll_fixed').animate({'opacity':1},{duration:350});
+			}, offStick: function(){
+				$('.scroll_container').css('margin-top','0');
+				$('.scroll_fixed').removeClass('stuck');
+			}});
+		});	
+
+
+		// set navigation links to scroll
+		var scrollOffset = 176; // offset for the nav bar
+
+		$('*[data-scrollto]').each(function(){
+			// set scroll link targets
+			var target = $(this).data('scrollto');
+			$(this).scrollto(target,{'offset' : scrollOffset, topCallback: function(){
+				toggleRadioGroup($topLink);
+			}});
+			// create in view elements to trigger nav bar link highlighting
+			var theLink = '*[data-scrollto="'+target+'"]';
+			var thisgroup = $(this).data('radiogroup');
+			$(target).inview(scrollOffset*2,function(){
+				toggleRadioGroup(theLink,thisgroup);
+			});
+
+		});
+
+
+		
+
+
+	});
+
+
+
+
+</script>
+
+	<style>
+	
+	.scroll_container .nav {height: 280px; background-color:#9BBA7D;background-image: url('-../img/opportunity/ic_background.png'); background-repeat: no-repeat;background-position: 50% 0;}
+
+
+
+	</style>
+
+</head>
+<body>
+
+
+<div id="container">
+
+	<div class="header_content">
+		<!-- Login Bar - START -->
+		<div id="loginbarinclude"></div>
+
+		<!-- Login Bar - END -->
+
+		<!-- Logo Area - START --> 
+		<div id="logoinclude"></div>
+		<!-- Logo Area - END --> 
+		<!-- Logo Area - END --> 
+		<!-- start nav -->
+
+		<!-- Main Navigation - START -->
+			<!-- include mainnav -->
+		<div id="mainnav"></div>
+		<!-- Main Navigation - END -->
+	</div>
+	<!-- end header -->
+
+<!-- main content -->
+
+	<div id="centerrow">
+
+		<!-- side navbar -->
+			<div id="sidenavbar" >
+
+
+			<ul class="nav rows">
+				<li class="heading">Plan</li>
+				<li>
+					<a href="proto_getting_started.htm">Getting Started</a>
+				</li>
+				<li class="active">
+					<a href="proto_pc.htm">Preferred Client</a>
+				</li>
+				<li>
+					<a href="proto_ic.htm">Independent Consultant</a>
+				</li>
+				<li >
+					<a href="proto_success_plan.htm">Success Plan</a>
+				</li>				
+				<li>
+					<a href="proto_income_calculator.htm">Income Calculator</a>
+				</li>
+
+				<li >
+					<a href="#">Join Now</a>
+				</li>
+			</ul>
+
+
+			</div>
+
+		<!-- center content -->
+		<div id="center_content">
+				<div class="right"><a href="#" class="button primary">Join Now</a></div>
+				<h1 class="space_above">Preferred Client</h1>
+				
+		
+
+
+
+
+				<div class="spacer" style="height:300px"> </div>
+
+
+			<div class="row space_before ">&nbsp;</div>
+
+
+		</div>
+		<!-- end center content -->
+	</div>
+
+<!-- end main content -->
+
+<!-- footer -->
+	<div id="footerinclude"></div>
+<!-- end footer -->
+
+</div>
+
+
+
+
+</body>
+</html>

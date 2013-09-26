@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>UX + Design Guidelines - Web - Components - RSS Feed</title>
+	<link rel="shortcut icon" href="http://www.arbonne.com/favicon.png" type="image/x-icon" />
+
+	<link href="../css/brand.css" rel="stylesheet" type="text/css">
+
+	<link href="../css/ui.css" rel="stylesheet" type="text/css" >
+	<link href="../css/styleguide.css" rel="stylesheet" type="text/css" >
+
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/brand.js"></script>
+	<script src="../js/ui.js"></script>
+
+	<script src="../js/jquery.timeago.js"></script>
+
+
+	<script src="../js/includes.js"></script>
+
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+<script type="text/javascript">
+		google.load("feeds", "1");
+
+		var feedTicker = function(argFeedList){
+			// requires Google Feeds api (https://www.google.com/jsap, google.load("feeds", "1");)
+			// requires timeago.js
+			// displays feeds in element with class="RSSFeed"
+			
+			google.setOnLoadCallback(loadFeeds);
+
+			// RSS Feed & Twitter Feed Ticker
+			var $RSSFeedContainer = $('.RSSFeed');
+			var $RSSFeed;
+			var $feedContents;
+			var feedList = [];
+			var feedResults = [];
+			var feedResultsIndex = 0;
+			var displayStarted = false;
+			var displayDelay = 10000; // time in ms
+			var defaultfeedList = [ 
+				{
+					'url': 'http://social.arbonne.com/feed/',
+					'type':'blog',
+					'num': 5,
+					'desc': 'Visit the Arbonne Blog'
+				},
+				{
+					'url': 'http://ec2-54-215-195-74.us-west-1.compute.amazonaws.com/wordpress/oauth/twitter_timeline_arbonne.php',
+					'type':'twitter',
+					'num': 5,
+					'desc': 'Follow Arbonne on Twitter'
+				}
+			];
+			if(argFeedList) {
+				var feedList = argFeedList;
+			} else {
+				var feedList = defaultfeedList;
+			}
+
+			function loadFeeds(){
+				if(feedList){
+					for(var i = 0; i<feedList.length;i++){
+						switch (feedList[i].type) {
+							case 'blog':
+								loadRSS(feedList[i]);
+								break;
+							case 'twitter':
+								loadTwitter(feedList[i]);
+								break;
+						}
+					}
+				} else {
+					console.log('feedTicker: no feeds to load');
+				}
+			}
+
+
+			function loadRSS(feedObj) {
+			  var gFeed = new google.feeds.Feed(feedObj.url);
+			  gFeed.setNumEntries(feedObj.num);
+			  gFeed.setResultFormat(google.feeds.Feed.JSON_FORMAT);
+			  var feedCallback = function(data){
+			  		RSSLoaded(data,feedObj);
+			  };
+			  gFeed.load(feedCallback);
+			}
+
+
+			function RSSLoaded(data,feedObj) {
+			  if (!data.error) {
+				var feedData = data.feed;
+				var entries = data.feed.entries;
+				var feedEntries = [];
+			    for (var i = 0; i < entries.length; i++) {
+			      var entryData = entries[i];
+			      var feedEntry = {
+			      	'feedTitle' : feedData.title,
+			      	'feedLink' : feedData.link,
+			      	'title' : entryData.title,
+			      	'author' : entryData.author,
+			      	'postDate' : entryData.publishedDate,
+			      	'link' : entryData.link,
+			      	'snippet' : entryData.contentSnippet.replace(/[']/g,'&apos;').replace(/"/g,'').replace(/[\r\n]/g,'')
+			      };
+			      feedEntries.push(feedEntry);
+			    }
+				if(feedEntries.length) {
+					feedResults.push({'index': 0,'type': feedObj.type, 'desc': feedObj.desc ,'entries':feedEntries});
+					feedReady();
+				}
+			  }
+			}
+
+
+			function loadTwitter(feedObj){
+				var url = feedObj.url + "?numtweets=" + feedObj.num;
+				var feedCallback = function(data){
+			  		twitterLoaded(data,feedObj);
+			 	};
+				$.ajax(feedObj.url,{crossDomain:true, dataType: "jsonp",jsonpCallback:"callback", jsonp: "callback"}).success(feedCallback);
+			}
+
+
+			function twitterLoaded(data,feedObj){
+				if(data){
+					var twfeed = data;
+					var feedEntries = [];
+				    for (var i = 0; i < twfeed.length; i++) {
+				      var tw = twfeed[i];
+				      var twEntry = {
+				      	'feedTitle' : '@' + tw['user']['screen_name'],
+				      	'feedLink' : 'https://twitter.com/arbonne/',
+				      	'title' : tw['text'].replace(/[']/g,'&apos;').replace(/"/g,'').replace(/(https?:\/\/([-\w\.]+)+(:\d+)?(\/([\w\/_\.-]*(\?\S+)?)?)?)/g,'<a href="$1" class="linkOpensNewWindow">$2$4</a>'),
+				      	'author' : tw['user']['screen_name'],
+				      	'postDate' : twStringToDate(tw['created_at']),
+				      	'link' : '',
+				      	'snippet' : ''
+				      };
+				      feedEntries.push(twEntry);
+				    }
+					if(feedEntries.length) {
+						feedResults.push({'index': 0, 'type': feedObj.type, 'desc': feedObj.desc ,'entries':feedEntries});
+						feedReady();
+					} 
+				}
+			}
+
+			function twStringToDate(s) {
+					var b = s.split(/[: ]/g);
+					var m = {jan:0, feb:1, mar:2, apr:3, may:4, jun:5, jul:6, aug:7, sep:8, oct:9, nov:10, dec:11};
+					var d = new Date(Date.UTC(b[7], m[b[1].toLowerCase()], b[2], b[3], b[4], b[5]));
+					return d.toISOString();
+			}
+
+			function feedReady(){
+				if(!displayStarted){
+					var $inner = $(document.createElement('div'));
+					$inner.addClass('inner');
+					$RSSFeedContainer.append($inner);
+					$RSSFeed = $RSSFeedContainer.children('.inner');
+					var displayInt = setInterval(displayFeed,displayDelay);
+					displayFeed();
+					displayStarted = true;
+				}
+			}
+
+			function displayFeed(){
+				$RSSFeed.fadeOut(450, function(){
+					$RSSFeed.html(getEntry());
+					$RSSFeed.find('.post_date').timeago();
+					$RSSFeed.css('margin-left','100%').show().animate({marginLeft:'0'},{duration:250});
+				});
+			}
+
+			function selectEntry(){
+				if(feedResultsIndex >= feedResults.length) feedResultsIndex = 0;
+				var nextFeed = feedResults[feedResultsIndex];
+				feedResultsIndex++;
+				var nextIndex = nextFeed.index;
+				if(nextIndex >= nextFeed.entries.length) nextIndex = 0;
+				var nextEntry = nextFeed.entries[nextIndex];
+				nextEntry.feedType = nextFeed.type;
+				nextEntry.feedDesc = nextFeed.desc;
+				nextFeed.index++;
+				return nextEntry;
+			}
+
+			function getEntry(){
+				var output ='';
+				var thisEntry = selectEntry();
+				try {
+					output += '<a href="'+ thisEntry.feedLink +'" class="feed '+ thisEntry.feedType +'" target="_blank" title="'+thisEntry.feedDesc+'">' + thisEntry.feedTitle + '</a>';
+					output += '<span class="entry">';
+					if(thisEntry.link.length){
+						output += '<a href="'+thisEntry.link+'" target="_blank" class="clickthrough linkOpensNewWindow " rel="tooltip" title="'+thisEntry.feedTitle + ':\n' + thisEntry.snippet + '\n-' +thisEntry.author + '">'+ thisEntry.title + '</a>';
+					}  else {
+						output += thisEntry.title;
+					}
+					
+					output += '<span class="post_date" title="' + thisEntry.postDate + '">' + thisEntry.postDate + '</span>';
+					output += '</span>';
+				} catch(e){
+					output += 'Loading feed...'
+				}
+				return output;
+			}
+		} ; // END feedTicker
+
+
+
+	$(document).ready(function(){	
+
+		// create new feed Ticker
+		var feedList = [ 
+			{
+				'url': 'http://social.arbonne.com/feed/',
+				'type':'blog',
+				'num': 5,
+				'desc': 'Visit the Arbonne Blog'
+			},
+			{
+				'url': 'http://ec2-54-215-195-74.us-west-1.compute.amazonaws.com/wordpress/oauth/twitter_timeline_arbonne.php',
+				'type':'twitter',
+				'num': 5,
+				'desc': 'Follow Arbonne on Twitter'
+			}
+		];
+		var ticker1 = new feedTicker(feedList);
+
+
+	});
+
+
+	</script>
+
+
+
+<style>
+
+	.loading img {vertical-align: middle}
+
+	.RSSFeed {min-height: 36px;overflow: hidden;position:relative;}
+	.RSSFeed .inner {position:absolute;top:0; left: 0;}
+	.RSSFeed .inner > * {display: table-cell; vertical-align: middle}
+	.RSSFeed a.feed {color: #555; font-size:11px; font-weight: bold; text-transform: uppercase; padding-right: 8px; margin-right: 8px; border-right: 1px solid #CCC;white-space:nowrap;}
+	.RSSFeed a.feed.twitter {background-image: url('../img/twitter_icon16.png'); background-repeat: no-repeat; background-position: 0% 50%; padding-left: 29px;}
+	.RSSFeed a.feed.blog {background-image: url('../img/arbonne_bug16.png'); background-repeat: no-repeat; background-position: 0% 50%; padding-left: 29px;}	
+	.RSSFeed .entry {padding-left:8px;}
+	.RSSFeed .post_date {color: #777; padding-left: 8px ; font-size: 11px; white-space:nowrap;}
+</style>
+
+</head>
+<body>
+
+
+<div id="container">
+
+	<div class="header_content">
+		<!-- Login Bar - START -->
+		<div id="loginbarinclude"></div>
+
+		<!-- Login Bar - END -->
+
+		<!-- Logo Area - START --> 
+		<div id="logoinclude"></div>
+		<!-- Logo Area - END --> 
+		<!-- Logo Area - END --> 
+		<!-- start nav -->
+
+		<!-- Main Navigation - START -->
+			<!-- include mainnav -->
+		<div id="mainnav"></div>
+		<!-- Main Navigation - END -->
+	</div>
+	<!-- end header -->
+
+<!-- main content -->
+
+	<div id="centerrow">
+
+		<!-- side navbar -->
+		<div id="sidenavinclude"></div>
+
+		<!-- center content -->
+		<div id="center_content">
+			<div class="row space_before">
+				<ul class="breadcrumbs">
+					<li><a href="index.htm">Home</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Web</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Components</a></li>
+					<li class="separator">/</li>
+					<li class="active"><a href="#">RSS Feed</a></li>
+				</ul>
+			</div>
+
+			<div class="row space_after space_before" >
+
+				<h2 class="underline">RSS Feed</h2>
+				<div class="spacer"></div>
+
+
+				<div class="RSSFeed"></div>
+
+
+	
+			</div>
+
+			<div class="spacer"></div>
+
+			<p>Loads the most recent 5 blog posts and 5 Twitter posts and displays them in a ticker with a 10 second refresh.
+				
+
+
+			</p>
+
+<code><pre>
+// create new feed Ticker
+var feedList = [ 
+ {
+  'url': 'http://social.arbonne.com/feed/',
+  'type':'blog',
+  'num': 5,
+  'desc': 'Visit the Arbonne Blog'
+ },
+ {
+  'url': 'http://ec2-54-215-170-13.us-west-1.compute.amazonaws.com/wordpress/oauth/twitter_timeline_arbonne.php',
+  'type':'twitter',
+  'num': 5,
+  'desc': 'Follow Arbonne on Twitter'
+ }
+];
+var ticker1 = new feedTicker(feedList);
+
+</pre></code>
+
+		
+			<div class="row space_before ">&nbsp;</div>
+
+
+		</div>
+		<!-- end center content -->
+	</div>
+
+<!-- end main content -->
+
+<!-- footer -->
+	<div id="footerinclude"></div>
+<!-- end footer -->
+
+</div>
+
+
+
+
+</body>
+</html>

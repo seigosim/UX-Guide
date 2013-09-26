@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>UX + Design Guidelines - Prototype - Key Ingredients Guide</title>
+
+
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="shortcut icon" href="http://www.arbonne.com/favicon.png" type="image/x-icon" />
+
+	<link href="../css/brand.css" rel="stylesheet" type="text/css">
+
+	<link href="../css/ui.css" rel="stylesheet" type="text/css" >
+	<link href="../css/styleguide.css" rel="stylesheet" type="text/css" >
+
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/brand.js"></script>
+	<script src="../js/ui.js"></script>
+
+
+	<script src="../js/real_includes.js"></script>
+
+
+	<script type="text/javascript">
+
+
+	var translateString = function(str){
+		// swap out this function to translate to other languages
+		var words = {
+			'all':'ALL',
+			'viewby':'View By:',
+			'allsections':'All Sections',
+			'resultsfound':'Results Found',
+			'resultfound':'Result Found',
+			'noresults':'No Matching Ingredients Found',
+			'in':'in'
+		};
+		if(words[str]) return words[str];
+		return str ;
+	}
+
+	var formatIngredients = function(){
+
+		/*
+		- Parses ingredients data to build a searchable object list
+		- The data should be contained in the document in a hidden element (see var ingreData)
+		- Parsing codes: These markup codes signify special handling of the lines:
+		- 	"{" at the start of a line will treat the line as a section heading
+		-	"[alfalfa_fpo.png]" inside a line will be converted into an image tag (images need to be in the path specified by var imgpath)
+		-	"=" at the start of the line will treat the line as a subheading
+		-	":" inside a line is the delimiter character for a term and its definition
+		- Ingredients are split on line breaks, so ensure that no line breakes appear within an ingredient defininition.
+		*/
+
+		var ingreData = $('#ingredients_data').html();
+		var $outContainer = $('.ingredients_list');
+		var $indexContainer = $('.index');
+		var mainIndex = [];
+		var sectionIndex = [];
+		var sections = [];
+		var ingredientData = [];
+		var searchIndex = [];
+		var sectionFilter = translateString('allsections');
+		var alphaFilter = '';
+		var output = '';
+		var imgpath = '../img/ingredients/';
+		var showimgs = true;
+		var searchFocus = false;
+		var recursecount = 0;
+
+		var splitDef = function(line){
+			var parts = line.split(':');
+			if(parts.length >= 2){
+				var re = /\[([^\]]+)\]/;
+				var imgmatch = parts[0].match(re);
+				var img = (imgmatch) ? imgmatch[1] : '';
+				var term = parts[0].replace(re,'');
+				return {'term':term,'def':parts[1],'img':img};
+			}
+			return false;
+		}
+		var formatSection = function(str) {
+			var formatting = "<dd class=\"h\"><h4>#str</h4></dd>";
+			return formatting.replace('#str',str);
+		};
+		var formatComplex = function(str) {
+			var formatting = "<dd class=\"h\"><h5>#str</h5></dd>";
+			return formatting.replace('#str',str);
+		};
+		var formatDef = function(term,def,img){
+			var formatting = "<dt>#name#img</dt>\n<dd>#def</dd>\n";
+			if(showimgs && img.length){ 
+				return formatting.replace('#name',term).replace('#img','<img src=\"'+ imgpath + img +'\"/>').replace('#def',formatFootnote(def));
+			} else {
+				return formatting.replace('#name',term).replace('#img','').replace('#def',formatFootnote(def));
+			}
+		};
+		var formatFootnote = function(str){
+			var footnoteText = $('#footnote').html();
+			if(footnoteText && footnoteText.length) {
+				return str.replace(/◊/g,'<a href=\"#\" rel=\"tooltip\" title=\"' + footnoteText.replace(/◊/g,'') +'\" class=\"ftn\">&loz;</a>');
+			} else {
+				return str;
+			}
+			
+		};
+		var formatRowColors = function(){
+			// add evenrow class to a pair or <dt><dd> elements and skip every other pair
+			var $rows = $outContainer.find('dt,dd').filter(':not(.h)');
+			var skip = 0;
+			for(var i = 0; i <= $rows.length; i++) {
+				if(skip >= 2) $rows.eq(i).addClass('evenrow');
+				skip++;
+				if(skip >= 4) skip = 0;
+			}
+		};
+		var buildIndex = function(index){
+			var out = '<li class=\"all\"><a href=\"#ALL\">'+ translateString('ALL') +'</a></li>'; // string: ALL
+			//var out = '';
+			var count = 0;
+			for(var al = 65; al <= 90; al++){
+				// get each ASCII char from A-Z
+				var ch = String.fromCharCode(al);
+				 out += ($.inArray(ch,index) != -1) ? "<li><a href=\"#"+ch+"\">"+ch+"</a></li>" : "<li><span>"+ch+"</span></li>";
+				 count ++;
+				 if(count % 9 == 0) out += "</ul><ul>"
+			}
+			$indexContainer.html("<ul>" + out + "</ul>");
+			applyIndexActions();
+		};
+		var applyIndexActions = function(){
+			$('.index a').each(function(){
+				var alpha = $(this).attr('href').replace('#','');
+				$(this).on('click', function(e){
+					gotoAlpha(alpha);
+					return false;
+				});
+			});
+		};
+		var buildSections = function(){
+			if(sections.length){
+				$sectionarea = $('.sections');
+				var output = "<form>"+translateString('viewby')+" <select>"; // string: View By:
+				output += "<option value=\""+translateString('allsections')+"\">"+translateString('allsections')+"</options>"; // string: All Sections
+				for(var i = 0; i <= sections.length; i++){
+					var section = sections[i];
+					if(section) output += "<option value=\"" + section + "\">" + section + "</options>";
+				}
+				output += "</select></form>";
+				$sectionarea.html(output);
+				$sectionarea.find('select').on('change',function(){
+					sectionFilter = this.options[this.selectedIndex].value;
+					clearSearch();
+					gotoAlpha(alphaFilter);
+					return false;
+				});
+			}
+		};
+		var resetSections = function(){
+			$('.sections select').get(0).selectedIndex = 0;
+			sectionFilter = translateString('allsections');
+		};
+		var applySearchActions = function(){
+			var $keywordfield = $('#keyword');
+			$keywordfield.on('focus',function(){
+				searchFocus = true;
+			});
+			$keywordfield.on('blur',function(){
+				searchFocus = false;
+			});
+			$(document).on('keyup',function(){
+				var keyword = $keywordfield.val();
+				if(keyword.length >= 2 && searchFocus) search(keyword);
+			});
+			$('.searchclear').on('click',function(){
+				clearSearch();
+				resetSections();
+				gotoAlpha('ALL');
+			});
+		};
+
+		var search = function(keyword){
+			var results = [];
+			var re = new RegExp('(' + keyword + ')','gi');
+			for(var key in searchIndex){
+				if(searchIndex[key] && searchIndex[key].match(re)) results.push(getResult(key));
+			}
+			if(results.length) showResults(results,re);
+		};
+
+		var getResult = function(termID){
+			if(sectionFilter == translateString('allsections') || sectionFilter == ingredientData[termID].section) return  ingredientData[termID];
+			return null;
+		};
+		var showResults = function(results,re){
+			var output = "";
+			var resultscount = 0;
+			for(var i = 0; i<= results.length; i++ ){
+				var row = results[i]; 
+				if(row) {
+					output += formatDef(row.term.replace(re,'<span class=\"highlight\">$1</span>'), row.def, row.img);
+					resultscount++;
+				}
+			}
+			putOutput(output);
+			buildIndex(mainIndex);
+			highlightIndex('');
+			showResultCount(resultscount);
+
+		};
+		var putOutput = function(output) {
+			$outContainer.html(output);
+			formatRowColors();
+			addTooltips();
+		};
+		var clearSearch = function(){
+			var $keywordfield = $('#keyword');
+			$keywordfield.get(0).value = '';
+			$keywordfield.get(0).blur();				
+		};
+
+		var highlightIndex = function(alpha){
+			var $filteralpha = $('.filter_alpha');
+			var $index = $('.index a');
+			$index.removeClass('active');
+			$index.each(function(){
+				if($(this).html() == alpha) $(this).addClass('active');
+			});	
+			$filteralpha.removeClass('all');
+			if(alphaFilter == 'ALL') $filteralpha.addClass('all');
+			$filteralpha.html(alpha);
+		};
+		var showResultCount = function(resultscount){
+			var $filtermsg = $('.filter_message');
+			$filtermsg.show();
+			if(resultscount == 1) {
+				var strresultscount = 'resultfound' ;
+			 } else {
+			 	var strresultscount = 'resultsfound' ;
+			 }
+			$filtermsg.html(resultscount + ' ' + translateString(strresultscount) + ' ' + translateString('in') + ' ' + sectionFilter); 
+		};
+		var addTooltips = function(){
+			removeTooltips();
+			AtoolTips();
+		};
+		var removeTooltips = function(){
+			var $tooltipAnchors = $('a[rel="tooltip"]');
+			$tooltipAnchors.off('mouseenter mouseleave click');
+			$('.AtoolTip').remove();
+		};		
+
+		var gotoAlpha = function(alpha){
+			alphaFilter = alpha;
+			if(alphaFilter == '') alphaFilter = 'ALL';
+			var output = "";
+			var resultscount = 0;
+			var lastsection = '';
+			var lastcomplex = '';
+
+			for(var i = 0; i<= ingredientData.length; i++ ){
+				var row = ingredientData[i]; 
+				if(row) {
+					if(alphaFilter == 'ALL' || alphaFilter == row.fc) {
+						if(sectionFilter == translateString('allsections') || sectionFilter == row.section) {
+							if(lastsection != row.section && row.section != '') {
+								output += formatSection(row.section);
+								lastsection = row.section;
+							}
+							if(lastcomplex != row.complex && row.complex != '') {
+								output += formatComplex(row.complex);
+								lastcomplex = row.complex;
+							}
+							output += formatDef(row.term, row.def, row.img);
+							resultscount++;
+						}
+					}
+				}
+			}
+			recursecount++;
+			if(recursecount > 1) {
+				$outContainer.html("<h5>"+translateString('noresults')+"</h5>"); // string: No Matching Ingredients Found
+				return false;
+			}
+			if(resultscount == 0 ) {
+				gotoAlpha('ALL');
+				return false;
+			}
+ 			recursecount = 0 ;
+			putOutput(output);
+			showResultCount(resultscount);
+
+			if(sectionFilter == '') {
+				buildIndex(mainIndex);
+			} else if (sectionIndex[sectionFilter]) {
+				buildIndex(sectionIndex[sectionFilter]);
+			}
+			highlightIndex(alphaFilter);
+		};
+
+
+		if(ingreData) {
+			// parser
+			ingreData = ingreData.replace(/(\r?\n|\r)/gm,'\n');
+			var ingreLines = ingreData.split('\n');
+			var sectionnum = -1;
+			var sectionname = '';
+			var complexname = '';
+			for(var i = 0; i <= ingreLines.length; i++){
+				var line = ingreLines[i];
+				if(line){
+					var firstChar = line.substring(0,1);
+					switch(firstChar){
+						case '{': //section heading
+							sectionnum = sections.length;
+							sectionname = line.substring(1,line.length);
+							sections.push(sectionname);
+							sectionIndex[sectionname] = [];
+							complexname = "";
+							break;
+						case '=': //complex
+							complexname = line.substring(1,line.length);
+							break;
+						default:
+							// ingredient
+							mainIndex.push(firstChar);
+							sectionIndex[sectionname].push(firstChar);
+							var data = splitDef(line);
+							if(data) {
+								ingredientData.push({'index':ingredientData.length,'section':sectionname, 'complex':complexname,'term':data.term, 'def': data.def, 'img': data.img, 'fc':firstChar});
+								searchIndex[ingredientData.length-1] = data.term;
+							}
+					}
+				}
+
+			}
+			buildIndex(mainIndex);
+			buildSections();
+			applySearchActions();
+			gotoAlpha('');
+
+		}
+
+
+	};	
+
+
+	$(document).ready(function(){
+		formatIngredients();
+	});
+
+</script>
+
+<style>
+.key_ingredients .index_header {background-color:#F1F1F1;padding-bottom: 6px;position:relative;overflow:hidden; margin-bottom:16px;clear:both;}
+.key_ingredients .indexwrap {padding:6px;}
+.key_ingredients .index ul {margin:0 ;padding:0;display:inline-block;white-space: nowrap;}
+.key_ingredients .index ul > li {margin:5px 0 0 3px ; padding:0; display:inline-block;height:21px ;width:21px;text-align:center;}
+.key_ingredients .index ul > li.all {width:auto; }
+.key_ingredients .index ul > li.all > *  { padding-right:3px;padding-left:3px;}
+.key_ingredients .index ul > li > *  {padding-top:2px;height:100% ;width:100%; display: block; border:1px solid #999999;  background-color:#FFFFFF;}
+.key_ingredients .index ul > li > a.active, .key_ingredients .index ul > li > a.active:hover {color:#FFFFFF;  background-color:#3d9b35 ; font-weight: normal;}
+.key_ingredients .index ul > li > span {color:#999999; background-color: #E1E1E1;border:1px solid #CCCCCC}
+.key_ingredients .index ul > li > a:hover {background-color:#e5e5e5;}
+.key_ingredients .ftn {padding-left:3px ; font-weight: bold;color: #40B4C2;}
+
+
+.key_ingredients .infoarea {position:relative;min-height:66px;margin-bottom:4px;border-bottom: 1px solid #DDDDDD;}
+
+.key_ingredients .filter_alpha {position:absolute; left:0px; top:6px;width:48px;height:60px; background-color:#999999;color:#FFFFFF; font-size:42px; padding-top:2px; text-align: center;}
+
+.key_ingredients .filter_alpha.all {font-size:16px;font-weight:bold; padding-top:19px;}
+
+.key_ingredients .filter_message {display:none; position:absolute; bottom: 4px; left:54px; text-align:left; line-height: 1.1em; font-size:14px; font-weight: bold; color: #777777;}
+
+.key_ingredients .sections {position:absolute; bottom:30px; right: 8px; font-size:14px; font-weight: bold; color: #777777;}
+
+
+.key_ingredients .search_header {position:relative; float: right;  text-align:left; font-size:14px; font-weight: bold; color: #777777;}
+.key_ingredients .search_header input {width:160px;}
+
+
+.key_ingredients div.divider {margin:0;position: relative;top:5px;border-color:#999999; margin-bottom:6px;}
+.key_ingredients .search_header form {position:relative;white-space: nowrap;}
+.key_ingredients .searchclear {height:24px; width:24px; position: absolute; top:0px ;right: 3px; background-image:url('../img/clear_icon.png');background-repeat:no-repeat;background-position: 8px 8px;}
+
+.ingredients_list dl {margin:0; padding:0;}
+.ingredients_list dt {font-weight: bold; font-size:13px;position: relative; padding:5px 72px 5px 5px;}
+.ingredients_list dt img {display:block;position:absolute; top:2px; right: 2px; height:64px;border:1px solid #DDDDDD;}
+.ingredients_list dd {margin:0;padding:0px 72px 5px 5px;;margin-bottom:32px;min-height:42px;}
+.ingredients_list dd.h {margin-bottom:6px;}
+
+.ingredients_list .evenrow {background-color:#F1F1F1;}
+}
+ 
+.ingredients_list h4 {margin:0; color:#424242; padding-bottom: 4px; border-bottom: 1px solid #CCCCCC}
+.ingredients_list h5 {margin-bottom:0; color:#424242;}
+.ingredients_list .complex {margin-left:8px;}
+
+.disclaimers  {margin-top:24px;}
+.disclaimers > p {color:#777777;}
+
+/*   mobile */
+@media only screen and (max-width:480px) {
+	.key_ingredients .search_header {font-size:12px; }
+	.key_ingredients .filter_message { font-size:12px;}
+	.key_ingredients .sections  { font-size:12px;}
+	.key_ingredients .search_header input {width:120px;}
+}
+
+
+</style>
+
+
+</head>
+<body>
+
+
+<div id="container">
+
+	<div class="header_content">
+		<!-- Login Bar - START -->
+		<div id="loginbarinclude"></div>
+
+		<!-- Login Bar - END -->
+
+		<!-- Logo Area - START --> 
+		<!-- Logo Area - START --> 
+		<div id="logoinclude"></div>
+		<!-- Logo Area - END --> 
+		<!-- Logo Area - END --> 
+		<!-- start nav -->
+
+		<!-- Main Navigation - START -->
+			<!-- include mainnav -->
+		<div id="mainnav"></div>
+		<!-- Main Navigation - END -->
+	</div>
+	<!-- end header -->
+
+<!-- main content -->
+
+	<div id="centerrow">
+
+		<!-- side navbar -->
+	<div id="sidenavbar" >
+
+
+	<ul class="nav rows show-company">
+		<li class="heading">Science</li>
+		<li>
+			<a href="proto_ardl.htm">Arbonne Research and Development Laboratories</a>
+		</li>
+		<li>
+			<a href="proto_sav.htm">Scientific Advisory Board</a>
+		</li>
+		<li class="active">
+			<a href="proto_key_ingredients.htm">Ingredients</a>
+		</li>
+	</ul>
+
+</div>
+
+
+		<!-- center content -->
+		<div id="center_content" class="key_ingredients">
+
+
+			<h1 class="space_above">Ingredients Guide</h1>
+
+			<p class="larger">The Arbonne Promise: To deliver pure, safe and beneficial products in line with our botanical tradition.</p>
+
+			<div class="search_header">					
+				<form>Search Ingredients: <input type='text' name='keyword' id='keyword'>
+					<a href="#" title="Clear Search" class="searchclear"></a>
+				</form>
+			</div>
+
+			<div class="index_header">
+				<div class="indexwrap"><div class="index"></div></div>
+				<div class="divider"></div>
+				<div class="infoarea">
+					<div class="filter_alpha"></div>
+					<div class="filter_message"></div>
+					<div class="sections"></div>
+				</div>
+			</div>
+			
+			
+			<div class="ingredients_list"></div>
+
+			<div class="disclaimers"><p>*Atoligomer is a registered trademark of CODIF Research
+			& Nature, St. Malo, France.<br/>
+			Elhibin and Stimu-Tex are registered trademarks of
+			Centerchem, Inc.<br/>
+			SymWhite is a registered trademark of Symrise GmbH &
+			Co. KG General Partner, Symrise Verwaltungs GmbH, a
+			German limited liability company.<br/>
+			LactoSpore is a registered trademark of Sabinsa
+			Corporation.<br/>
+			EpiCor is a registered trademark of Embria Health Sciences,
+			LLC.</p>
+
+			<p class="ftn" id="footnote">◊ These statements have not been evaluated by the
+			Food and Drug Administration. These products are not
+			intended to diagnose, treat, cure or prevent any disease.</p>
+			</div>
+
+
+
+		
+
+		</div>
+		<!-- end center content -->
+	</div>
+
+<!-- end main content -->
+
+<!-- footer -->
+	<div id="footerinclude"></div>
+<!-- end footer -->
+
+</div>
+
+<div id="ingredients_data" style="display:none">
+{Skin and Hair Care
+Acetyl Gloucosamine: Brightens complexion; helps minimize appearance of skin discoloration and age spots
+Alaria Esculenta Extract: Skin conditioner
+Alfalfa (Medicago sativa) Seed Extract[alfalfa_fpo.png]: Visibly diminishes undereye bags and puffiness; enhances the appearance of skin tone and firmness
+Algae (Laminaria digitata) Extract: Supports collagen through moisturization to help diminish the appearance of fine lines and wrinkles
+Aloe Barbadensis Leaf Extract: Helps moisturize and soothe skin
+Alpha Hydroxy Acids: Reveal the next layer of skin, reduce the signs of aging, and improve texture of skin
+Alpha Lipoic Acid: Promotes the appearance of skin radiance
+Atoligomer&reg;* Sea Salt: A spray-dried seawater; re-mineralizes and revitalizes
+Apricot Kernel Oil[prunus_armeniaca.png]: Moisturizer
+Avocado (Persea gratissima) Oil[avocado_fpo.png]: Skin conditioner
+Artichoke (Cynara scolymus) Leaf Extract[artichoke.png]: Conditioning agent that maintains shine for color-treated hair
+Balm Mint (Melissa officinalis) Extract[melissa_officinalis.png]: Aromatic agent
+Bambusa Vulgaris Leaf/Stem Extract[Bambusa Vulgaris.png]: Regulates moisture
+Beech Tree (Fagus sylvatica) Bud Extract: Improves skin moisturization; smooths appearance of wrinkles
+Bentonite Clay: Natural clay skin cleanser
+Beta-Glucan: Used for its antioxidant properties
+Beta Hydroxy Acids: Reveal the next layer of skin, reduce the signs of aging and improve texture of skin
+Bilberry Fruit Extract: Helps promote a youthful-looking glow
+Bio-Hydria&reg; Complex: Softens and conditions
+Biotin: Hair conditioner
+Birch (Betula alba) Extract: Skin conditioner
+Bisabolol: Skin conditioner
+Bladderwrack (Fucus vesiculosus) Extract: Softens skin; detoxifies and soothes
+Buddleja Davidii Extract: Also known as summer lilac or butterfly bush; helps moisturize skin to keep it looking soft and youthful
+Butcher&rsquo;s Broom (Ruscus aculeatus) Extract: Skin conditioner; helps improve microcirculation
+Calendula Oil: Soothes and moisturizes skin
+Caffeine: Antioxidant and skin conditioner that helps reduce appearance of puffiness around the eye area
+Carrot (Daucus carota): Soothes and calms; ripe with beta-carotene
+Ceramide 3: Occurs naturally in the skin&rsquo;s outer layer; helps prevent surface moisture loss and promote younger, healthier-looking skin
+Chamomile (Anthemis nobilis) Extract: Widely known as a skin conditioner; helps soothe damage caused by skin dryness
+Chamomile (Anthemis nobilis) Flower Extract: Provides soothing and relaxing properties
+Chamomile (Chamomilla recutita matricaria) Flower Extract: Soothing and skin conditioning
+Chickpea (Cicer arietinum) Hydrolyzed Cicer Seed Extract: Revitalizes the appearance of skin for a longlasting, healthy look
+Clover (Trifolium pratense) Extract: Aromatic agent
+Cocoa (Theobroma cacao) Butter: Skin conditioner
+Cocoa (Theobroma cacao) Seed Butter: Skin conditioner
+Copper: Softens
+Cotton: Moisturizes the skin; helps replenish skin&rsquo;s protective moisture barrier
+Cucumber (Cucumis sativus) Extract: Natural cleanser
+Cupua&ccedil;u (Theobroma grandiflorum) Extract: Derived from the Brazilian fruit cupua&ccedil;u; conditions skin to enhance appearance of skin elasticity; benefits dry, dehydrated skin
+Elhibin&reg;*: Supports moisture balance
+Ferula Foetida Root Extract: Brightening agent
+Ginger (Zingiber officinale) Root Extract: Skin conditioner
+Ginseng (Panax ginseng) Extract: Skin conditioner
+Golden Jojoba Oil: Skin conditioner, emollient
+Grape (Vitis vinifera) Oil: Aromatic agent
+Grapeseed (Vitis vinifera): Antioxidant
+Grapeseed (Vitis vinifera) Extract: Supports collagen through moisturization; helps promote younger, firmer looking skin
+Grapeseed (Vitis vinifera) Oil: Emollient
+Green Tea (Camellia sinensis) Extract: Antioxidant
+Green Tea (Camellia sinensis) Leaf Extract: Antioxidant and skin conditioner; supports collagen through moisturization
+Green Tea (Camellia sinensis) Oil: Antioxidant oil
+Hops (Humulus lupulus) Extract: Skin conditioner
+Horsetail (Equisetum giganteum) Extract: Skin conditioner
+Hyaluronic Acid: Humectant that helps skin retain moisture, reducing the appearance of fine lines and wrinkles
+Hyaluronic Filling Spheres: Plant-based protein spheres that help reduce the appearance of fine lines and wrinkles
+Hydrolyzed Lupine (Lupinus albus) Protein Extract: Visibly diminishes undereye bags and puffiness; enhances the appearance of skin tone and firmness
+Imperata (Imperata cylindrical) Root Extract: Provides intense hydration
+Ivy (Hedera helix) Leaf Extract: Antioxidant, skin conditioner
+Japanese Green Tea (Camellia oleifera) Leaf Extract: Antioxidant known for its soothing properties
+Jojoba Oil: Emollient, skin conditioner
+Jojoba (Simmondsia chinensis) Beads: Microspheres that offer gentle exfoliation and moisturization
+Jojoba (Simmondsia chinensis) Seed Oil: Emollient, skin conditioner
+Kaolin: Natural, clay-like mineral; draws out impurities and minimizes the appearance of oiliness
+Kiwi (Actinidia chinensis): Extraordinary antioxidant source
+Kudzu (Pueraria lobata) Root Extract: Improves the appearance of skin firmness and tone
+Kukui (Aleurites moluccana) Oil: Emollient
+Laminaria Digitata: Hydrating, antioxidant; encourages efficient body functioning
+Lavender (Lavandula angustifolia) Extract: Skinhydrating conditioner renowned for calming properties
+Licorice (Glycyrrhiza glabra) Extract: Calms, soothes
+Licorice (Glycyrrhiza glabra) Root Extract: Humectant with skin-conditioning properties
+Linden (Tilia vulgaris) Extract: Helps enhance appearance of skin
+Lycium Barbarum Fruit Extract: Skin conditioner
+Mallow (Malva sylvestris) Extract: Natural hydrator, antioxidant, and skin conditioner
+Mallow (Malva sylvestris) Flower Extract: Soothes and moisturizes
+Mango (Mangifera indica): Nurtures and hydrates
+Marine Lavender (Lavandula stoechas) Extract: Helps reduce the appearance of wrinkles
+Marrubium Vulgare Extract: Member of the mint family; helps condition skin
+Mica: Oil-absorber, opacifier
+Micro-Algae (Spirulina maxima): High multivitamin, protein, and amino acid content for restorative effects
+Microalgae Extract: High multivitamin, protein, and amino acid content for restorative effects
+Nettle (Urtica dioica) Extract: Skin conditioner
+Niacin: Water-soluble; helps reduce the appearance of fine lines and wrinkles
+Oat (Avena sativa): Soothing skin moisturizer
+Oat (Avena sativa) Kernel Extract: Skin conditioner; moisturizer
+Olive (Olea europaea) Leaf Extract: Moisturizer
+Olive (Olea europaea) Oil: Skin conditioner
+Olive (Olea europaea) Oil Extract: Moisturizer
+Olivine: Natural mineral extract; helps reduce the appearance of fine lines and wrinkles
+Orange (Citrus aurantium dulcis) Fruit Extract: Skin moisturizer
+Orange (Citrus aurantium dulcis) Peel Extract: Skin moisturizer
+Orchid (Orchis) Extract: Skin moisturizer
+Panthenol: Also known as Pro-Vitamin B5, a humectant, emollient and moisturizer; can help make skin look soft and smooth
+Passion Fruit (Passiflora edulis) Oil: Emollient, skin conditioner
+Peach (Prunus persica) Fruit Extract: Skin softener, emollient
+Peptides: Enhance skin smoothness; diminish the appearance of fine lines and wrinkles
+Pineapple (Ananas sativus) and Papaya (Carica Papaya) Enzymes: Gently exfoliate and remove dead skin cells
+Pineapple (Ananas sativus) Extract: Skin conditioner
+Pea (Pisum sativum) Extract: Conditioning agent for hair follicles against oxidative stress
+Plankton Extract: Moisturizer, antioxidant
+Plantain (Plantago lanceolata): Skin conditioner; soothes and helps enhance appearance of skin.
+Polygonum Fagopyrum Seed Extract: Skin conditioner
+Polypeptides: Peptides that contain many amino acids; Hexapeptide-10 immediately makes skin look firmer; Biotinoyl-Tripeptide-1 and Myristoyl Pentapeptide-17 make lashes look thicker and fuller
+Polysaccharide: Good water-binding agent; hydrating antioxidant
+Pomegranate (Punica granatum) Extract: Powerful skin conditioner; antioxidant; helps protect skin&rsquo;s healthy appearance from damaging environment
+Pumpkin (Cucurbita pepo): Moisturizer high in betacarotene
+Red Seaweed (Chondrus crispus) Extract: Protects against razor irritation
+Retinyl Palmitate: Helps create firmer, smoother-looking skin
+Ribose: Helps reduce the appearance of wrinkles
+Rice (Oryza sativa) Lipids: Helps promote hydration to maintain skin&rsquo;s healthy glow
+Rice (Oryza sativa) Starch: Helps diminish appearance of shine
+Rice (Oryza sativa) Extract: Provides color protection
+Rosa Roxburghii Fruit Extract: Skin conditioner
+Rose (Pelargonium graveolens) Extract: Renowned as a skin moisturizer
+Rose Geranium (Pelargonium graveolens) Extract: Replenishes skin moisture
+Rosemary (Rosmarinus officinalis) Extract: Moisturizer
+Rosemary (Rosmarinus officinalis) Leaf Extract: Moisturizer
+Safflower (Carthamus tinctorius) Oil: Emollient, skin conditioner
+Safflower (Carthamus tinctorius) Seed Oil: Emollient, skin conditioner
+Sage (Salvia officinalis) Oil: Provides aroma
+Sage (Salvia officinalis) Extract: Antioxidant, humectant, skin conditioner
+Saw (Serenoa serrulata) Palmetto: Skin conditioner, oil absorber
+Scutellaria Alpina Extract: Skin conditioner
+Sea Algae: Naturally remineralizes and exfoliates
+Sea Buckthorn (Hippophae rhamnoides) Oil: Antioxidant with beta-carotene; supports supple tone and smooth skin
+Sea Fennel: Skin moisturizer
+Sea Kelp: Antioxidant, emollient, humectant
+Sea Kelp Extract: Moisturizer
+Sea Mayweed (Matricaria maritima): Skin soother; soothes razor burn
+Sea Plant (Crithmum maritimum) Extract: Antioxidant and humectant; provides hydration
+Sea Starwort (Aster tripolium): Covers blotchiness and redness caused by razor blade
+Sesame (Sesamum indicum) Seed Extract: Helps skin retain moisture
+Shea (Butyrospermum parkii) Butter: Skin conditioner; helps moisturize dry skin and diminishes the appearance of fine lines
+Snow Ear Mushroom (Tremella fuciformis) Extract: Brightening agent
+Sodium PCA: Natural mineral salt; helps attract and retain moisture in skin; component of the skin&rsquo;s own natural moisturizing factor
+Soy (Glycine soja) Protein: Soothes, softens and moisturizes
+Spirulina Extract: High multivitamin, protein, and amino acid content to support moisture framework of skin
+Stabilized Vitamin C (Tettrahexyldecyl ascorbate): Supports skin&rsquo;s moisture framework
+Stimu-Tex&reg;*: Supports moisture balance
+Strawberry (Fragaria vesca): Known for purifying and toning
+Sugar Cane (Saccharum officinarum) Extract: Exfoliant
+Sunflower (Helianthus annuus) Oil: Skin nourisher and moisturizer
+Sunflower (Helianthus annuus) Seed Oil: Contains natural antioxidants; contains a high amount of fatty acids to help moisturize and condition skin
+Sweet Almond (Prunus amygdalus dulcis) Extract: Nourishes skin
+Sweet Almond (Prunus amygdalus dulcis) Oil: Emollient, lubricant, skin nourisher
+SymWhite*: Skin brightener
+Tea Tree Oil: Aromatic agent
+Thyme (Thymus vulgaris) Extract: Powerful skin conditioner and antioxidant; keeps skin looking healthy, radiant, and youthful; reduces the appearance of fine lines and wrinkles
+Vicia Faba Seed and Linseed Extracts: Conditioning agents that help to strengthen the hair follicle for stronger, healthier-looking hair
+Vitaspheres: Antioxidants for smooth, supple skin
+Watercress (Nasturtium officinale) Extract: Skin conditioner
+Wheat (Triticum vulgare) Extract: Hair conditioner
+Wheat (Triticum vulgare) Protein: Improves hair silkiness and shine; contributes to hair smoothness
+White Ginger Extract: Hair shine and color protection
+White Oak (Quercus alba) Extract: Skin cleanser and softener
+Wild Mango Butter: Highly prized skin softener
+Witch Hazel (Hamamelis virginiana): Skin conditioner, cleanser
+Yucca (Yucca brevifolia) Extract: Moisturizer, skin conditioner, foaming agent
+{Skin Care Complexes
+=Moisture Fresh&trade; Complex:
+Cucumber (Cucumis sativus) Extract: Emollient
+Birch Leaf (Betula alba) Extract: Conditioner
+Watercress (Nasturtium officinale) Extract: Conditioner
+Clover Blossom (Trifolium pratense) Extract: Conditioner
+St. John&rsquo;s Wort (Hypericum perforatum): Conditioner; helps enhance appearance of skin
+=Matte Fresh&trade; Complex:
+Mallow (Malva sylvestris) Extract: Conditioner
+Melissa Extract: Aromatic agent, conditioner
+Watercress (Nasturtium officinale) Extract: Conditioner
+Ivy Leaf (Hedera helix) Extract: Antioxidant, conditioner
+=Bio-Hydria&reg; Complex:
+Birch Leaf (Betula alba) Extract: Conditioner
+Clover Blossom (Trifolium pratense) Extract: Conditioner
+Cucumber (Cucumis sativus) Extract: Natural cleanser
+Ginseng (Panax ginseng) Extract: Skin conditioner
+St. John&rsquo;s Wort (Hypericum perforatum): Conditioner; helps enhance appearance of skin
+Watercress (Nasturtium officinale) Extract: Conditioner
+{Nutrition
+Alpha Lipoic Acid: Antioxidant&loz;
+Apple (Pyrus malus) Fiber: Source of insoluble fiber from apples&loz;
+Algal Derived DHA: Important omega-3 fatty acid; supports cognitive function and eye health&loz;
+Aloe Vera (Aloe barbadensis): Aids digestion&loz;
+Astragalus: Adaptogen, immune enhancer
+Bacillus Coagulans (LactoSpore&reg;*): A robust, patented strain of probiotics that are clinically proven to help support gastrointestinal (GI) health&loz;
+Bilberry Fruit (Vaccinium myrtillus) Extract: Antioxidant&loz;
+Black Cohosh (Cimicifuga racemosa): Botanical known to help support women&rsquo;s balance&loz;
+Black Pepper (Piper nigrum): Contains piperine, a constituent in black pepper that helps increase nutrient uptake so nutrients are better utilized by the body&loz;
+Boswellia Serrata: Helps support joint health&loz;
+Coleus Forskohlii: Helps in the promotion of lean body mass&loz;
+Calcium: Helps support bones, muscles, and other important biological functions&loz;
+Calcium Citrate: Helps support bones, muscles and other important biological functions&loz;
+Cascara Sagrada: Helps support elimination and gastrointestinal tract&loz;
+Chamomile (Chamomilla recutita): Helps soothe the stomach&loz;
+Chaste Tree (Vitex trifolia): Helps support women&rsquo;s balance&loz;
+Codonopsis: Adaptogen&loz;
+Coenzyme Q10: Powerful antioxidant; supports production of ATP in the body&loz;
+Dandelion (Taraxacum officinale): Natural diuretic, antiinflammatory; detoxifies the liver&loz;
+Dong Quai (Angelica sinensis): Helps support relief of symptoms of menopause&loz;
+Fibersol-2&reg;: Source of fiber&loz;
+Flax Seed (Linum usitatissimum): Source of omega-3 fatty acids to help support cardiovascular, joint, and cognitive health&loz;
+Flaxseed (Linum usitatissimum) Oil: Rich in omega-3 fatty acids, important for healthy cell structure, joint support, concentration, mental acuity and cardiovascular support&loz;
+Fructooligosaccharide (Chicory root): Functions as a prebiotic to support ideal environment for probiotic colonization&loz;
+Ginseng (Panax ginseng): Helps increase stamina and vitality&loz;
+Glucosamine Sulfate: Helps joint support&loz;
+Green Tea: Great source of antioxidants (EGCG)&loz;
+Guarana (Paullinia cupana): May help boost energy levels&loz;
+Guggul Gum Extract: Helps maintain healthy skin&loz;
+Isoflavones: Antioxidant; helps support bone health&loz;
+Magnesium: Helps ensure the proper absorption of calcium, supports many other important biological functions&loz;
+Milk Thistle (Silybum marianum): Contains silymarin, a constituent in milk thistle that supports liver health, which in turn supports production of the body&rsquo;s powerful, internally made antioxidant, glutathione&loz;
+Orange (Citrus aurantium sinensis) Fiber: Source of insoluble fiber from orange&loz;
+Pea (Pisum sativum) Fiber: Source of fiber from pea&loz;
+Peppermint (Mentha piperita): Helps relieve indigestion&loz;
+Peppermint (Mentha piperita) Extract: Helps soothe the stomach&loz;
+Pine Bark (Pinus pinaster) Extract: Antioxidant
+Psyllium (Plantago psyllium): Helps support the gastrointestinal tract&loz;
+Quercitin: Antioxidant&loz;
+Quinoa (Chenopodium quinoa): Known as the &ldquo;ancient grain&rdquo;; contains omega-3 fatty acids&loz;
+Red Clover (Trifolium pratense): Contains antioxidant isoflavones to help support bone health&loz;
+Resveratrol: Antioxidant for cellular health and protection&loz;
+Rhodiola (Rhodiola rosea): An adaptogenic herb that supports well-being&loz;
+Sacchromyces Boulardii: Helps support healthy skin and gastrointestinal tract&loz;
+Sacchromyces Cerevisiae (EpiCor&reg;*): A clinically proven ingredient that supports immune health&loz;
+Saw Palmetto (Serenoa serrulata): Botanical known to help support prostate health&loz;
+Seaweed Extract: Source of antioxidants&loz;
+Senna (Cassia senna): Helps support elimination and gastrointestinal tract health&loz;
+Uva Ursi: Helps support kidney function&loz;
+White Willow (Salix alba): Salicin is a constituent of white willow that helps to support joints&loz;
+Xylaria Nigripes Mycelia Extract: Helps support women&rsquo;s balance&loz;
+Zinc: Helps support skin and immune health&loz;
+</div>
+
+
+</body>
+</html>

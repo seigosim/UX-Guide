@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>UX + Design Guidelines - Mobile - Overview</title>
+	<link rel="shortcut icon" href="http://www.arbonne.com/favicon.png" type="image/x-icon" />
+
+ 
+	<link href="../css/brand.css" rel="stylesheet" type="text/css">
+
+	<link href="../css/ui.css" rel="stylesheet" type="text/css" >
+	<link href="../css/styleguide.css" rel="stylesheet" type="text/css" >
+
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/brand.js"></script>
+	<script src="../js/ui.js"></script>
+
+
+	<script src="../js/includes.js"></script>
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+});
+
+
+</script>
+
+<style>
+
+</style>
+
+
+</head>
+<body>
+
+
+<div id="container">
+
+	<div class="header_content">
+		<!-- Login Bar - START -->
+		<div id="loginbarinclude"></div>
+
+		<!-- Login Bar - END -->
+
+		<!-- Logo Area - START --> 
+		<div id="logoinclude"></div>
+		<!-- Logo Area - END --> 
+		<!-- start nav -->
+
+		<!-- Main Navigation - START -->
+			<!-- include mainnav -->
+		<div id="mainnav"></div>
+		<!-- Main Navigation - END -->
+	</div>
+	<!-- end header -->
+
+<!-- main content -->
+
+	<div id="centerrow">
+
+		<!-- side navbar -->
+
+
+		<!-- center content -->
+		<div id="center_content">
+			<div class="row space_before">
+				<ul class="breadcrumbs">
+					<li><a href="index.htm">Home</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Mobile</a></li>
+					<li class="separator">/</li>
+					<li class="active"><a href="#">Overview</a></li>
+				</ul>
+			</div>
+		
+			<div class="row space_after space_before" >
+				<h2 class="space_after">Mobile Overview</h2>
+					<p>Web visitors are increasingly using a wide variety of devices other than a desktop computer to access the Internet. Websites need to be able to accomodate as many of these devices as possible to avoid "leaving out" a increasing number of visitors and potential customers.</p>
+
+					<p>We consider mobile usage to be devices that are intended to be portable and generally use smalller screens and input devices that are not desktop mice.</p>
+
+					<p>Portable use can also imply a lower bandwith usage pattern and lack of helper plugins such as Flash.</p>
+
+					<ul>
+						<li>Content must be readable on smaller screens. - Even though modern smartphones and tablets feature high resolution screens, there still exists a minimum size under which text and images become very difficult to read and decypher.</li>
+
+						<li>Where screen "real estate" is limited by screen size, priority should be given to UI elements that deliver the primary content message and UI that serves a secondary purpose should be moved to lesser positions, reduced or removed completely.</li>
+
+						<li>Accomodation for touchscreen interfaces should be given. Action targets must be large enough to easily actuate with a touch while avoiding activating unwanted controls. Actions triggered by mouse hover should have a touch action as a secondary interatction.</li>
+
+						<li>There is no "one" size for mobile screens, so some care must be taken to allow the user interface to adapt to a vide range of screen sizes and orientations.</li>
+
+						<li>Lower bandwith duting mobile use should be considered and pages must be optimized to deliver content in a short time. Portable use can imply that a visitor is busy with another task and the speed at which she can obtain the desired information from the website is extremely important.</li>
+
+					</ul>
+
+
+					<h4 class="space_after space_before">Approaches</h4>
+
+					<strong>Mobile-specific Site</strong>
+
+					<p>This approach calls for a separate side design specifically for mobile visitors.</p>
+
+					<p>This is becoming less common due to the larger costs to develop a standalone site and as responsive techniques become more advanced.</p>
+
+					<strong>Mobile First</strong>
+
+					<p>The mobile first approach implies that the mobile UX is designed first and desktop-friendly enhancements are added on top of this. The advantage is mobile development is not shortchanged by trying to adapt a desktop UI.</p>
+
+					<p>This method is also considered Progressive Enhancement which means that the basic UI is available to all clients and additional features are accessible to clients that support them.</p>
+
+
+					<strong>Mobile Responsive</strong>
+
+					<p>This is the basic term to describe a UI that is designed to adapt to differeent screen sizes by allowing page elements to shrink, zoom, change form or disappear in a smooth way as the screen size is changed.</p>
+
+					<p>This is very similar to the mobile first approach with the main difference in the way the UI features are planned. In the responsive approach, equal weight is given to desktop and mobile visitors.</p>
+
+					<div class="divider"></div>
+
+					<h4>Retina Displays</h4>
+
+					<p>A "retina" display is a screen that is generally twice the standard display resolution or more. Type looks much sharper and detailed on a retina screen and images can look worse because pixelation and compression artifacts can be visible that were not noticable at standard resolution.</p>
+
+					<p>To improve the experience for retina display visitors, we can supply a double resolution image to those devices and the normal resolution image to all other devices.</p>
+
+					<p>The double resolution assets will need to be specified as a deliverable as upscaling a normal resolution image will not produce the desired quality.</p>
+
+
+					<h4>Touch Interaction</h4>
+
+					<p>Some special consideration need to be given to ensure that the UI is usable via touchscreen. Touch targets need to be larger and have more safe space around them.</p>
+
+					<p>Mouse hover is not an option for touch screen devices, so all interations that would normally be activated on hover need a clickable toggle interaction as well.</p>
+
+					<p>Dragging objects on a touchscreen is more awkward than with a mouse, so a different interaction is recommended.</p>
+
+					<p>Touch screen devices have some additional interation modes like pinching and easier horizontal scrolling that are not present with a mouse, so some consideration for advanced interations could be explored.</p>
+
+
+
+
+
+
+
+			
+
+
+			</div>
+
+
+
+
+			<div class="row space_before ">&nbsp;</div>
+
+		</div>
+		<!-- end center content -->
+	</div>
+
+<!-- end main content -->
+
+<!-- footer -->
+	<div id="footerinclude"></div>
+<!-- end footer -->
+
+</div>
+
+
+
+
+</body>
+</html>

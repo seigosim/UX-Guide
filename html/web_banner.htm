@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>UX + Design Guidelines - Web  - Components - Banner</title>
+	<link rel="shortcut icon" href="http://www.arbonne.com/favicon.png" type="image/x-icon" />
+
+ 
+	<link href="../css/brand.css" rel="stylesheet" type="text/css">
+
+	<link href="../css/ui.css" rel="stylesheet" type="text/css" >
+	<link href="../css/styleguide.css" rel="stylesheet" type="text/css" >
+
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/brand.js"></script>
+<script src="../js/ui.js"></script>
+
+
+	<script src="../js/includes.js"></script>
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+});
+
+
+</script>
+
+<style>
+	.banner_module {position:relative;display:table;width:auto;overflow:hidden;}
+	.banner_module .foreground {position: absolute; top:0 ; left:0; right:0; bottom: 0; width:100%; height: 100%; margin:0 ; padding:0;}
+	.banner_module .background {margin:0;padding:0;width:auto;overflow:hidden;}
+	.banner_module .background img {display:block;border:none;}
+	.banner_module.scale {display:inline;}
+	.banner_module.scale .background img{display:block; max-width:100%; height: auto; width: auto; }
+
+	.triangle-right.green:after {border-color:transparent #3D9B35 }
+</style>
+
+
+</head>
+<body>
+
+
+<div id="container">
+
+	<div class="header_content">
+		<!-- Login Bar - START -->
+		<div id="loginbarinclude"></div>
+
+		<!-- Login Bar - END -->
+
+		<!-- Logo Area - START --> 
+		<div id="logoinclude"></div>
+		<!-- Logo Area - END --> 
+		<!-- start nav -->
+
+		<!-- Main Navigation - START -->
+			<!-- include mainnav -->
+		<div id="mainnav"></div>
+		<!-- Main Navigation - END -->
+	</div>
+	<!-- end header -->
+
+<!-- main content -->
+
+	<div id="centerrow">
+
+		<!-- side navbar -->
+		<div id="sidenavinclude"></div>
+
+		<!-- center content -->
+		<div id="center_content">
+			<div class="row space_before">
+				<ul class="breadcrumbs">
+					<li><a href="index.htm">Home</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Web</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Components</a></li>
+					<li class="separator">/</li>
+					<li class="active"><a href="#">Banner</a></li>
+				</ul>
+			</div>
+		
+			<div class="row space_after space_before" >
+				<h4 class="space_after">Banner</h4>
+					<p>The <strong>Banner Component</strong> can be formed out of a single image, an image background with an open HTML foreground layer, or a solid background color with an open HTML foreground layer.</p>
+
+			
+				<h6 class="space_before ">Example:</h6>		
+
+
+				<div class="banner_module">
+					<div class="background" style="background-color:#ECE2D8; width:auto; height:auto"><img src='../img
+/re9_banner_notext.png' /></div>
+					<div class="foreground">
+						<div  style="padding:69px 0 0 34px ;width: 320px;">
+							<div style="font-size:14px; line-height:18px; color: #777777; background-color: #EFE5DB">Brownie caramels gingerbread wypas wypas pie. Fruitcake cake toffee cake cupcake powder. Topping liquorice faworki tootsie roll jujubes applicake.</div>
+							<a href="#" style="display:block; font-size:11px; font-weight: bold; position: relative; margin-top:6px;  background-color: #EFE5DB">VIEW DETAILS <span class="triangle-right green" style=" margin-left: 6px"></span></a>
+						</div>
+					</div>
+				</div>
+
+				<div class="spacer"></div>
+								
+				<h6 class="space_before">Usage:</h6>
+
+				
+				<p>The dimensions of the banner are set by the background image size or by specifying a height and width. The height and width can be specified in pixels or percentage.</p>
+				<p>Elements in the foreground layer can be positioned using absolute positioning or by padding.</p>
+				<p>Using percentage-based sizes in the foreground layer can allow the banner to act responsively with the page size. Minimum size limits should be specified to avoid having the contents overflow outside the banner container.</p>
+
+			</div>
+
+<h6 class="space_before">Code Sample:</h6>
+<code><pre>
+&lt;div class="banner_module"&gt;
+ &lt;div class="background" style="background-color:#ECE2D8; width:auto; height:auto"&gt;&lt;img src='../img
+/re9_banner_notext.png' /&gt;&lt;/div&gt;
+ &lt;div class="foreground"&gt;
+  &lt;div  style="padding:69px 0 0 34px ;width: 320px;"&gt;
+   &lt;div style="font-size:14px; line-height:18px; color: #777777; background-color: #EFE5DB"&gt;Brownie caramels gingerbread wypas wypas pie. Fruitcake cake toffee cake cupcake powder. Topping liquorice faworki tootsie roll jujubes applicake.&lt;/div&gt;
+   &lt;a href="#" style="display:block; font-size:11px; font-weight: bold; position: relative; margin-top:6px;  background-color: #EFE5DB"&gt;VIEW DETAILS &lt;span class="triangle-right green" style=" margin-left: 6px"&gt;&lt;/span&gt;&lt;/a&gt;
+  &lt;/div&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+</pre></code>			
+
+
+
+	<h6 class="space_before">CMS options:</h6>
+	<div class="row">
+		<div class="column three tall"><strong>Background Image</strong></div>
+		<div class="column eight tall">[Image Asset] or none</div>
+	</div>
+	<div class="row">
+		<div class="column three tall"><strong>Background Image Alt Text</strong></div>
+		<div class="column eight tall">String (*required if using a background image)</div>
+	</div>	
+	<div class="row">
+		<div class="column three tall"><strong>Background Image Link</strong></div>
+		<div class="column eight tall">[URL] or none</div>
+	</div>
+	<div class="row">
+		<div class="column three tall"><strong>Foreground HTML</strong></div>
+		<div class="column eight tall">[HTML Asset] (*optional)</div>
+	</div>
+
+		<h6 class="space_before">CMS Template:</h6>
+<code><pre>
+&lt;div class="banner_module camera_effected"&gt;
+ &lt;div class="background"&gt;&lt;*BGLINK*&gt;&lt;*BGIMAGE*&gt;&lt;*/BGLINK*&gt;&lt;/div&gt;
+ &lt;div class="foreground"&gt;
+  &lt;*FGHTML*&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+
+
+Variables:
+Foreground HTML: &lt;*FGHTML*&gt; ("" or HTML Asset)
+Background URL: &lt;*BGURL*&gt; (URL)
+Background Link Open: &lt;*BGLINK*&gt;  ('&lt;a href="&lt;*BGURL*&gt;"&gt;') (optional)
+Background Link Close: &lt;*/BGLINK*&gt;  ('&lt;/a&gt;') (optional)
+Background Image: &lt;*BGIMAGE*&gt;  ("&lt;img src='&lt;*BGIMGSRC*&gt;' alt='&lt;*BGALT*&gt;' /&gt;") (optional)
+Background Image Source: &lt;*BGIMGSRC*&gt;  (Image Asset)
+Background Image Alt Text: &lt;*BGALT*&gt;  (String)
+</pre></code>	
+
+<!--
+	<h6 class="space_before">CMS options:</h6>
+	<div class="row">
+		<div class="column three tall"><strong>Background Image</strong></div>
+		<div class="column eight tall">[Image Asset] or none</div>
+	</div>
+	<div class="row">
+		<div class="column three tall"><strong>Background Image Scaling</strong></div>
+		<div class="column eight tall">true or false (If true, the background image will scale with the page size. Do not use this option with foreground content.)</div>
+	</div>	
+	<div class="row">
+		<div class="column three tall"><strong>Background Color</strong></div>
+		<div class="column eight tall">[hex color] or transparent (*optional, recommended to match image background color. Use "transparent" when Background Image Scaling = true )</div>
+	</div>
+	<div class="row">
+		<div class="column three tall"><strong>Background Image Link</strong></div>
+		<div class="column eight tall">[URL] or none</div>
+	</div>
+	<div class="row">
+		<div class="column three tall"><strong>Background Image Alt Text</strong></div>
+		<div class="column eight tall">String (*required if using a background image)</div>
+	</div>
+	<div class="row">
+		<div class="column three tall"><strong>Width</strong></div>
+		<div class="column eight tall">in pixels (*required if Background Image = "none")</div>
+	</div>
+	<div class="row">
+		<div class="column three tall"><strong>Height</strong></div>
+		<div class="column eight tall">in pixels (*required if Background Image = "none")</div>
+	</div>
+	<div class="row">
+		<div class="column three tall"><strong>Foreground HTML</strong></div>
+		<div class="column eight tall">[HTML Asset] (*optional)</div>
+	</div>
+
+				
+	<h6 class="space_before">CMS Template:</h6>
+<code><pre>
+&lt;div class="banner_module &lt;*SCALING*&gt;"&gt;
+ &lt;div class="background" style="background-color:&lt;*BGCOLOR*&gt;; width:&lt;*WIDTH*&gt;; height:&lt;*HEIGHT*&gt;"&gt;&lt;*BGLINK*&gt;&lt;*BGIMAGE*&gt;&lt;*/BGLINK*&gt;&lt;/div&gt;
+ &lt;div class="foreground"&gt;
+  &lt;*FGHTML*&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+
+
+Variables:
+Foreground HTML: &lt;*FGHTML*&gt; ("" or HTML Asset)
+Background Image Scaling: &lt;*SCALING*&gt; ("" or "scale")
+Background Color: &lt;*BGCOLOR*&gt;  (Hex Color or "transparent")
+Width: &lt;*WIDTH*&gt;  ("auto", pixel value or percentage)
+Height: &lt;*HEIGHT*&gt;  ("auto", pixel value or percentage)
+Background URL: &lt;*BGURL*&gt; (URL)
+Background Link Open: &lt;*BGLINK*&gt;  ('&lt;a href="&lt;*BGURL*&gt;"&gt;') (optional)
+Background Link Close: &lt;*/BGLINK*&gt;  ('&lt;/a&gt;') (optional)
+Background Image: &lt;*BGIMAGE*&gt;  ("&lt;img src='&lt;*BGIMGSRC*&gt;' alt='&lt;*BGALT*&gt;' /&gt;") (optional)
+Background Image Source: &lt;*BGIMGSRC*&gt;  (Image Asset)
+Background Image Alt Text: &lt;*BGALT*&gt;  (String)
+</pre></code>	
+-->
+
+
+			</div>
+		
+			<div class="row space_before ">&nbsp;</div>
+
+		</div>
+		<!-- end center content -->
+	</div>
+
+<!-- end main content -->
+
+<!-- footer -->
+	<div id="footerinclude"></div>
+<!-- end footer -->
+
+</div>
+
+
+
+
+</body>
+</html>

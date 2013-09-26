@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>UX + Design Guidelines - Web - Basic - Tables</title>
+	<link rel="shortcut icon" href="http://www.arbonne.com/favicon.png" type="image/x-icon" />
+
+  
+	<link href="../css/brand.css" rel="stylesheet" type="text/css">
+
+	<link href="../css/ui.css" rel="stylesheet" type="text/css" >
+	<link href="../css/styleguide.css" rel="stylesheet" type="text/css" >
+
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/brand.js"></script>
+<script src="../js/ui.js"></script>
+
+
+	<script src="../js/includes.js"></script>
+
+
+
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+	});
+
+</script>
+
+
+</head>
+<body>
+
+
+<div id="container">
+
+	<div class="header_content">
+		<!-- Login Bar - START -->
+		<div id="loginbarinclude"></div>
+
+		<!-- Login Bar - END -->
+
+		<!-- Logo Area - START --> 
+		<!-- Logo Area - START --> 
+		<div id="logoinclude"></div>
+		<!-- Logo Area - END --> 
+		<!-- Logo Area - END --> 
+		<!-- start nav -->
+
+		<!-- Main Navigation - START -->
+			<!-- include mainnav -->
+		<div id="mainnav"></div>
+		<!-- Main Navigation - END -->
+	</div>
+	<!-- end header -->
+
+<!-- main content -->
+
+	<div id="centerrow">
+
+		<!-- side navbar -->
+		<div id="sidenavinclude"></div>
+
+		<!-- center content -->
+		<div id="center_content">
+			<div class="row space_before">
+				<ul class="breadcrumbs">
+					<li><a href="index.htm">Home</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Web</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Basic</a></li>
+					<li class="separator">/</li>
+					<li class="active"><a href="#">Tables</a></li>
+				</ul>
+			</div>
+
+			<div class="row space_after space_before" >
+
+				<h2 class="underline">Tables</h2>
+
+				<h5>Best Practices</h5>
+				<p>Use tables only to display tabular data. i.e. data must be aligned across all rows. If you are only looking to align elements side-by-side, use the grid layout styles instead.</p>
+
+				<p>Use table header (&lt;th&gt;) tags instead of applying background colors to table cells.</p>
+
+				<p>Define the width of your columns in the header or first row of the table only. Percentage widths are preferred.</p>
+
+				<p>Use only as many columns as you need for the data cells. Avoid adding extra "spacer" columns. Padding within the cell is almost always the better solution. </p>
+
+				<p>Avoid rowspan. This tends to create confusing table layouts. Rethink a clearer way to display the data.</p>
+
+					<h5 class="space_before">Default Table Style</h5>
+
+					<table class="alternating" cellspacing="0">
+						<tr>
+							<th>Table Header</th><th>Table Header</th>
+						</tr>
+						<tr class="subhead">
+							<th>Subhead</td><th>Subhead</td>
+						</tr>
+						<tr class="subhead2">
+							<th>Subhead2</td><th>Subhead2</td>
+						</tr>	
+						<tr>
+						<tr>
+							<td class="col3">Table Cell</td><td class="col9">Table Cell</td>
+						</tr>
+						<tr>
+							<td>Table Cell</td><td>Table Cell</td>
+						</tr>
+						<tr>
+							<td>Table Cell</td><td>Table Cell</td>
+						</tr>						<tr>
+							<td>Table Cell</td><td>Table Cell</td>
+						</tr>
+												<tr>
+							<td>Table Cell</td><td>Table Cell</td>
+						</tr>
+												<tr>
+							<td>Table Cell</td><td>Table Cell</td>
+						</tr>
+												<tr>
+							<td>Table Cell</td><td>Table Cell</td>
+						</tr>
+
+							<td>Table Cell</td><td>Table Cell</td>
+						</tr>
+						<tr class="highlight">
+							<td>Highlight</td><td>Highlight</td>
+						</tr>
+						<tr>
+							<td  class="header">class=header</td><td class="subhead2"> class="subhead2"</td>
+						</tr>
+						<tr>
+							<td  class="spacer" colspan="2"></td>
+						</tr>
+						<tr>
+							<td>Spacer above</td><td>Table Cell</td>
+						</tr>
+						<tr>
+							<td  class="divider" colspan="2"></td>
+						</tr>	
+						<tr>
+							<td>Divider above</td><td>Table Cell</td>
+						</tr>
+					</table>
+					<div class="spacer"></div>
+
+
+					<h5 class="space_before">Outline Table Class</h5>
+					&lt;table class="outline"&gt;<br><br>
+
+					<table class="outline alternating"  cellspacing="0">
+						<tr>
+							<th>Table Header</th><th>Table Header</th>
+						</tr>
+						<tr class="subhead">
+							<th>Subhead</td><th>Subhead</td>
+						</tr>
+						<tr class="subhead2">
+							<th>Subhead2</td><th>Subhead2</td>
+						</tr>	
+						<tr>
+							<td class="col3">Table Cell</td><td class="col9">Table Cell</td>
+						</tr>
+						<tr>
+							<td>Table Cell</td><td>Table Cell</td>
+						</tr>
+
+						<tr>
+							<td>Table Cell</td><td>Table Cell</td>
+						</tr>
+						<tr>
+							<td>Table Cell</td><td>Table Cell</td>
+						</tr>
+
+						<tr>
+							<td>Table Cell</td><td>Table Cell</td>
+						</tr>
+						<tr class="highlight">
+							<td>Highlight</td><td>Highlight</td>
+						</tr>
+						<tr>
+							<td  class="spacer" colspan="2"></td>
+						</tr>
+						<tr>
+							<td>Spacer above</td><td>Table Cell</td>
+						</tr>
+						<tr>
+							<td  class="divider" colspan="2"></td>
+						</tr>	
+						<tr>
+							<td>Divider above</td><td>Table Cell</td>
+						</tr>
+					</table>
+					<div class="spacer"></div>
+					<h5>Minimal Table Class</h5>
+					&lt;table class="minimal"&gt;<br>
+					<table class="minimal" cellspacing="0">
+						<tr>
+							<th>Table Header</th><th>Table Header</th>
+						</tr>
+						<tr>
+							<td class="col3">Table Cell</td><td class="col9">Table Cell</td>
+						</tr>
+						<tr class="oddrow">
+							<td>Table Cell</td><td>Table Cell</td>
+						</tr>
+						<tr>
+							<td>Table Cell</td><td>Table Cell</td>
+						</tr>
+						<tr>
+							<td colspan="2">Table Cell</td>
+						</tr>
+						<tr>
+							<td  class="spacer" colspan="2"></td>
+						</tr>
+						<tr>
+							<td>Spacer above</td><td>Table Cell</td>
+						</tr>
+
+					</table>
+
+					<div class="spacer"></div>
+
+					<h5>Usage</h5>
+					<div class="row">
+						<div class="column three"><strong>outline table style</strong></div>
+						<div class="column tall eight"> &lt;table class="outline" &gt;</div>
+					</div>
+					<div class="row">
+						<div class="column three"><strong>minimal table style</strong></div>
+						<div class="column tall eight"> &lt;table class="minimal" &gt;</div>
+					</div>
+					
+					<div class="row">
+						<div class="column three"><strong>alternating row color</strong></div>
+						<div class="column tall eight">&lt;table class="alternating" &gt; Applies row shading to every other row.</div>
+					</div>
+					<div class="row">
+						<div class="column three"><strong>oddrow</strong></div>
+						<div class="column tall eight">&lt;tr class="oddrow"&gt; Background shading on this row.</div>
+					</div>
+					<div class="row">
+						<div class="column three"><strong>header</strong></div>
+						<div class="column tall eight">&lt;td class="header" &gt; Applies the header style to this cell.</div>
+					</div>
+					<div class="row">
+						<div class="column three"><strong>spacer</strong></div>
+						<div class="column tall eight">&lt;td class="spacer" &gt; Use an empty cell to add vertical space.</div>
+					</div>
+					<div class="row">
+						<div class="column three"><strong>divider</strong></div>
+						<div class="column tall eight">&lt;td class="spacer" &gt; Applies a horizontal line to an empty cell</div>
+					</div>
+					<div class="row">
+						<div class="column three"><b>padded </b> </div><div class="column tall eight">(td, th) Adds 8px of interior padding on all sides</div>
+					</div>	
+					<div class="row">
+						<div class="column three"><b>padding-left </b> </div><div class="column tall eight">(td, th) Adds 8px of interior padding to the left edge</div>
+					</div>
+					<div class="row">
+						<div class="column three"><b>padding-right </b> </div><div class="column tall eight">(td, th) Adds 8px of interior padding to the right edge</div>
+					</div>
+					<div class="row">
+						<div class="column three"><b>padding-top </b> </div><div class="column tall eight">(td, th) Adds 8px of interior padding to the top edge</div>
+					</div>
+					<div class="row">
+						<div class="column three"><b>padding-bottom </b> </div><div class="column tall eight">(td, th) Adds 8px of interior padding to the bottom edge</div>
+					</div>
+			</div>
+
+
+
+		
+			<div class="row space_before ">&nbsp;</div>
+
+		</div>
+		<!-- end center content -->
+	</div>
+
+<!-- end main content -->
+
+<!-- footer -->
+	<div id="footerinclude"></div>
+<!-- end footer -->
+
+</div>
+
+
+
+
+</body>
+</html>

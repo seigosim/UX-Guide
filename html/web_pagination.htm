@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>UX + Design Guidelines - Web - Components - Pagination</title>
+	<link rel="shortcut icon" href="http://www.arbonne.com/favicon.png" type="image/x-icon" />
+
+	<link href="../css/brand.css" rel="stylesheet" type="text/css">
+
+	<link href="../css/ui.css" rel="stylesheet" type="text/css" >
+	<link href="../css/styleguide.css" rel="stylesheet" type="text/css" >
+
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/brand.js"></script>
+<script src="../js/ui.js"></script>
+
+
+	<script src="../js/includes.js"></script>
+
+
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+
+		$('#slidelink1').click(function(){
+			$('#slider1').hide();
+			$('#slider2').show();
+		});
+		$('#slidelink2').click(function(){
+			$('#slider2').hide();
+			$('#slider1').show();
+		});
+
+	});
+
+	</script>
+<style>
+
+
+
+</style>
+
+</head>
+<body>
+
+
+<div id="container">
+
+	<div class="header_content">
+		<!-- Login Bar - START -->
+		<div id="loginbarinclude"></div>
+
+		<!-- Login Bar - END -->
+
+		<!-- Logo Area - START --> 
+		<div id="logoinclude"></div>
+		<!-- Logo Area - END --> 
+		<!-- Logo Area - END --> 
+		<!-- start nav -->
+
+		<!-- Main Navigation - START -->
+			<!-- include mainnav -->
+		<div id="mainnav"></div>
+		<!-- Main Navigation - END -->
+	</div>
+	<!-- end header -->
+
+<!-- main content -->
+
+	<div id="centerrow">
+
+		<!-- side navbar -->
+		<div id="sidenavinclude"></div>
+
+		<!-- center content -->
+		<div id="center_content">
+			<div class="row space_before">
+				<ul class="breadcrumbs">
+					<li><a href="index.htm">Home</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Web</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Components</a></li>
+					<li class="separator">/</li>
+					<li class="active"><a href="#">Pagination</a></li>
+				</ul>
+			</div>
+
+			<div class="row space_after space_before" >
+
+				<h2 class="underline">Pagination</h2>
+				
+
+
+
+					<div class="row space_before overflow-visible">
+					<p>With first, previous, 3 pages, next &amp; last:</p>
+						<div class="pagination" data-pages="3" data-currentpage="1">
+							<div class="pgbtn first disabled"><a href="#" title="First Page">&nbsp;</a></div>
+							<div class="pgbtn previous disabled"><a href="#" title="Previous">&nbsp;</a></div>
+							<div class="pgbtn active"><a href="#" title="Current Page">1</a></div>
+							<div class="pgbtn"><a href="#">2</a></div>
+							<div class="pgbtn"><a href="#">3</a></div>
+							<div class="pgbtn next"><a href="#" title="Next">&nbsp;</a></div>
+							<div class="pgbtn last"><a href="#" title="Last Page">&nbsp;</a></div>	
+						</div>
+
+
+					</div>
+				<div class="spacer"></div>
+
+					<div class="row ">
+						<p>With no icon previous, 3 pages &amp; no icon next:</p>
+						<div class="pagination" data-pages="3" data-currentpage="1">
+							<div class="pgbtn first disabled noicon"><a href="#" title="Previous">PREVIOUS</a></div>
+
+							<div class="pgbtn active"><a href="#" title="Current Page">1</a></div>
+							<div class="pgbtn"><a href="#">2</a></div>
+							<div class="pgbtn"><a href="#">3</a></div>
+							<div class="pgbtn last noicon"><a href="#" title="Next">NEXT</a></div>	
+						</div>
+
+
+					</div>
+
+
+					<div class="spacer"></div>
+
+					<div class="row ">
+						<p>With custom text previous &amp; next plus icons:</p>
+						<div class="pagination" data-pages="3" data-currentpage="1">
+							<div class="pgbtn first  noicon"><a href="#" title="Previous"><span class="icon previous">&nbsp;</span>PREVIOUS</a></div>
+
+							<div class="pgbtn"><a href="#" title="Current Page">1</a></div>
+							<div class="pgbtn active"><a href="#">2</a></div>
+							<div class="pgbtn"><a href="#">3</a></div>
+							<div class="pgbtn last noicon"><a href="#" title="Next">NEXT<span class="icon next">&nbsp;</span></a></div>	
+						</div>
+
+
+					</div>
+
+					<div class="spacer"></div>
+					<div class="row">
+						<p>With page select form:</p>
+						<div class="pagination" data-pages="15" data-currentpage="1">
+							<div class="pgbtn first disabled"><a href="#" title="First Page">&nbsp;</a></div>
+							<div class="pgbtn previous disabled"><a href="#" title="Previous">&nbsp;</a></div>
+							<div class="pgbtn form">
+								<form name="pagination" title="Enter a page number">PAGE <input type=number name="pagenumber" value="1"> OF 15</form>
+							</div>
+							<div class="pgbtn next"><a href="#" title="Next">&nbsp;</a></div>
+							<div class="pgbtn last"><a href="#" title="Last Page">&nbsp;</a></div>	
+						</div>
+
+
+					</div>
+
+					<div class="spacer"></div>
+
+
+					<div class="row space_after overflow-visible">
+
+						<div class="pagination" data-pages="15" data-currentpage="1">
+							<div class="pgbtn first disabled"><a href="#" title="First Page">&nbsp;</a></div>
+							<div class="pgbtn previous disabled"><a href="#" title="Previous">&nbsp;</a></div>
+							<div id="slider1" class="left">
+								<div class="pgbtn active"><a href="#" title="Current Page">1</a></div>
+								<div class="pgbtn"><a href="#">2</a></div>
+								<div class="pgbtn"><a href="#">3</a></div>
+								<div class="pgbtn"><a href="javascript:void(0)" title="More" id="slidelink1">...</a></div>
+							</div>
+							<div id="slider2"  class="left" style="display:none">
+								
+								<div class="pgbtn form">
+									<form name="pagination" title="Enter a page number">PAGE <input type=number name="pagenumber" value="1"> OF 15</form>
+								</div>
+								<div class="pgbtn"><a href="javascript:void(0)" title="More" id="slidelink2">...</a></div>
+							</div>
+							<div class="pgbtn next"><a href="#" title="Next">&nbsp;</a></div>
+							<div class="pgbtn last"><a href="#" title="Last Page">&nbsp;</a></div>	
+						</div>
+
+
+					</div>
+
+					<div class="spacer"></div>
+
+
+					<p>"Large" buttons:</p>
+					<div class="row space_after overflow-visible">
+
+						<div class="pagination row">
+							<div class="column two left">
+								<div class="pgbtn large previous"><a href="#" title="Previous">Previous</a></div>
+							</div>
+							<div class="column eight" style="text-align:center">
+									<div class="pgbtn large active" style="display:inline-block; float:none"><a href="#" title="Current Page">Page 1</a></div>
+									<div class="pgbtn large" style="display:inline-block; float:none"><a href="#" >Page 2</a></div>
+									<div class="pgbtn large" style="display:inline-block; float:none"><a href="#" >Page 3</a></div>
+							</div>
+							<div class="column two right">
+								<div class="pgbtn large next"><a href="#" title="Next">Next</a></div>
+							</div>
+						</div>
+
+
+					</div>
+
+
+					<div class="spacer"></div>
+					<p>Previous & Next only (with icons):</p>
+					<div class="row space_after overflow-visible">
+
+						<div class="pagination row">
+							<div class="pgbtn large previous "><a href="#" title="Previous"><span class="icon">&nbsp;</span>Previous</a></div>
+
+							<div class="pgbtn large next"><a href="#" title="Next">Next<span class="icon">&nbsp;</span></a></div>
+						</div>
+
+
+					</div>
+
+ 
+			</div>
+
+			<div class="spacer"></div>
+			<h5 class="underline">Usage</h5>
+
+			<p>Start with a &lt;div class="pagination" &gt;</p>
+			<p>Next add buttons with  &lt;div class="pgbtn" &gt;. Inside the button element should be one link element.</p>
+			<p>Some of the buttons have special properties that are invoked via the following classes:</p>
+			<div class="row">
+				<div class="column two tall"><strong>first</strong></div>
+				<div class="column eight">The leftmost block is required to be class="first". By default this will have the double-chevron icon.</div>
+			</div>
+			<div class="row">
+				<div class="column two tall"><strong>last</strong></div>
+				<div class="column eight">The leftmost block is required to be class="last". By default this will have the double-chevron icon.</div>
+			</div>
+			<div class="row">
+				<div class="column two tall"><strong>previous</strong></div>
+				<div class="column eight">By default this will have the chevron icon.</div>
+			</div>
+			<div class="row">
+				<div class="column two tall"><strong>next</strong></div>
+				<div class="column eight"> By default this will have the chevron icon.</div>
+			</div>
+			<div class="row">
+				<div class="column two tall"><strong>noicon</strong></div>
+				<div class="column eight">Use this class to suppress default icons so you can use your own text.</div>
+			</div>
+			<div class="row">
+				<div class="column two tall"><strong>active</strong></div>
+				<div class="column eight">Use this class to indicate the current page number. (Should only appear once)</div>
+			</div>
+			<div class="row">
+				<div class="column two tall"><strong>disabled</strong></div>
+				<div class="column eight">Use on any button that should not be clicked in the current context. Example: on page 1, disable the previous button.</div>
+			</div>
+			<div class="row">
+				<div class="column two tall"><strong>large</strong></div>
+				<div class="column eight">Makes larger, stand alone button types. No icon by default.</div>
+			</div>
+			<div class="row">
+				<div class="column two tall"><strong>form</strong></div>
+				<div class="column eight">A form inside this button will be styled appropriately</div>
+			</div>
+
+			<p class="space_before">You can use the noicon class to suppress the normal default icon and type any text. To have arbitrary text and the icon, you will add &lt;span class="icon"&gt;&nbsp;&lt;/span&gt;inside the a element </p>
+			<p>To specify a different icon than the default, add the class to the span (first, last, next or previous)</p>
+
+			<h5 class="space_before">Code Samples:</h5>
+<code><pre>
+&lt;div class="pagination"&gt;
+ &lt;div class="pgbtn first disabled"&gt;&lt;a href="#" title="First Page"&gt;&nbsp;&lt;/a&gt;&lt;/div&gt;
+ &lt;div class="pgbtn previous disabled"&gt;&lt;a href="#" title="Previous"&gt;&nbsp;&lt;/a&gt;&lt;/div&gt;
+ &lt;div class="pgbtn active"&gt;&lt;a href="#" title="Current Page"&gt;1&lt;/a&gt;&lt;/div&gt;
+ &lt;div class="pgbtn"&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/div&gt;
+ &lt;div class="pgbtn"&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/div&gt;
+ &lt;div class="pgbtn next"&gt;&lt;a href="#" title="Next"&gt;&nbsp;&lt;/a&gt;&lt;/div&gt;
+&lt;div class="pgbtn last"&gt;&lt;a href="#" title="Last Page"&gt;&nbsp;&lt;/a&gt;&lt;/div&gt;	
+&lt;/div&gt;
+
+
+&lt;div class="pagination"&gt;
+ &lt;div class="pgbtn first  noicon"&gt;&lt;a href="#" title="Previous"&gt;&lt;span class="icon previous"&gt;&nbsp;&lt;/span&gt;PREVIOUS&lt;/a&gt;&lt;/div&gt;
+ &lt;div class="pgbtn"&gt;&lt;a href="#" title="Current Page"&gt;1&lt;/a&gt;&lt;/div&gt;
+ &lt;div class="pgbtn active"&gt;&lt;a href="#"&gt;2&lt;/a&gt;&lt;/div&gt;
+ &lt;div class="pgbtn"&gt;&lt;a href="#"&gt;3&lt;/a&gt;&lt;/div&gt;
+&lt;div class="pgbtn last noicon"&gt;&lt;a href="#" title="Next"&gt;NEXT&lt;span class="icon next"&gt;&nbsp;&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;	
+&lt;/div&gt;
+
+
+&lt;div class="pagination"&gt;
+ &lt;div class="pgbtn first disabled"&gt;&lt;a href="#" title="First Page"&gt;&nbsp;&lt;/a&gt;&lt;/div&gt;
+ &lt;div class="pgbtn previous disabled"&gt;&lt;a href="#" title="Previous"&gt;&nbsp;&lt;/a&gt;&lt;/div&gt;
+ &lt;div class="pgbtn form"&gt;
+  &lt;form name="pagination" title="Enter a page number"&gt;PAGE &lt;input type=number name="pagenumber" value="1"&gt; OF 15&lt;/form&gt;
+ &lt;/div&gt;
+ &lt;div class="pgbtn next"&gt;&lt;a href="#" title="Next"&gt;&nbsp;&lt;/a&gt;&lt;/div&gt;
+ &lt;div class="pgbtn last"&gt;&lt;a href="#" title="Last Page"&gt;&nbsp;&lt;/a&gt;&lt;/div&gt;	
+&lt;/div&gt;
+
+
+
+&lt;div class="pagination row"&gt;
+ &lt;div class="pgbtn large previous "&gt;&lt;a href="#" title="Previous"&gt;&lt;span class="icon"&gt;&nbsp;&lt;/span&gt;Previous&lt;/a&gt;&lt;/div&gt;
+ &lt;div class="pgbtn large next"&gt;&lt;a href="#" title="Next"&gt;Next&lt;span class="icon"&gt;&nbsp;&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+</pre></code>
+
+		
+			<div class="row space_before ">&nbsp;</div>
+
+
+		</div>
+		<!-- end center content -->
+	</div>
+
+<!-- end main content -->
+
+<!-- footer -->
+	<div id="footerinclude"></div>
+<!-- end footer -->
+
+</div>
+
+
+
+
+</body>
+</html>

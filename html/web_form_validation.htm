@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>UX + Design Guidelines - Web - Basic - Form Validation</title>
+	<link rel="shortcut icon" href="http://www.arbonne.com/favicon.png" type="image/x-icon" />
+
+    <link href='../css/camera.css' rel='stylesheet' type='text/css'> 
+	<link href="../css/brand.css" rel="stylesheet" type="text/css">
+
+	<link href="../css/ui.css" rel="stylesheet" type="text/css" >
+	<link href="../css/styleguide.css" rel="stylesheet" type="text/css" >
+
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/brand.js"></script>
+<script src="../js/ui.js"></script>
+
+
+	<script src="../js/includes.js"></script>
+
+
+
+	<script type="text/javascript">
+
+var utCount = 0;
+
+function unitTest(type){
+	var validcardNumbers = {
+		visa: '4242424242424242',
+		mastercard: '5450640068057964',
+		amex: '378282246310005',
+		discover: '6011111111111117',
+		dinersclub: '30569309025904',
+		jcb: '3530111333300000',
+		withSpaces: '4242 4242 4242 4242',
+		withDashes: '4242-4242-4242-4242'
+	};
+
+	var invalidCardNumbers = {
+		toManyChars: '42424242424242424242', 
+		failLuhnNumeric: '12345678',
+		failLuhnAlpha: 'mistake' 
+	}
+
+	var validphoneNumbers = {
+		US: '7148509123',
+		leading1: '17148509123',
+		plus1: '+1 714 850 9123',
+		withDashes: '714-850-9123',
+		withParen: '(714) 850-9123',
+		withX: '7148509123x200',
+		withExt: '7148509123 ext. 200',
+		withExtn: '650 253 0000 extn. 4567',
+		alpha: '1 800 SIX-FLAG',
+		CA: '604-477-0400',
+		AU: '02 3661 8300',
+		AUplus: '+61 2 3661 8300',
+		GB: '2070313000',
+		GBplus1: '+44 20 7031 3000',
+		GBparen: '(07912) 345 678',
+		GBX: '+44 2034567890x456'
+	};
+
+	var invalidPhoneNumbers = {
+		GBInvalid: '791234567', 
+		GBTooLong: '80123456780123', 
+		USInvalid: '12345',
+		USTooLong: '+1 650 253 00000',
+		USNotNum: 'mistake' 
+	}
+
+	var validEmails  = [
+		'email@example.com',
+		'firstname.lastname@example.com',
+		'email@subdomain.example.com',
+		'firstname+lastname@example.com',
+		'email@123.123.123.123',
+		'email@[123.123.123.123]',
+		'“email”@example.com',
+		'1234567890@example.com',
+		'email@example-one.com',
+		'_______@example.com',
+		'email@example.name',
+		'email@example.museum',
+		'email@example.co.jp',
+		'firstname-lastname@example.com',
+		'much.”more\ unusual”@example.com',
+		'very.unusual.”@”.unusual.com@example.com',
+		'very.”(),:;<>[]”.VERY.”very@\\ "very”.unusual@strange.example.com'
+	];
+
+	var invalidEmails = [
+		'plainaddress',
+		'#@%^%#$@#$@#.com',
+		'@example.com',
+		'Joe Smith <email@example.com>',
+		'email.example.com',
+		'email@example@example.com',
+		'.email@example.com',
+		'email.@example.com',
+		'email..email@example.com',
+		'あいうえお@example.com',
+		'email@example.com (Joe Smith)',
+		'email@example',
+		'email@-example.com',
+		'email@example.web',
+		'email@111.222.333.44444',
+		'email@example..com',
+		'Abc..123@example.com'
+	];
+
+	var validtime = [
+		'600',
+		'6:00',
+		'1:59',
+		'10:01',
+		'11:33',
+		'12:00',
+		'7:00am',
+		'7:00 am',
+		'700 pm'
+	];
+
+	var invalidtime = [
+		'0600',
+		'1300',
+		'60',
+		'2000',
+		'noon',
+		'18:34',
+		'6:60'
+	];
+
+	var validtimeampm = [
+		'600am',
+		'6:00 am',
+		'1:59  pm',
+		'10:01pm',
+		'12:00PM',
+		'12:00AM'
+	];
+
+	var invalidtimeampm = [
+		'600',
+		'6:00',
+		'1:59',
+		'12:00',
+		'17:00am'
+	];
+
+	var validtime24ampm = [
+		'0600',
+		'06:00',
+		'13:59',
+		'2100',
+		'2459',
+		'0001',
+		'600am',
+		'6:00 am',
+		'1:59  pm',
+		'10:01pm',
+		'12:00PM',
+		'12:00AM'
+	];
+
+		var invalidtime24ampm = [
+		'600',
+		'13:60',
+		'2500',
+		'6:00',
+		'1:59',
+		'12:00',
+		'17:00am'
+	];
+
+	// build form fields
+	var testSet = [];
+	var testSetFail = [];
+	var validationType = 'required';
+	var errorMsg = '';
+	var additionalFields = '';
+	switch(type){
+		case 'Phone Number' :
+			validationType = 'validphone';
+			errorMsg = 'Invalid phone number';
+			testSet = validphoneNumbers;
+			testSetFail = invalidPhoneNumbers ;
+			additionalFields = '<label for="country">Country</label><select name="country"><option value="US">US</option><option value="GB">GB</option><option value="AU">AU</option><option value="CA">CA</option><option value="IT">IT</option></select><br>';
+		break;
+		case 'Email' :
+			validationType = 'validemail';
+			errorMsg = 'Invalid email';
+			testSet = validEmails;
+			testSetFail = invalidEmails ;
+		break;
+		case 'Credit Card' :
+			validationType = 'validcc';
+			errorMsg = 'Invalid card number';
+			testSet = validcardNumbers;
+			testSetFail = invalidCardNumbers ;
+		break;
+		case 'Time' :
+			validationType = 'validtime';
+			errorMsg = 'Invalid time';
+			testSet = validtime;
+			testSetFail = invalidtime ;
+		break;
+		case 'Time AM/PM' :
+			validationType = 'validtimeampm';
+			errorMsg = 'Invalid time';
+			testSet = validtimeampm;
+			testSetFail = invalidtimeampm ;
+		break;
+		case 'Time 24hr or 12hr AM/PM' :
+			validationType = 'validtime24ampm';
+			errorMsg = 'Invalid time';
+			testSet = validtime24ampm;
+			testSetFail = invalidtime24ampm ;
+		break;
+
+	}
+
+	if($('#unitTest').length){
+		$location = $('#unitTest');
+	} else {
+		$location = $(document.createElement('div'));
+		$location.appendTo('body');
+	}
+
+	if(testSet != undefined && testSetFail != undefined ){
+		var output = "<form name='unitTest" + utCount + "' action='#' method='get' onSubmit='return false' style='margin-top:24px'>\n";
+		utCount++;
+		output += "<h5>" + type + " Unit Tests</h5>";
+
+		output += additionalFields;
+		for(idx in testSet){
+			output += "<label for='testv"+ idx +"' style='width:120px'>"+idx+"</label> <input type='text' name='testv"+ idx +"' value='"+ testSet[idx] +"' data-validateonsubmit='"+ validationType +"' data-errortext='"+ errorMsg +"' style='width:200px'><br>\n"
+		}
+		output += "<hr>";
+		for(idx in testSetFail){
+			output += "<label for='testi"+ idx +"' style='width:120px'>"+idx+"</label> <input type='text' name='testi"+ idx +"' value='"+ testSetFail[idx] +"' data-validateonsubmit='"+ validationType +"' data-errortext='"+ errorMsg +"' style='width:200px' ><br>\n"
+		}
+		output += "<input type='submit' name='submit' value='Run Unit Tests'>";
+		output += "</form>";
+	} else {
+		var output = "No test cases.";
+	}
+	$location.append(output);
+
+}
+
+
+
+$(document).ready(function(){
+	
+	// execute unit tests
+	unitTest('Phone Number');
+	unitTest('Email');
+	unitTest('Credit Card');
+	unitTest('Time');	
+	unitTest('Time AM/PM');
+	unitTest('Time 24hr or 12hr AM/PM');	
+
+});
+
+</script>
+<style>
+
+
+
+</style>
+	<script type="text/javascript" src="../js/PhoneFormat.js"></script>
+	<script type="text/javascript" src="../js/formValidation.js"></script>
+	
+
+</head>
+<body>
+
+
+<div id="container">
+
+	<div class="header_content">
+		<!-- Login Bar - START -->
+		<div id="loginbarinclude"></div>
+
+		<!-- Login Bar - END -->
+
+		<!-- Logo Area - START --> 
+		<!-- Logo Area - START --> 
+		<div id="logoinclude"></div>
+		<!-- Logo Area - END --> 
+		<!-- Logo Area - END --> 
+		<!-- start nav -->
+
+		<!-- Main Navigation - START -->
+			<!-- include mainnav -->
+		<div id="mainnav"></div>
+		<!-- Main Navigation - END -->
+	</div>
+	<!-- end header -->
+
+<!-- main content -->
+
+	<div id="centerrow">
+
+		<!-- side navbar -->
+		<div id="sidenavinclude"></div>
+
+		<!-- center content -->
+		<div id="center_content">
+			<div class="row space_before">
+				<ul class="breadcrumbs">
+					<li><a href="index.htm">Home</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Web</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Basic</a></li>
+					<li class="separator">/</li>
+					<li class="active"><a href="#">Form Validation</a></li>
+				</ul>
+			</div>
+
+			<div class="row space_after space_before" >
+
+				<h2 class="underline">Form Validation</h2>
+				<p></p>
+				<div class="spacer"></div>
+			</div>
+
+			<div class="row">
+					<form name="reg" method="get" action="#">
+				<label for="country" class="col2">Country:</label> <input type="text" name="country" value="US"  data-helptext="Enter your country code"><br>
+				<label for="phone" class="col2">Phone Number:</label> <input type="text" name="phone" style="width:150px" data-helptext="Enter your phone number" data-validateonblur="validphone" data-errortext="Invalid phone number" placeholder="Enter a phone number">
+				<br>
+				<input type="hidden" name="cleanphone" value="">
+				<!----><div id="clean"></div>
+				<br>
+				<label for="email" class="col2">Email:</label> <input type="text" name="email" style="width:250px" data-helptext="Enter your email address" data-validateonsubmit="required" data-validateonblur="validemail" data-errortext="Invalid email" placeholder="Enter an email address">
+				<br>
+				<label for="email" class="col2">Name:</label> <input type="text" name="name" style="width:250px" data-helptext="Enter your name" data-validateonsubmit="required" data-errortext="Name is required" placeholder="Enter your name">
+				<br>
+				<label for="email" class="col2">Date:</label> <input type="date" name="date" style="width:250px" data-helptext="Enter your birth date" data-validateonblur="validdate" data-errortext="Invalid date. Use <em>yyyy-mm-dd</em>" placeholder="Enter your birth date">
+				<input type="hidden" name="cleandate" value="">
+				<br>
+
+				<label for="email" class="col2">Credit Card Number:</label> <input type="text" name="ccnum" style="width:250px" data-helptext="Enter your credit card number" data-validateonblur="validcc" data-errortext="Invalid card. Please check the number" placeholder="Enter your credit card number">
+			<br>
+				<input type="submit" name="subimt" value="Submit">
+
+				</form>
+
+
+
+				<h2 class="underline space_before">Usage</h2>
+
+
+				<h6>Help Text</h6>
+
+				<p>For every field that should show help text on focus, add a data-helptext="[helptext]" attribute.</p>
+
+				<p>The content of the data-helptext attribute will appear as a help notice beside the field.</p>
+
+
+				<h6 class="space_before">Validate on Blur</h6>
+
+				<p>You can specify a field validation that occurs immediately upon leaving the field. Add a data-validateonblur="[validation method]"  and  data-errortext"[error message]" attributes to the field where the contents of thedata-errortext attribute will appear as an error indicator next to the field. </p>
+
+				<p>Note: This validation will also occur on submit</p>
+
+
+				<h6 class="space_before">Validate on Submit</h6>
+
+				<p>You can specify a field validation that occurs only when the form is submitted. Add a data-validateonsubmit="[validation method]" and  data-errortext"[error message]" attributes to the field where the contents of thedata-validateonsubmit attribute will appear as an error indicator next to the field. </p>
+
+
+
+				<h6 class="space_before">Validation Methods</h6>
+
+				<p>The following  methods are available to use with the validator</p>
+
+				<ul>
+					<li><strong>validphone</strong> - uses country code to validate phone numbers to the local format. Supports international formats as well as extensions.</li>
+					<li><strong>validemail</strong> - validates most common email formats</li>
+
+					<li><strong>validdate</strong> - if country code is present and outside the US, will use dd-mm-yyyy format, otherwise uses mm-dd-yyyy</li>
+
+					<li><strong>validdate2</strong> - uses yyyy-mm-dd format</li>
+
+					<li><strong>validcc</strong> - checks valid credit card numbers</li>
+
+					<li><strong>required</strong>  -  checks for an empty field (use with validateonsubmit)</li>
+
+
+					<div class="spacer"></div>
+
+					<h6>Unit Tests</h6>
+				  <p>The following test fields contain a mixture of valid and invalid values. By submitting the forms, you can prove that the validatior is operating correctly</p>
+
+
+
+				<div id="unitTest"></div>
+
+			</div>
+
+
+				<div class="spacer"></div>
+
+					
+			
+		
+			<div class="row space_before ">&nbsp;</div>
+
+		</div>
+		<!-- end center content -->
+	</div>
+
+<!-- end main content -->
+
+<!-- footer -->
+	<div id="footerinclude"></div>
+<!-- end footer -->
+
+</div>
+
+
+
+
+</body>
+</html>

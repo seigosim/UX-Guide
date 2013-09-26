@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>UX + Design Guidelines - Prototype - Leadership</title>
+	<link rel="shortcut icon" href="http://www.arbonne.com/favicon.png" type="image/x-icon" />
+
+	<link href="../css/brand.css" rel="stylesheet" type="text/css">
+
+	<link href="../css/ui.css" rel="stylesheet" type="text/css" >
+	<link href="../css/styleguide.css" rel="stylesheet" type="text/css" >
+
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/brand.js"></script>
+	<script src="../js/ui.js"></script>
+
+	<script src="../js/real_includes.js"></script>
+
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+
+		var $links = $('.list_pane a');
+		var $content = $('.content_pane');
+		var setLinkActive = function(link){
+			$('.list_pane li').removeClass('active');
+			$(link).parent().addClass('active');
+		};
+		var setPaneActive = function(paneID){
+			$pane = $('#' + paneID);
+			$pane.css('z-index','2');
+			$('.content_pane.active').css('z-index','1');
+			$('.content_pane.active').hide();
+			$pane.fadeIn(250,function(){
+				window.location = '#' + paneID;
+			});
+			$pane.addClass('active');
+		};
+		var query = '';
+		if(window.location.href) query = window.location.href.replace(/[^#]+#([^?|&]+)([?|&].+)?/,'$1');
+		$links.each(function(){
+			if($(this).data('index')) {
+				var contentpaneidx = $(this).data('index');
+				var contentpane;
+				$(this).on('click',function(e){
+					setLinkActive($(this));
+					setPaneActive(contentpaneidx);
+					return false;
+				});
+				// set initial pane
+				if(query.length && query == contentpaneidx){		
+					setPaneActive(contentpaneidx);
+					setLinkActive($(this));
+				}
+			}
+		});
+	});
+
+</script>
+
+<style>
+.leadership_panel {position:relative;min-height:1000px;margin:0 16px}
+.leadership_panel .list_pane {position:relative;margin-top:308px;min-height:625px;background-color:#F1F1F1;border:1px solid #F1F1F1;}
+.leadership_panel .content_pane {display:none;position:absolute;z-index:1;width:100%;}
+.leadership_panel .content_pane.active {display:block;z-index:2;}
+
+.leadership_panel .list_pane ul {margin:0; padding:0; list-style: none; margin-left:60%;}
+.leadership_panel .list_pane ul > li {margin:0; display:block; list-style: none;background-color:#FFFFFF}
+
+.leadership_panel .list_pane ul > li:hover {background-color:#E1E1E1}
+
+.leadership_panel .list_pane ul > li.active {background-color:#F1F1F1;webkit-box-shadow: none; -moz-box-shadow:none;box-shadow:none;}
+.leadership_panel .list_pane ul > li > a {display:block; padding:12px 8px 12px 16px;  color:#333333;}
+.leadership_panel .list_pane ul > li > a:hover {color:#333333;}
+.leadership_panel .list_pane ul > li > a > b {display:block;font-weight: bold; font-size:13px;color:#417630;}
+.leadership_panel .list_pane ul > li > a:hover > b {color:#417630;}
+
+.leadership_panel .content_pane > .title {position:relative;padding:16px;background-color:#F1F1F1}
+.leadership_panel .content_pane > .title > .inner {background-color:#FCF8F5;height:250px;position:relative;overflow: hidden;}
+.leadership_panel .content_pane > .title > .inner > img {display:block; position:absolute; top:0px; right: 0px; height: 100%;}
+.leadership_panel .content_pane > .title > .inner > span {color:#999999; font-size:16px;display:block; position:absolute; bottom:32px; left: 32px;}
+
+.leadership_panel .content_pane > .title > .inner > span > h4 {color:#999999;font-size:30px;}
+
+.leadership_panel .content_pane > .divider {height:26px;margin:0;background-color:#FFFFFF;}
+
+.leadership_panel .content_pane > .body {position:absolute; top:308px; left: 0;width:60%; padding:8px 16px;background-color:#F1F1F1;}
+.leadership_panel .content_pane > .body p {font-size:14px ;line-height: 1.8em;}
+
+
+@media only screen and (max-width:768px) {
+
+.leadership_panel .list_pane {position:relative;top:0px;}
+.leadership_panel .list_pane ul {margin:16px 0; padding:0; float:none;width:100%;}
+.leadership_panel .content_pane > .body {position:relative; margin-right:0; padding:8px 16px;}
+
+}
+
+
+</style>
+
+
+</head>
+<body>
+
+
+<div id="container">
+
+	<div class="header_content">
+		<!-- Login Bar - START -->
+		<div id="loginbarinclude"></div>
+
+		<!-- Login Bar - END -->
+
+		<!-- Logo Area - START --> 
+		<!-- Logo Area - START --> 
+		<div id="logoinclude"></div>
+		<!-- Logo Area - END --> 
+		<!-- Logo Area - END --> 
+		<!-- start nav -->
+
+		<!-- Main Navigation - START -->
+			<!-- include mainnav -->
+		<div id="mainnav"></div>
+		<!-- Main Navigation - END -->
+	</div>
+	<!-- end header -->
+
+<!-- main content -->
+
+	<div id="centerrow">
+
+		<!-- side navbar -->
+	<div id="sidenavbar" >
+
+
+	<ul class="nav rows">
+		<li class="heading">Company Information</li>
+		<li>
+			<a href="proto_discover.htm">Discover Arbonne</a>
+		</li>
+		<li class="active">
+			<a href="proto_leadership.htm">Leadership</a>
+		</li>
+		<li>
+			<a href="proto_offices.htm">Offices</a>
+		</li>
+		<li>
+			<a href="proto_careers.htm">Careers</a>
+		</li>
+	</ul>
+
+
+	</div>
+
+
+		<!-- center content -->
+		<div id="center_content">
+
+
+			<h1 class="space_above">Leadership</h1>
+
+			<div class="leadership_panel row">
+					<div class="content_pane active" id="knapier">
+						<div class="title">
+							<div class="inner">
+							<img src="../img/leadership/kay_napier.png" alt="Kay Napier - Chief Executive Officer" />
+							<span><h4 class="lightfont">Kay Napier</h4 class="lightfont">Chief Executive Officer</span>
+							</div>
+						</div>
+						<div class="body">
+							<p>Katherine (Kay) S. Napier joined Arbonne in August 2009. Kay brings to Arbonne three decades of experience in general management, marketing, international and strategic planning.</p>
+							<p>Kay is a retired Vice President of the Procter & Gamble Company, where she was head of the North American Pharmaceutical division and the Corporate Women’s Health & Vitality platform. During her tenure, her division became the largest company profit contributor for North America.</p>
+							<p>Kay most recently served as the Senior Vice President of McDonald’s, where she spearheaded the launch of the healthy lifestyles initiative and led marketing efforts designed to appeal to women and families in both the U.S. and Europe — an important part of McDonald’s legendary corporate turnaround. Kay believes strongly in the global power of women’s untapped potential and she is dedicated to bringing beauty, health and prosperity to the Arbonne community.
+							</p>
+						</div>
+					</div>
+					<div class="content_pane" id="gprice">
+						<div class="title">
+							<div class="inner">
+							<img src="../img/leadership/gretchen_price.jpg" alt="Gretchen Price - Executive VP, Chief Financial & Admin. Officer" />
+							<span><h4 class="lightfont">Gretchen Price</h4 class="lightfont">Executive VP, Chief Financial & Admin. Officer</span>
+							</div>
+						</div>
+						<div class="body">
+							<p>Gretchen Price joined Arbonne in July 2011 as Executive Vice President, Chief Financial and Administrative Officer. In this multi–faceted role, Gretchen works closely with Arbonne's CEO to oversee company financials and operations. She is directly responsible for the finance and accounting, operations, human resources, operational aspects of information technology and international departments.</p> 
+							<p>Before Arbonne, Gretchen served as Executive Vice President, Administration and Chief Financial Officer at philosophy, Inc. and is also a former Procter & Gamble executive. Gretchen graduated from the University of Kentucky with a bachelor's degree in accounting, and she earned the Certified Internal Auditor designation in 1996. She also currently serves as a Director of the Cincinnati Financial Corporation, a mid-size national property/casualty insurer.
+							</p>
+						</div>
+					</div>
+					<div class="content_pane" id="mdarminio">
+						<div class="title">
+							<div class="inner">
+							<img src="../img/leadership/michaelDArminio.jpg" alt="Michael D'Arminio - Sr. VP & Chief Creative Officer" />
+							<span><h4 class="lightfont">Michael D'Arminio</h4 class="lightfont">Sr. VP & Chief Creative Officer</span>
+							</div>
+						</div>
+						<div class="body">
+							<p>Michael D'Arminio recently joined Arbonne as Chief Creative Officer. Michael has more than 18 years of experience as a marketing executive, helping shape the marketing and creative vision for some of the world’s best-known beauty brands. Michael began his career in global advertising and worked at Ogilvy and Mather and Donna Karan International.</p><p>More recently, Michael was Chief Creative Officer at philosophy, and VP of Global Marketing and Creative for Unilever Cosmetics International, Coty Prestige and L'Oreal. Michael received his degree in Marketing from Hofstra University.
+							</p>
+						</div>
+					</div>
+
+					<div class="content_pane" id="hchastain">
+						<div class="title">
+							<div class="inner">
+							<img src="../img/leadership/heatherChastain.jpg" alt="Heather Chastain - Sr. VP & Chief Sales Officer" />
+							<span><h4 class="lightfont">Heather Chastain</h4 class="lightfont">Sr. VP & Chief Sales Officer</span>
+							</div>
+						</div>
+						<div class="body">
+							<p>Heather joined Arbonne in September 2012 and guides key areas of the business related to Arbonne's Independent Consultant sales force — field development and sales — including expanding and supporting the multicultural markets, public relations, sales force events and online marketing. With more than 16 years in the direct selling industry, Heather was most recently President of Celebrating Home and successfully executed several Vice President roles at BeautiControl. Chastain is also a member of the board of the Direct Selling Association. Heather graduated from the University of Texas with a degree in Business Administration. 
+							</p>
+						</div>
+					</div>
+
+					<div class="content_pane" id="gthier">
+						<div class="title">
+							<div class="inner">
+							<img src="../img/leadership/guyThier.jpg" alt="Guy Thier - Chief Information Officer" />
+							<span><h4 class="lightfont">Guy Thier</h4 class="lightfont">Chief Information Officer</span>
+							</div>
+						</div>
+						<div class="body">
+							<p> 
+Guy brings approximately 20 years of CIO experience to Arbonne from public, private and private equity ownership business models with extensive experience in both IT strategy development as well as grass roots execution of complex projects. He joins us from Bally Total Fitness, where he served as Senior Vice President
+(SVP) and Chief Information Officer (CIO) for the last 10 years, overseeing successful IT planning and execution, while achieving operational efficiencies for the $1 billion, 400-club organization. Previously, Guy led the IT functions at LINC Capital and Chernin’s Shoes.	 
+
+							</p>
+						</div>
+					</div>
+					<div class="content_pane" id="agood">
+						<div class="title">
+							<div class="inner">
+							<img src="../img/leadership/hm-ex_lg-ashley.jpg" alt="Ashley Good - Sr. VP & General Counsel" />
+							<span><h4 class="lightfont">Ashley Good</h4 class="lightfont">Sr. VP & General Counsel</span>
+							</div>
+						</div>
+						<div class="body">
+							<p>Ashley Good provides key in–house counsel at Arbonne and leads the Legal and Compliance departments. She is responsible for all aspects of Arbonne's legal affairs, including company and Arbonne Independent Consultant compliance, and Arbonne’s intellectual property.</p> <p>Ashley was previously a corporate attorney for the prestigious, international law firm of Latham & Watkins, LLP. She earned BA and MA degrees from Stanford University and her Juris Doctor degree from Duke University School of Law. Ashley is a member of the American Bar Association, California Bar Association and Association of Corporate Counsel.
+							</p>
+						</div>
+					</div>
+					<div class="content_pane" id="pmatravers">
+						<div class="title">
+							<div class="inner">
+							<img src="../img/leadership/hm-ex_lg-peter.jpg" alt="Peter Matravers - Sr. VP, Product Development" />
+							<span><h4 class="lightfont">Peter Matravers</h4 class="lightfont">Sr. VP, Product Development</span>
+							</div>
+						</div>
+						<div class="body">
+							<p>Peter Matravers came to the Arbonne family in 2008, taking the role of Sr. Vice President, Product Development. Peter, who holds a Doctor of Pharmacy degree, guides the Product Development and Regulatory teams in creating extraordinary and innovative products.</p> <p>Peter has more than 25 years of skin care and consumer product development experience and has supported the success of several major name brands. His accomplishments include proprietary ingredient development, creative formulations and new methodologies in product performance testing. Peter is also the recipient of over 20 U.S. and international patents in these areas.
+							</p>
+						</div>
+					</div>
+
+					<div class="content_pane" id="kstout">
+						<div class="title">
+							<div class="inner">
+							<img src="../img/leadership/Karen_Stout.jpg" alt="Karen Stout - Sr. VP, Human Resources" />
+							<span><h4 class="lightfont">Karen Stout</h4 class="lightfont">Sr. VP, Human Resources</span>
+							</div>
+						</div>
+						<div class="body">
+							<p>Karen Stout, Senior Vice President, Human Resources, joined Arbonne in January, 2011. Karen is an experienced Human Resources Professional with a broad range of hands-on experience and deep expertise in the continuum of HR functions.</p><p>Most recently, Karen was Executive VP with EW Partners, a human resource consulting firm. She has also previously held senior HR roles at Charles Schwab, Irvine Company and Transamerica. Karen received her Bachelor’s Degree Summa Cum Laude in Political Science from Cal State Fullerton, and an MBA from Pepperdine University. </p><p>Karen’s accomplishments, along with her straightforward decision–making and communication style, embodies many of the values and principles that make Arbonne an exceptional company for both employees and Arbonne Independent Consultants alike.
+							</p>
+						</div>
+					</div>
+					<div class="content_pane" id="gcolbert">
+						<div class="title">
+							<div class="inner">
+							<img src="../img/leadership/gregColbert.jpg" alt="Gregory Colbert - VP, Financial Planning & Analysis" />
+							<span><h4 class="lightfont">Gregory Colbert</h4 class="lightfont">VP, Financial Planning & Analysis</span>
+							</div>
+						</div>
+						<div class="body">
+							<p>Gregory Colbert joined Arbonne in 2008 and is Vice President, Financial Planning & Analysis. He is responsible for developing financial models related to potential new programs, promotions or changes to the current business, along with developing annual budgets, quarterly forecasts and five-year strategic plans. </p><p>Before coming to Arbonne, Colbert served as a financial manager at Delta Dental of California, where he oversaw the budgeting process and most of the accounting functions for their managed care division. He earned his BA degree from Washington and Jefferson College in Washington, Pa.
+							</p>
+						</div>
+					</div>
+					<div class="content_pane" id="gpankau">
+						<div class="title">
+							<div class="inner">
+							<img src="../img/leadership/geoffreyPankau.jpg" alt="Geoffrey Pankau - Vice President, Controller" />
+							<span><h4 class="lightfont">Geoffrey Pankau</h4 class="lightfont">Vice President, Controller</span>
+							</div>
+						</div>
+						<div class="body">
+							<p>Geoffrey joined Arbonne in mid 2011 as Vice President, Controller. His responsibilities include accounting, tax and treasury for Arbonne. Geoff comes from International Architectural Group, where he served as Vice President, Corporate Controller. There, he managed all aspects of accounting, financial analysis and planning, taxation, treasury and information technology. </p><p>He has held a variety of positions throughout his career including Corporate Controller for Yamaha Corporation of America and Senior Auditor for Price Waterhouse. Geoffrey holds a BS degree in Biology from Central Michigan University, and an MBA in Finance from California State University, San Bernardino. He is also a Certified Public Accountant and Certified Managerial Accountant.
+							</p>
+						</div>
+					</div>
+					<div class="content_pane" id="smorck">
+						<div class="title">
+							<div class="inner">
+							<img src="../img/leadership/hm-ex_lg-stian.jpg" alt="Stian Mørck - Managing Director" />
+							<span><h4 class="lightfont">Stian Mørck</h4 class="lightfont">Managing Director</span>
+							</div>
+						</div>
+						<div class="body">
+							<p>Stian Mørck joined Arbonne in 1989, and became involved in every aspect of the business, from customer service and field support, to marketing, operations and sales. In his current role as Managing Director, Stian works closely with Field leaders acting as a key liaison between the Independent Consultants and Arbonne. </p><p>Stian attends Consultant related events, speaking engagements and other activities, and works directly with corporate executives and staff on Consultant tools and materials. Stian also provides guidance to the company and contributes to further Arbonne's culture by providing historical perspective, personal experiences and resources.</p><p>Stian has many years of network marketing expertise and business management experience in the direct selling industry and has served as a DSA Board Member. Stian holds an MBA from the University of San Francisco and is the son of Arbonne's beloved late founder, Petter Mørck.
+							</p>
+						</div>
+					</div>
+
+					<div class="list_pane">
+						<ul>
+							<li class="active"><a href="#" data-index="knapier"><b>Kay Napier</b>Chief Executive Officer</a></li>
+							<li><a href="#" data-index="gprice"><b>Gretchen Price</b>Executive VP, Chief Financial & Admin. Officer</a></li>
+							<li><a href="#" data-index="mdarminio"><b>Michael D'Arminio</b>Sr. VP & Chief Creative Officer</a></li>
+							<li><a href="#" data-index="hchastain"><b>Heather Chastain</b>Sr. VP & Chief Sales Officer</a></li>
+							<li><a href="#" data-index="gthier"><b>Guy Thier</b>Chief Information Officer</a></li>
+							<li><a href="#" data-index="agood"><b>Ashley Good</b>Sr. VP & General Counsel</a></li>
+							<li><a href="#" data-index="pmatravers"><b>Peter Matravers</b>Sr. VP, Product Development</a></li>
+							<li><a href="#" data-index="kstout"><b>Karen Stout</b>Sr. VP, Human Resources</a></li>
+							<li><a href="#" data-index="gcolbert"><b>Gregory Colbert</b>VP, Financial Planning & Analysis</a></li>
+							<li><a href="#" data-index="gpankau"><b>Geoffrey Pankau</b>Vice President, Controller</a></li>
+							
+							<li><a href="#" data-index="smorck"><b>Stian Mørck</b>Managing Director</a></li>
+						</ul>
+					</div>					
+			</div>
+
+  
+
+		</div>
+		<!-- end center content -->
+	</div>
+
+<!-- end main content -->
+
+<!-- footer -->
+	<div id="footerinclude"></div>
+<!-- end footer -->
+
+</div>
+
+
+
+
+</body>
+</html>

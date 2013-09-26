@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>UX + Design Guidelines - Prototype - Independent Consultant</title>
+	<link rel="shortcut icon" href="http://www.arbonne.com/favicon.png" type="image/x-icon" />
+
+	<link href="../css/brand.css" rel="stylesheet" type="text/css">
+
+	<link href="../css/ui.css" rel="stylesheet" type="text/css" >
+	<link href="../css/styleguide.css" rel="stylesheet" type="text/css" >
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/brand.js"></script>
+<script src="../js/ui.js"></script>
+
+
+	<script src="../js/real_includes.js"></script>
+
+	
+<script>
+
+
+	$(document).ready(function(){
+
+
+
+
+		// setup toggles for the nav squares 
+
+		var $topLink = $('#topLink');
+		$topLink.addClass('active'); // set default as active
+		var $radioGroup = $('*[data-radiogroup]');
+
+
+		var toggleRadioGroup = function(thisLink,group){
+			// toggle one active link across this group
+			if($(thisLink).hasClass('active') == false) {
+				$('*[data-radiogroup="' + group + '"]').removeClass('active');
+				$(thisLink).addClass('active');
+			}
+		};
+
+		$radioGroup.each(function(){
+			var thisgroup = $(this).data('radiogroup');
+			$(this).on('click',function(){
+				toggleRadioGroup(this,thisgroup);
+			});
+		});
+
+
+
+		// fixed navigation block
+		var startOffset = -136; // when does nav stick
+		$('.scroll_fixed').each(function(){
+			$(this).sticky({'startOffset': startOffset,'offset':0,onStick:function(){
+				$('.scroll_fixed').css('opacity',0).animate({'opacity':1},{duration:350});
+				$('.nav .nav_logo').show();
+			}, offStick: function(){
+				$('.scroll_fixed').css('opacity',0).animate({'opacity':1},{duration:150});
+				$('.nav .nav_logo').hide();
+			}});
+		});	
+
+
+		$('.nav .nav_logo').scrollto('body',{useTopLinker:false});
+
+
+		// set navigation links to scroll
+		var scrollOffset = 176; // offset for the nav bar
+
+		$('*[data-scrollto]').each(function(){
+			// set scroll link targets
+			var target = $(this).data('scrollto');
+			$(this).scrollto(target,{'offset' : scrollOffset, topCallback: function(){
+				toggleRadioGroup($topLink);
+			}});
+			// create in view elements to trigger nav bar link highlighting
+			var theLink = '*[data-scrollto="'+target+'"]';
+			var thisgroup = $(this).data('radiogroup');
+			$(target).inview(scrollOffset*2,function(){
+				toggleRadioGroup(theLink,thisgroup);
+			});
+
+		});
+
+
+		
+
+
+	});
+
+
+
+
+</script>
+
+	<style>
+	
+	.scroll_container .nav {height: 280px; background-color:#9BBA7D;background-image: url('-../img/opportunity/ic_background.png'); background-repeat: no-repeat;background-position: 50% 0;}
+
+
+
+	.nav .nav_logo {display:none;position:absolute; top: 0px; left: -220px; background-color:#FFFFFF; height:80px; width:220px; ;}
+	.nav .nav_logo a {display:block; margin:24px 8px;}
+	</style>
+
+</head>
+<body>
+
+
+<div id="container">
+
+	<div class="header_content">
+		<!-- Login Bar - START -->
+		<div id="loginbarinclude"></div>
+
+		<!-- Login Bar - END -->
+
+		<!-- Logo Area - START --> 
+		<div id="logoinclude"></div>
+		<!-- Logo Area - END --> 
+		<!-- Logo Area - END --> 
+		<!-- start nav -->
+
+		<!-- Main Navigation - START -->
+			<!-- include mainnav -->
+		<div id="mainnav"></div>
+		<!-- Main Navigation - END -->
+	</div>
+	<!-- end header -->
+
+<!-- main content -->
+
+	<div id="centerrow">
+
+		<!-- side navbar -->
+			<div id="sidenavbar" >
+
+			<ul class="nav rows">
+				<li class="heading">Plan</li>
+				<li>
+					<a href="proto_getting_started.htm">Getting Started</a>
+				</li>
+				<li>
+					<a href="proto_pc.htm">Preferred Client</a>
+				</li>
+				<li class="active">
+					<a href="proto_ic.htm">Independent Consultant</a>
+				</li>
+				<li >
+					<a href="proto_success_plan.htm">Success Plan</a>
+				</li>				
+				<li>
+					<a href="proto_income_calculator.htm">Income Calculator</a>
+				</li>
+
+				<li >
+					<a href="#">Join Now</a>
+				</li>
+			</ul>
+
+
+			</div>
+
+		<!-- center content -->
+		<div id="center_content">
+				<div class="right"><a href="#" class="button primary">Join Now</a></div>
+				<h1 class="space_above">Independent Consultant</h1>
+				
+		
+				<div class="scroll_container">
+					<div class="scroll_fixed">
+						
+						<div class="nav">
+							<div class="nav_logo">
+							<a href="javascript:void(0)" ><img src="../img/arbonne_logo.png" /></a>
+							</div>
+							<div class="nav_block">	
+								<div class="background"></div>
+								<ul>
+								<li data-scrollto="#benefits" data-radiogroup="group1" id="topLink"><div class="inner"><strong>Benefits</strong></div></li>
+								<li data-scrollto="#compensation_summary" data-radiogroup="group1"><div class="inner"><strong>Consultant Compensation Summary</strong></div></li>
+								<li class="spacer"></li>
+								<li data-scrollto="#mercedes-benz" data-radiogroup="group1"><div class="inner"><strong>Mercedes-Benz Bonus</strong></div></li>
+								<li data-scrollto="#host_rewards" data-radiogroup="group1"><div class="inner"><strong>Host Rewards</strong></div></li>
+								<li data-scrollto="#events" data-radiogroup="group1"><div class="inner"><strong>Events</strong></div></li>
+
+								</ul>
+							</div>
+						</div>
+
+					</div>
+
+					<div id="benefits" class="scroll_body row">
+							<div class="col7  gray-background">
+								<div class="inner padded">
+								<h2>Benefits</h2>
+								<ul>
+								<li>Eligible for Independent Consultant specials and incentives</li>
+								<li>Access to Internet Consultant site to manage your business online</li>
+								<li>Sponsor and build your business</li>
+								<li>35% profit on your personal retail sales</li>
+								<li>15% Preferred Client commission on all sales to your Preferred Clients</li>
+								<li>Complimentary product when qualified with $150 in orders during your Start Month</li>
+								<li>Income potential increases as you promote through the Arbonne Success Plan</li>
+								<li>Jewelry, trips and more as recognition for your success</li>
+								<li>Arbonne Vice Presidents can qualify to participate in Mercedes-Benz Cash Bonus Program</li>
+								<li>$15 renewal fee</li>
+								</ul>
+								<h6 class="space_above">Arbonne Special Delivery (ASD)</h6>
+								<p>Automatic delivery of your favorite products every 30, 60 or 90 days</p>
+								</div>
+							</div>
+							<div class="col5">
+								<div class="inner">
+								
+
+
+								</div>
+						</div>
+
+
+					</div>
+
+					<div class="divider"></div>
+
+					<div id="compensation_summary" class="scroll_body row  gray-background">
+							<div class="col7">
+								<div class="inner padded  white-background">
+								<h2>Consultant Compensation Summary</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur
+									adipiscing elit. Integer nec odio. Praesent
+									libero. Sed cursus ante dapibus diam. Sed
+									nisi. Nulla quis sem at nibh elementum
+									imperdiet.</p>
+
+								<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
+										himenaeos. Curabitur sodales ligula in
+										libero. Sed dignissim lacinia nunc.
+										Curabitur tortor. Pellentesque nibh.
+										Aenean quam. In scelerisque sem at
+										dolor. Maecenas mattis. Sed convallis
+										tristique sem. Proin ut ligula vel nunc
+										egestas porttitor. Morbi lectus risus,
+										iaculis vel, suscipit quis, luctus non,
+										massa. Fusce ac turpis quis ligula lacinia
+										aliquet. Mauris ipsum.</p>
+								</div>
+							</div>
+							<div class="col5">
+								<div class="inner">
+
+
+
+								</div>
+						</div>
+
+
+					</div>
+
+
+					<div class="divider"></div>
+
+
+					<div id="mercedes-benz" class="scroll_body row ">
+							<div class="col7">
+								<div class="inner padded gray-background">
+								<h2>Mercedes-Benz Bonus</h2>
+								<p>Lorem ipsum dolor sit amet, consectetur
+									adipiscing elit. Integer nec odio. Praesent
+									libero. Sed cursus ante dapibus diam. Sed
+									nisi. Nulla quis sem at nibh elementum
+									imperdiet.</p>
+
+								<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
+										himenaeos. Curabitur sodales ligula in
+										libero. Sed dignissim lacinia nunc.
+										Curabitur tortor. Pellentesque nibh.
+										Aenean quam. In scelerisque sem at
+										dolor. Maecenas mattis. Sed convallis
+										tristique sem. Proin ut ligula vel nunc
+										egestas porttitor. Morbi lectus risus,
+										iaculis vel, suscipit quis, luctus non,
+										massa. Fusce ac turpis quis ligula lacinia
+										aliquet. Mauris ipsum.</p>
+								</div>
+								
+								</div>
+							</div>
+							<div class="col5">
+								<div class="inner">
+								
+								</div>
+						</div>
+
+				   </div>
+
+					<div class="divider"></div>
+
+
+					<div id="host_rewards" class="scroll_body row scroll_style_odd  gray-background">
+							<div class="col7">
+								<div class="inner padded white-background">
+								<h2>Host Rewards</h2>
+								
+								<p>
+
+As we grow even stronger, we continue to branch out in future-friendly ways, leaving a green legacy for generations to come. Our new One Green Idea program recognizes that growing greener comes through One Green Idea … then another … and another. The program encourages and seeks out green innovations from throughout our Arbonne family.
+
+To submit your One Green Idea send an email to: OneGreenIdea@arbonne.com
+</p>
+								</div>
+							</div>
+							<div class="col5">
+								<div class="inner">
+								
+								</div>
+							</div>
+
+				    </div>
+
+
+					<div class="divider"></div>
+
+
+					<div id="events" class="scroll_body row scroll_style_even">
+							<div class="col7">
+								<div class="inner padded  gray-background">
+								<h2>Events</h2>
+								
+								<p>Lorem ipsum dolor sit amet, consectetur
+									adipiscing elit. Integer nec odio. Praesent
+									libero. Sed cursus ante dapibus diam. Sed
+									nisi. Nulla quis sem at nibh elementum
+									imperdiet.</p>
+
+								<p>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
+										himenaeos. Curabitur sodales ligula in
+										libero. Sed dignissim lacinia nunc.
+										Curabitur tortor. Pellentesque nibh.
+										Aenean quam. In scelerisque sem at
+										dolor. Maecenas mattis. Sed convallis
+										tristique sem. Proin ut ligula vel nunc
+										egestas porttitor. Morbi lectus risus,
+										iaculis vel, suscipit quis, luctus non,
+										massa. Fusce ac turpis quis ligula lacinia
+										aliquet. Mauris ipsum.</p>
+								</div>
+							</div>
+							<div class="col5">
+								<div class="inner">
+								</div>
+							</div>
+
+				    </div>
+		
+
+	
+			</div>
+
+			<div class="spacer" style="height:300px"> </div>
+
+
+
+
+
+
+				<div class="spacer" style="height:300px"> </div>
+
+
+			<div class="row space_before ">&nbsp;</div>
+
+
+		</div>
+		<!-- end center content -->
+	</div>
+
+<!-- end main content -->
+
+<!-- footer -->
+	<div id="footerinclude"></div>
+<!-- end footer -->
+
+</div>
+
+
+
+
+</body>
+</html>

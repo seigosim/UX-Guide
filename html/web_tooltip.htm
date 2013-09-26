@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>UX + Design Guidelines - Web  - Components - Tooltip</title>
+	<link rel="shortcut icon" href="http://www.arbonne.com/favicon.png" type="image/x-icon" />
+
+	<link href="../css/brand.css" rel="stylesheet" type="text/css">
+
+	<link href="../css/ui.css" rel="stylesheet" type="text/css" >
+	<link href="../css/styleguide.css" rel="stylesheet" type="text/css" >
+
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/brand.js"></script>
+<script src="../js/ui.js"></script>
+
+
+	<script src="../js/includes.js"></script>
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+});
+
+
+</script>
+
+
+</head>
+<body>
+
+
+<div id="container">
+
+	<div class="header_content">
+		<!-- Login Bar - START -->
+		<div id="loginbarinclude"></div>
+
+		<!-- Login Bar - END -->
+
+		<!-- Logo Area - START --> 
+		<div id="logoinclude"></div>
+		<!-- Logo Area - END --> 
+		<!-- start nav -->
+
+		<!-- Main Navigation - START -->
+			<!-- include mainnav -->
+		<div id="mainnav"></div>
+		<!-- Main Navigation - END -->
+	</div>
+	<!-- end header -->
+
+<!-- main content -->
+
+	<div id="centerrow">
+
+		<!-- side navbar -->
+		<div id="sidenavinclude"></div>
+
+		<!-- center content -->
+		<div id="center_content">
+			<div class="row space_before">
+				<ul class="breadcrumbs">
+					<li><a href="index.htm">Home</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Web</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Components</a></li>
+					<li class="separator">/</li>
+					<li class="active"><a href="#">Tooltip</a></li>
+				</ul>
+			</div>
+		
+			<div class="row space_after space_before" >
+				<h4 class="space_after">Tooltip</h4>
+					<p>The <strong>Tooltip component</strong> allows you to have help text or expanded descriptive information attached to a link element.</p>
+
+			</div>
+				<h6 class="space_before ">Example:</h6>		
+
+
+				
+
+				<div class="row space_after" style="overflow:visible; height: 60px">
+					<div class="AtoolTip permanent" style="display:block; top:0px ;left: 0px">
+						<div class="inner tip">
+							Some content for the informative tooltip.
+						</div>
+					</div>
+				</div>
+
+				<div class="spacer"></div>
+
+				<div class="row space_after" style="overflow:visible; height: 100px">
+					<div class="AtoolTip right permanent" style="display:block; top:0px;left: 0px">
+						<div class="inner tip">
+							With many lines of text, the tooltip box grows taller but the icon remains centered to the left of the text.
+						</div>
+					</div>
+				</div>
+
+
+				<div class="row space_after" style="overflow:visible; height: 40px">
+					<a href="#" title="Hover for helpful information" rel="tooltip" >Hover Over Me</a>
+					<a href="#" title="Hover for helpful information" rel="tooltip" class="right clickthrough" >Hover Over Me</a>
+				</div>
+
+				<div class="row space_after" style="overflow:visible; height: 40px">
+					<a href="#" title="Click for helpful information" rel="tooltip" class="nohover">Click Me</a>
+					<a href="#" title="Hover for helpful information" rel="tooltip" class="right clickthrough helpicon" ></a>
+				</div>
+
+				<div class="spacer"></div>
+								
+				<h6 class="space_before">Usage:</h6>
+
+				<p>Tooltips can be added to any &lt;a&gt; element. Add a rel="tooltip" and enter the title attribute which will become the tooltip content. The icon will be added automatically. </p>
+
+				<p>Tips appear by default on hover and by clicking. If clicked, you can dismiss the tip by clicking anywhere on the page or press ESC.<p>
+
+				<p>Disable hover by adding <strong>class="nohover"</strong> to the anchor tag.</p>
+
+				<p>By default, the click event on the anchor will be cancelled. If you need the anchor to be clickable, add <strong>class="clickthrough"</strong> to the anchor.</p>
+
+				<p>The tooltip will normally appear to the right side of the link but if it is too close to the edge of the screen, it will adapt to fit.</p>
+
+				<p><strong>Variation:</strong> You can change the style from a tip to error by changing to rel="errortip".</p>
+
+
+<h6 class="space_before">Code Sample:</h6>
+<code><pre>
+&lt;a href="#" title="Hover for helpful information" rel="tooltip" &gt;Hover Over Me&lt;/a&gt;
+
+&lt;a href="#" title="Hover for helpful information" rel="tooltip" class="nohover"&gt;Click Me&lt;/a&gt;
+
+&lt;a href="http://google.com/" title="You can search for websites here" rel="tooltip" class="clickthrough"&gt;Google.com&lt;/a&gt;
+
+</pre></code>						
+
+
+
+
+	
+
+
+				
+
+
+
+
+			</div>
+		
+			<div class="row space_before ">&nbsp;</div>
+
+		</div>
+		<!-- end center content -->
+	</div>
+
+<!-- end main content -->
+
+<!-- footer -->
+	<div id="footerinclude"></div>
+<!-- end footer -->
+
+</div>
+
+
+
+
+</body>
+</html>

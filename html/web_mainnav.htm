@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>UX + Design Guidelines - Web - Main Navigation</title>
+	<link rel="shortcut icon" href="http://www.arbonne.com/favicon.png" type="image/x-icon" />
+
+	<link href="../css/brand.css" rel="stylesheet" type="text/css">
+
+	<link href="../css/ui.css" rel="stylesheet" type="text/css" >
+	<link href="../css/styleguide.css" rel="stylesheet" type="text/css" >
+
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/brand.js"></script>
+<script src="../js/ui.js"></script>
+
+
+	<script src="../js/includes.js"></script>
+
+
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+
+
+		// attach to language selector links 
+		$('.language_selector a').each(function() {
+			var href = $(this).attr('href');
+			var locparts = window.location.match(/(https?:\/\/[^\/]*)([^?|#]*)?(\?[^#]*)?/);
+			var linkparts = href.match(/(https?:\/\/[^\/]*)([^?|#]*)?(\?lang=[^#|&]*)?/);
+
+			if(locparts.length  && linkparts.length){
+				// combine scheme and hostname from the link with the path from the current document location
+				href = linkparts[1] + locparts[2];
+				if(locparts[3] && linkparts[3]) {
+					// replace location lang param with one from link
+					href += locparts[3].replace(/[\?|&]lang=[^&]*/,'');
+					href += linkparts[3].replace('?','&');
+				} else if(locparts[3]) {
+					// append query from location if present
+						href += locparts[3];
+				} else if (linkparts[3]){
+					// append query from link if present
+					href += linkparts[3];
+				}
+				$(this).attr('href', href);
+			}
+		});
+	});
+
+</script>
+
+
+</head>
+<body>
+
+
+<div id="container">
+
+	<div class="header_content">
+		<!-- Login Bar - START -->
+		<div id="loginbarinclude"></div>
+
+		<!-- Login Bar - END -->
+
+		<!-- Logo Area - START --> 
+		<!-- Logo Area - START --> 
+		<div id="logoinclude"></div>
+		<!-- Logo Area - END --> 
+		<!-- Logo Area - END --> 
+		<!-- start nav -->
+
+		<!-- Main Navigation - START -->
+			<!-- include mainnav -->
+		<div id="mainnav"></div>
+		<!-- Main Navigation - END -->
+	</div>
+	<!-- end header -->
+
+<!-- main content -->
+
+	<div id="centerrow">
+
+		<!-- side navbar
+		<div id="sidenavinclude"></div> -->
+
+		<!-- center content -->
+		<div id="center_content_full">
+			<div class="row space_before">
+				<ul class="breadcrumbs">
+					<li><a href="index.htm">Home</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Web</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Sections</a></li>
+					<li class="separator">/</li>
+					<li class="active"><a href="#">Main Navigation</a></li>
+				</ul>
+			</div>
+
+			<div class="row space_after space_before" >
+				<h4>Main Navigation</h4>
+				<div class="column eight">
+					<div class="inner">
+					<p>The Main Navigation menu allows direct access to many areas of the site. Guests see three top-level menu items (Shop, Company and Opportunity) and logged in Consultants see an additional Consultants menu item. Hovering the mouse over the main items switches the subnav bar. Hover over the subnav items to reveal the third-level navigation.</p>
+					<p>Timing of the menu dropdowns has been tuned to allow the mouse pointer to quickly cross over adjacent menu items without switching the submenus inadvertently.</p>
+
+				</div>
+
+				</div>	
+	
+			</div>
+
+			<div class="row space_after space_before overflow-visible" >
+
+
+			<!-- Main Navigation - START -->
+					<div class="main_nav">
+							
+						<dl id="navLinks">
+							<dd id="ShopLink" class="active">			
+								<a href="https://www.arbonne.com/shop_online/shopOnline.asp">Shop</a>
+							</dd>
+							<dd id="CompanyLink" class="">				
+								<a href="https://www.arbonne.com/company/opportunity/discover_arbonne.asp">Company</a>
+							</dd>
+							<dd id="OpportunityLink" class="">				
+								<a href="https://www.arbonne.com/company/opportunity/">Opportunity</a>
+							</dd>
+							<dd id="ConsultantsLink" class="tab_consultant">
+								<a href="https://www.arbonne.com/ic/">Consultants</a>
+							</dd>
+						</dl>
+
+						<ul id="navTabs"  class="tabs-content twelve columns tabs_outer">		
+								<li class="active row" id="ShopTab">
+									<ul class="nav-bar">												
+											<li class="has-flyout">
+												<a href="https://www.arbonne.com/#">Skincare</a>
+													<div class="flyout subnav_five" style="display:none;">					
+														<div class="submenu_items row">
+																<div class="two columns one_fifth no_margins"> 
+																	<h5>Brand/Collections</h5>	
+																	<ul>	
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=51">RE9 Advanced<sub>&reg;</sub></a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=52">RE9 Advanced<sub>&reg;</sub> for Men</a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=53">FC5<sub>&reg;</sub></a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=54">Arbonne Clear Advantage</a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=55">Revel&acirc;ge</a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=56">Arbonne Intelligence<sup>&reg;</sup></a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=57">Calm</a>
+																			</li>
+																			
+																	</ul>
+																</div>
+																	<div class="two columns one_fifth no_margins"> 
+																	<h5>Category</h5>	
+																	<ul>	
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=35">Cleansers + Toners</a>
+																			</li>
+																		
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=36">Moisturizers</a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=37">Treatment</a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=38">Grooming</a>
+																			</li>
+																			
+																	</ul>
+																</div>
+																<div class="two columns one_fifth no_margins"> 
+																	<h5>Benefit/Concern</h5>	
+																	<ul>	
+																	<li>
+																		<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=40">Anti-Aging</a>
+																	</li>
+																	<li>
+																		<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=41">Brightening</a>
+																	</li>
+																	<li>
+																		<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=42">Everyday Basics</a>
+																	</li>
+																	<li>
+																		<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=43">Targeted Solutions</a>
+																	</li>
+																	<li>
+																		<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=44">Sensitive Skin</a>
+																	</li>
+																	<li>
+																		<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=45">Acne-Prone</a>
+																	</li>
+																			
+																	</ul>
+																</div>
+																<div class="two columns one_fifth no_margins"> 
+																	<h5>Skin Type</h5>	
+																	<ul>	
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=47">All Skin Types</a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=48">Normal/Dry</a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=49">Oily/Combination</a>
+																			</li>
+																	</ul>
+																</div>
+																<div class="two columns one_fifth no_margins"> 
+																	<h5>Specials</h5>	
+																	<ul>	
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=62">Sets</a>
+																			</li>
+																	</ul>
+																</div>
+														</div>						
+													<div class="row subnav_footer">
+															<div class="footer_ad four columns"> 
+																<div class="inner">
+																	<div class="footer_img_block">
+																			<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=62"><img src='https://www.arbonne.com/cs_static/ccurl/340/152/subnavpromo_skin_RE9-set.jpg' alt="arbAltText"/></a>
+																		
+																	</div>
+																	<div class="footer_copy_block body_copy">
+																		<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=62">
+																				<span style="font-size:10px;"><strong>RE9 Advanced<sub>&reg;</sub>Set</strong><br />Our anti-aging skincare regimen in one amazing set.</span>
+																			
+																		</a>
+																	</div>
+																</div>
+															</div>
+															<div class="footer_ad four columns">
+																<div class="inner">
+																	<div class="footer_img_block">
+																			<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=62"><img src='https://www.arbonne.com/cs_static/ccurl/613/610/subnavpromo_skin_RE9-ultrasoft.jpg' alt="arbAltText"/></a>
+																		
+																	</div>
+																	<div class="footer_copy_block body_copy">
+																		<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=62">
+																				<span style="font-size:9px;"><strong>RE9 Advanced<sub>&reg;</sub> Ultra Soft Skin Set &ndash; PwP</strong><br />Ultra soft, ultra smooth. Only $25 with every $150 SRP purchase.</span>
+																			
+																		</a>
+																	</div>
+																</div>
+															</div>
+															<div class="footer_ad four columns"> 
+																<div class="inner">
+																	<div class="footer_img_block">
+																			<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=62"><img src='https://www.arbonne.com/cs_static/ccurl/690/484/subnavpromo_skin_RE9-travel.jpg' alt="arbAltText"/></a>
+																		
+																	</div>
+
+																	<div class="footer_copy_block body_copy">
+																		<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=62">
+																			
+																				
+																				<span style="font-size:9px;"><strong>RE9 Advanced<sub>&reg;</sub> Travel Set &ndash; PwP</strong><br />Vacation package: 11 products for just $48 with every $250 SRP purchase.</span>
+																			
+																		</a>
+																	</div>
+																</div>
+															</div>
+													</div>
+												</div>
+											</li>												
+											<li class="has-flyout">
+												<a href="https://www.arbonne.com/#">Bath & Body</a>
+													<div class="flyout subnav_four" style="display:none;">
+														<div class="submenu_items row">
+																<div class="three columns no_margins"> 
+																	<h5>Brand/Collections</h5>	
+																	<ul>	
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=76">RE9 Advanced<sub>&reg;</sub></a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=77">FC5<sub>&reg;</sub></a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=78">ABC Arbonne Baby Care<sup>&reg;</sup></a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=79">Shea Butter</a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=80">SeaSource Detox Spa<sup>&reg;</sup></a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=81">Arbonne Aromassentials<sup>&reg;</sup></a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showitem.asp?ProductId=1169&menuId=250&withLinks=1">Mother's Day Gift Set</a>
+																			</li>
+																	</ul>
+																</div>
+														<div class="three columns no_margins"> 				
+															<h5>Category</h5>	
+															<ul>	
+																<li>
+																	<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=66">Washes + Scrubs + Soaks</a>
+																</li>
+																<li>
+																	<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=67">Lotions + Moisturizers</a>
+																</li>
+																<li>
+																	<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=68">Body Treatments</a>
+																</li>
+																<li>
+																	<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=69">Personal Care</a>
+																</li>
+															</ul>
+														</div>
+														<div class="three columns no_margins"> 
+															<h5>Benefit/Concern</h5>	
+															<ul>	
+																<li>
+																	<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=71">Anti-Aging</a>
+																</li>
+																<li>
+																	<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=72">Aromatherapy</a>
+																</li>
+																<li>
+																	<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=73">Spa</a>
+																</li>
+																<li>
+																	<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=74">Moisturizers</a>
+																</li>	
+															</ul>
+														</div>
+														<div class="three columns no_margins"> 
+																		<h5>Specials</h5>	
+																	<ul>	
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=87">Sets</a>
+																			</li>
+																			
+																	</ul>
+														</div>
+													</div>						
+													<div class="row subnav_footer">
+															<div class="footer_ad four columns"> 
+																<div class="inner">
+																	<div class="footer_img_block">
+																			<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=87"><img src='https://www.arbonne.com/cs_static/ccurl/261/744/subnavpromo_bathbody_FC5-coolingfoot.jpg' alt="arbAltText"/></a>
+																		
+																	</div>
+																	<div class="footer_copy_block body_copy">
+																		<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=87">
+																				<span style="font-size:10px;"><strong>FC5<sub>&reg;</sub> Cooling Foot Cr&egrave;me &ndash; PwP</strong><br />Cool price: Only $9 with every purchase of Ultra-Hydrating Hand Cr&egrave;me.</span>
+
+																			
+																		</a>
+																	</div>
+																</div>
+															</div>
+															<div class="footer_ad four columns"> 
+																<div class="inner">
+																	<div class="footer_img_block">
+																			<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=87"><img src='https://www.arbonne.com/cs_static/ccurl/704/54/subnavpromo_bathbody_FC5-exfoliatingcreme.jpg' alt="arbAltText"/></a>
+																		
+																	</div>
+
+																	<div class="footer_copy_block body_copy">
+																		<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=87">
+																			
+																				
+																				<span style="font-size:9px;"><strong>FC5<sub>&reg;</sub> Exfoliating Body Scrub &ndash; PwP</strong><br />Just $12 with every FC5 Shower Set purchase. Shower and scrub happy!</span>
+																			
+																		</a>
+																	</div>
+																</div>
+															</div>
+															<div class="footer_ad four columns"> 
+																<div class="inner">
+																	<div class="footer_img_block">
+																			<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=87"><img src='https://www.arbonne.com/cs_static/ccurl/250/898/subnavpromo_bathbody_FC5-travel.jpg' alt="arbAltText"/></a>
+																		
+																	</div>
+
+																	<div class="footer_copy_block body_copy">
+																		<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=87">
+																			
+																				
+																				<span style="font-size:9px;"><strong>FC5<sub>&reg;</sub> Exfoliating Body Scrub &ndash; PwP</strong><br />Your perfect travel companion, only $22 with every $150 SRP purchase.</span>
+
+																			
+																		</a>
+																	</div>
+																</div>
+															</div>
+													</div>
+												</div>
+											</li>											
+											<li class="has-flyout">
+												<a href="https://www.arbonne.com/#">Hair</a>
+													<div class="flyout subnav_four" style="display:none;"> 
+														<div class="submenu_items row">
+																<div class="three columns no_margins"> 
+																	<h5>Brand/Collections</h5>	
+																	<ul>	
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=104">Pure Vibrance<sub>&trade;</sub></a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=105">Arbonne Intelligence<sup>&reg;</sup></a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=106">FC5<sub>&reg;</sub></a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=107">SeaSource Detox Spa<sup>&reg;</sup></a>
+																			</li>
+																	</ul>
+																</div>
+																<div class="three columns no_margins"> 
+																	<h5>Category</h5>	
+																	<ul>	
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=91">Shampoo</a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=92">Conditioner</a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=93">Styling</a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=94">Hair Treatment</a>
+																			</li>
+																			
+																	</ul>
+																</div>
+																<div class="three columns no_margins"> 
+																	<h5>Benefit/Concern</h5>	
+																	<ul>	
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=96">Everyday Basics</a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=97">Color Retention</a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=98">Scalp Therapy</a>
+																			</li>
+																			
+																	</ul>
+																</div>
+																<div class="three columns no_margins"> 
+																	<h5>Hair Type</h5>	
+																	<ul>	
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=100">Color Treated Hair</a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=101">Dry or Damaged</a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=102">Fine or Limp</a>
+																			</li>
+																	</ul>
+																</div>
+														</div>						
+													<div class="row subnav_footer">
+															<div class="footer_ad six columns"> 
+																<div class="inner">
+																	<div class="footer_img_block">
+																			<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=102"><img src='https://www.arbonne.com/cs_static/ccurl/488/730/subnavpromo_hair_FC5-travel.jpg' alt="arbAltText"/></a>
+																		
+																	</div>
+
+																	<div class="footer_copy_block body_copy">
+																		<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=102">
+																				<span style="font-size:9px;"><strong>FC5<sub>&reg;</sub> Travel Fresh Set &ndash; PwP</strong><br />Great hair, small price. Only $22 with every $150 SRP purchase.</span>
+																			
+																		</a>
+																	</div>
+																</div>
+															</div>
+															<div class="footer_ad six columns"> 
+																<div class="inner">
+																	<div class="footer_img_block">
+																			<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=102"><img src='https://www.arbonne.com/cs_static/ccurl/263/568/subnavpromo_hair_SeaSource-hairmask.jpg' alt="arbAltText"/></a>
+																	</div>
+																	<div class="footer_copy_block body_copy">
+																		<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=102">
+																				<span style="font-size:9px;"><strong>SeaSource Detox Spa<sup>&reg;</sup> Fortifying Hair Mask</strong><br />Sea the shine in your hair with the ocean&rsquo;s powerful, hydrating botanicals.</span>
+																			
+																		</a>
+																	</div>
+																</div>
+															</div>
+													</div>
+												</div>
+											</li>												
+											<li class="has-flyout">
+												<a href="https://www.arbonne.com/#">Sun</a>
+													<div class="flyout subnav_two" style="display:none;">				
+														<div class="submenu_items row">
+																<div class="six columns no_margins"> 
+																		<h5>Brand/Collections</h5>	
+																	<ul>	
+																		<li>
+																			<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=121">BefoRE Sun</a>
+																		</li>
+																		<li>
+																			<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=245">ABC Arbonne Baby Care<sup>&reg;</sup></a>
+																		</li>
+																	</ul>
+																</div>
+																<div class="six columns no_margins"> 
+																	<h5>Category</h5>	
+																	<ul>	
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=116">Protect</a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=117">Sunless</a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=118">After Sun</a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=119">Baby</a>
+																			</li>
+																	</ul>
+																</div>
+														</div>						
+													<div class="row subnav_footer">					
+																<div class="footer_ad">
+																<div class="inner">
+																	<div class="footer_img_block">
+																			<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=119"><img src='https://www.arbonne.com/cs_static/ccurl/977/746/subnavpromo_sun_RE9-RestorativeDayCreme.jpg' alt="arbAltText"/></a>
+																		
+																	</div>
+
+																	<div class="footer_copy_block body_copy">
+																		<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=119">
+																			
+																				<span style="font-size:9px;"><strong>RE9 Advanced<sub>&reg;</sub> Restorative Day Cr&egrave;me Broad Spectrum SPF 20 Sunscreen</strong><br />Achieve smooth results with a rich, moisturizing formula with sun protection.</span>
+																			
+																		</a>
+																	</div>
+																</div>
+															</div>
+													</div>
+												</div>
+											</li>											
+											<li class="has-flyout">
+												<a href="https://www.arbonne.com/#">Cosmetics</a>
+													<div class="flyout subnav_two" style="display:none;"> 				
+														<div class="submenu_items row">
+																	<div class="six columns no_margins"> 
+																	<h5>Get the Look</h5>	
+																	<ul>	
+																		<li>
+																			<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=161">Summer</a>
+																		</li>
+																			
+																	</ul>
+																	</div>				
+																<div class="six columns no_margins"> 
+
+																	<h5>Category</h5>	
+																	<ul>	
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=151">Face</a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=152">Cheeks</a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=153">Eyes</a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=154">Lips</a>
+																			</li>
+																			
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=155">Palettes & Sets</a>
+																			</li>
+																			<li>
+																				<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=156">Accessories</a>
+																			</li>
+																			
+																	</ul>
+																</div>
+														</div>			
+																	
+													<div class="row subnav_footer">
+															<div class="footer_ad">
+																<div class="inner">
+																	<div class="footer_img_block">
+																			<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=156"><img src='https://www.arbonne.com/cs_static/ccurl/703/640/subnavpromo-cosmetics.jpg' alt="arbAltText"/></a>
+																		
+																	</div>
+
+																	<div class="footer_copy_block body_copy">
+																		<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=156">
+																			
+																				
+																				<span style="font-size:9px;"><strong>Spring Color</strong><br />Get spring-ready with a sun-kissed glow, coral lips and vibrant eye looks.</span>
+																			
+																		</a>
+																	</div>
+																</div>
+															</div>
+													</div>
+
+												</div>
+											</li>											
+											<li class="has-flyout">
+												<a href="https://www.arbonne.com/#">Fragrance</a>
+												<div class="flyout subnav_one" style="display:none;">	
+														<div class="submenu_items row">
+															<div class="twelve columns no_margins">
+
+																<h5>Category</h5>	
+																<ul>	
+					
+																	<li>
+																		<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=172">Women</a>
+																	</li>
+																	<li>
+																		<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=173">Men</a>
+																	</li>
+																	
+																</ul>
+															</div>
+														</div>					
+													<div class="row subnav_footer">
+														<div class="footer_ad">
+															<div class="inner">
+																<div class="footer_img_block">
+																			<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=173"><img src='https://www.arbonne.com/cs_static/ccurl/413/1003/subnavpromo_fragrance_angel.jpg' alt="arbAltText"/></a>
+																		
+																</div>
+																<div class="footer_copy_block body_copy">
+																	<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=173"><span style="font-size:9px;"><strong>Arbonne The Angel<sup>TM</sup> Fragrance</strong><br />
+																				Fill your senses, fill your heart. A portion of proceeds goes&nbsp;to our foundation.</span>
+																			
+																	</a>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+										</li>				
+										<li class="has-flyout">
+											<a href="https://www.arbonne.com/#">Nutrition</a>
+											<div class="flyout subnav_four" style="display:none;">
+												<div class="submenu_items row">			
+													<div class="three columns no_margins"> 
+														<h5>Brand/Collections</h5>	
+														<ul>	
+															<li>
+																<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=203">Fit Essentials</a>
+															</li>
+															<li>
+																<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=204">Daily Essentials</a>
+															</li>
+															
+														</ul>
+													</div>
+
+													<div class="three columns no_margins"> 
+
+														<h5>Category</h5>	
+														<ul>		
+															<li>
+																<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=184">Vitamins/Minerals</a>
+															</li>
+															<li>
+																<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=185">Protein</a>
+															</li>
+															<li>
+																<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=186">Fiber</a>
+															</li>
+															<li>
+																<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=187">Omega-3</a>
+															</li>
+															
+															<li>
+																<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=188">Antioxidants</a>
+															</li>
+															<li>
+																<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=189">Healthy Snacks & Beverages</a>
+															</li>
+															<li>
+																<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=190">Fitness</a>
+															</li>
+															<li>
+																<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=191">Men</a>
+															</li>
+														
+															<li>
+																<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=192">Women</a>
+															</li>
+															
+															<li>
+																<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=193">Kids/Teens</a>
+															</li>
+
+														</ul>
+													</div>
+													<div class="three columns no_margins"> 
+														<h5>Benefit/Concern</h5>	
+														<ul>		
+															<li>
+																<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=195">Immune Support</a>
+															</li>
+															<li>
+																<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=196">Bones and Joints</a>
+															</li>
+															<li>
+																<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=197">Digestion</a>
+															</li>
+															<li>
+																<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=198">Energy</a>
+															</li>
+															<li>
+																<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=199">Cleansing</a>
+															</li>
+															<li>
+																<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=200">Skin Support</a>
+															</li>
+															<li>
+																<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=201">Weight Management</a>
+															</li>
+														</ul>
+													</div>
+													<div class="three columns no_margins"> 				
+														<h5>Specials</h5>	
+														<ul>	
+															<li>
+																<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=209">Sets</a>
+															</li>
+														</ul>
+													</div>
+												</div>						
+												<div class="row subnav_footer">
+														<div class="footer_ad four columns"> 
+															<div class="inner">
+																<div class="footer_img_block">
+																		<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=209"><img src='https://www.arbonne.com/cs_static/ccurl/86/948/subnavpromo_nutrition_Essentials-MetabolismBoost.jpg' alt="arbAltText"/></a>
+																	
+																</div>
+
+																<div class="footer_copy_block body_copy">
+																	<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=209">
+																		
+																			
+																			<span style="font-size:9px;"><strong>Arbonne Essentials<sub>&reg;</sub> Metabolism Boost &ndash; PwP</strong><br />Get the boost. Only $23 when you purchase a 30-Day Feeling Fit Kit.</span>
+																		
+																	</a>
+																</div>
+															</div>
+														</div>
+													<div class="footer_ad four columns"> 	
+														<div class="inner">
+															<div class="footer_img_block">
+
+																			<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=209"><img src='https://www.arbonne.com/cs_static/ccurl/326/101/subnavpromo_nutrition_Essentials-7DayCleanse.jpg' alt="arbAltText"/></a>
+															</div>
+															<div class="footer_copy_block body_copy">
+																		<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=209">
+																				<span style="font-size:9px;"><strong>Arbonne Essentials<sub>&reg;</sub> 7-Day Body Cleanse &ndash; PwP</strong><br />
+																				Do the detox. Just $25 when you purchase a 30-Day Feeling Fit Kit.</span>	
+																</a>
+															</div>
+														</div>
+													</div>
+													<div class="footer_ad four columns"> 
+														<div class="inner">
+															<div class="footer_img_block">
+																			<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=209"><img src='https://www.arbonne.com/cs_static/ccurl/532/356/subnavpromo_nutrition_Essentials-NutritionBars.jpg' alt="arbAltText"/></a>
+															</div>
+															<div class="footer_copy_block body_copy">
+																<a href="https://www.arbonne.com/shop_online/showCatalog.asp?category=209">	
+																	<span style="font-size:9px;"><strong>Nutrition Bars</strong><br />
+																	Unwrap a delicious chocolate or fruit flavored snack, packed with protein, fiber and vitamins.</span>		
+																</a>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>				
+									</ul>
+								</li>
+								<li class="row" id="CompanyTab">
+									<ul class="nav-bar">
+										<li class="has-flyout">
+											<a href="https://www.arbonne.com/#">Corporate Information</a>
+											<div class="flyout subnav_two" style="display:none;">
+												<div class="submenu_items row">
+													<div class="six columns no_margins"> 
+
+														<h5>Corporate Information</h5>	
+														<ul>	
+															<li>
+																<a href="https://www.arbonne.com/company/info/team.asp">Home Office Executive Team</a>
+															</li>
+															<li>
+																<a href="https://www.arbonne.com/company/opportunity/discover_arbonne.asp">Discover Arbonne</a>
+															</li>
+															<li>
+																<a href="https://www.arbonne.com/company/info/home_office.asp">Facility Tours</a>
+															</li>
+															<li>
+																<a href="https://www.arbonne.com/company/manifesto.asp">Pure Arbonne Manifesto</a>
+															</li>
+															<li>
+																<a href="https://www.arbonne.com/company/green/index.asp">Arbonne Ever Green Commitment</a>
+															</li>
+															<li>
+																<a href="https://www.arbonne.com/products/index.asp">Arbonne Ingredient Policy</a>
+															</li>			
+														</ul>
+													</div>
+													<div class="six columns no_margins">
+														<h5>&nbsp;</h5>	
+														<ul>			
+															<li>
+																<a href="https://www.arbonne.com/company/opportunity/ethics.asp">Code of Ethics</a>
+															</li>
+															<li>
+																<a href="https://www.arbonne.com/company/info/inthenews.asp">News Room</a>
+															</li>
+															<li>
+																<a href="https://www.arbonne.com/products/ingredient.asp">Glossary of Terms</a>
+															</li>
+															<li>
+																<a href="https://www.arbonne.com/company/opportunity/people/index.asp">Arbonne People</a>
+															</li>
+															<li>
+																<a href="https://www.arbonne.com/company/opportunity/industry.asp">About the Industry</a>
+															</li>
+															<li>
+																<a href="https://www.arbonne.com/http://jobsearch.monster.com/Search.aspx?co=xarbonnex"target="_blank" class="linkOpensNewWindow">Employment Opportunities</a>
+															</li>
+														</ul>
+													</div>
+												</div>						
+												<div class="row subnav_footer">
+												</div>
+											</div>
+										</li>												
+										<li class="has-flyout">
+											<a href="https://www.arbonne.com/#">Events</a>
+											<div class="flyout subnav_one" style="display:none;">			
+												<div class="submenu_items row">
+													<div class="twelve columns no_margins">
+														<h5>Events</h5>	
+														<ul>						
+															<li>
+																<a href="https://www.arbonne.com/company/events/gtc.asp">GTC</a>
+															</li>
+															<li>
+																<a href="https://www.arbonne.com/company/events/photo_albums.asp">Photo Albums</a>
+															</li>
+															<li>
+																<a href="https://www.arbonne.com/company/multimedia.asp">Multimedia</a>
+															</li>
+														</ul>
+													</div>
+												</div>						
+												<div class="row subnav_footer">
+												</div>
+											</div>
+										</li>												
+										<li class="has-flyout">
+											<a href="https://www.arbonne.com/#">International Markets</a>
+											<div class="flyout subnav_one" style="display:none;">						
+												<div class="submenu_items row">
+													<div class="twelve columns no_margins">
+														<h5>International Markets</h5>	
+														<ul>	
+															<li>
+																<a href="https://www.arbonne.com/company/international/au/">Australia</a>
+															</li>
+															<li>
+																<a href="https://www.arbonne.com/company/international/ca/">Canada</a>
+															</li>
+															<li>
+																<a href="https://www.arbonne.com/company/international/uk/">United Kingdom</a>
+															</li>
+														</ul>
+													</div>
+															
+												</div>						
+												<div class="row subnav_footer">
+												</div>
+											</div>
+										</li>						
+									</ul>
+								</li>
+								<li class="row" id="OpportunityTab">
+									<ul class="nav-bar">											
+											<li class="has-flyout">
+												<a href="https://www.arbonne.com/#">Start a Business</a>		
+													<div class="flyout subnav_one" style="display:none;">						
+														<div class="submenu_items row">	
+															<div class="twelve columns no_margins">
+																<h5>Start a Business</h5>	
+																<ul>	
+																	<li>
+																		<a href="https://www.arbonne.com/company/opportunity/preferred_advantage.asp">Preferred Advantage</a>
+																	</li>
+																	<li>
+																		<a href="https://www.arbonne.com/opportunity.asp">Arbonne Opportunity Video</a>
+																	</li>
+																	<li>
+																		<a href="https://www.arbonne.com/registration/registrationMain.asp">Be Your Own Boss</a>
+																	</li>
+																	<li>
+																		<a href="https://www.arbonne.com/company/opportunity/startnow.asp">Getting Started</a>
+																	</li>
+																	<li>
+																		<a href="https://www.arbonne.com/company/opportunity/">The Arbonne Opportunity</a>
+																	</li>
+																	<li>
+																		<a href="https://www.arbonne.com/company/opportunity/host_rewards.asp">Host Rewards Program</a>
+																	</li>
+																	<li>
+																		<a href="https://www.arbonne.com/company/opportunity/success_plan.asp">Success Plan</a>
+																	</li>
+																	<li>
+																		<a href="https://www.arbonne.com/company/opportunity/discover_arbonne.asp">Discover Arbonne</a>
+																	</li>														
+																	<li>
+																		<a href="https://www.arbonne.com/company/info/iccs.asp">Consultant Compensation Summary</a>
+																	</li>	
+																</ul>
+															</div>
+														</div>						
+													<div class="row subnav_footer">
+													</div>
+												</div>
+											</li>												
+											<li class="has-flyout">
+												<a href="https://www.arbonne.com/#">Share Success</a>
+												<div class="flyout subnav_one" style="display:none;">						
+													<div class="submenu_items row">	
+														<div class="twelve columns no_margins">
+															<h5>Share Success</h5>	
+															<ul>		
+																<li>
+																	<a href="https://www.arbonne.com/company/opportunity/people/arbonne-people.asp">Arbonne Success Stories</a>
+																</li>
+																<li>
+																	<a href="https://www.arbonne.com/transform/">My Life, Transformed</a>
+																</li>
+																<li>
+																	<a href="https://www.arbonne.com/company/events/photo_albums.asp">Photo Albums</a>
+																</li>
+																<li>
+																	<a href="https://www.arbonne.com/pluggedin/episode10.asp" target="_blank" class="linkOpensNewWindow">Plugged In</a>
+																</li>		
+															</ul>
+														</div>
+													</div>						
+													<div class="row subnav_footer">
+													</div>
+												</div>
+											</li>												
+											<li class="has-flyout">
+										<a href="https://www.arbonne.com/#">Give Back</a>
+										<div class="flyout subnav_one" style="display:none;">						
+											<div class="submenu_items row">	
+												<div class="twelve columns no_margins">
+													<h5>Give Back</h5>	
+													<ul>	
+														<li>
+															<a href="https://www.arbonne.com/http://arbonnefoundation.org/" target="_blank" class="linkOpensNewWindow">Arbonne Charitable Foundation</a>
+														</li>
+														<li>
+															<a href="https://www.arbonne.com/https://arbonnefoundation.org/give/" target="_blank" class="linkOpensNewWindow">How To Give</a>
+														</li>
+														<li>
+															<a href="https://www.arbonne.com/https://arbonnefoundation.org/give/" target="_blank" class="linkOpensNewWindow">Donations at Work</a>
+														</li>
+													</ul>
+												</div>
+											</div>						
+											<div class="row subnav_footer">
+											</div>
+										</div>
+									</li>						
+								</ul>
+							</li>
+							<li class="row" id="ConsultantsTab">
+								<ul class="nav-bar">											
+									<li class="has-flyout">
+										<a href="https://www.arbonne.com/#">Tools</a>
+										<div class="flyout subnav_two" style="display:none;">					
+											<div class="submenu_items row">
+												<div class="six columns no_margins"> 
+													<h5>Tools</h5>	
+													<ul>	
+															
+														<li>
+															<a href="https://www.arbonne.com/icOnline/stats/">WebStats</a>
+														</li>
+														<li>
+															<a href="https://www.arbonne.com/cm/a/hostrewards/">Host Rewards</a>
+														</li>
+														<li>
+															<a href="https://www.arbonne.com/javascript:void(0);" onclick="loginIntoBloomfire();" class="linkOpensNewWindow">The Source</a>
+														</li>
+														<li>
+															<a href="https://www.arbonne.com/ic/tools/contact.asp">Contact Field Development</a>
+														</li>
+
+													</ul>
+												</div>
+												<div class="six columns no_margins"> 
+													<h5>Sponsoring</h5>	
+													<ul>			
+														<li>
+															<a href="https://www.arbonne.com/icOnline/conLead/conLeadMain.asp">Registration Codes How - To</a>
+														</li>
+														<li>
+															<a href="https://www.arbonne.com/icOnline/conLead/conLeadAdd.asp">Generate New Registration Code</a>
+														</li>
+														<li>
+															<a href="https://www.arbonne.com/icOnline/conLead/conLeadMaint.asp">Previously Generated Codes</a>
+														</li>
+														<li>
+															<a href="https://www.arbonne.com/ic/tools/global/index.asp">Global Sponsoring Info</a>
+														</li>
+																		
+													</ul>
+												</div>	
+											</div>						
+											<div class="row subnav_footer">		
+											</div>
+										</div>
+									</li>												
+									<li class="has-flyout">
+										<a href="https://www.arbonne.com/#">Meetings & Presentations</a>
+										<div class="flyout subnav_two" style="display:none;">			
+											<div class="submenu_items row">
+												<div class="six columns no_margins"> 
+													<h5>Field Meetings</h5>	
+													<ul>	
+														<li>
+															<a href="https://www.arbonne.com/ic/events/meetingform.asp?i=onetime">Submit a One-Time Field Meeting</a>
+														</li>
+														<li>
+															<a href="https://www.arbonne.com/ic/events/meetingform.asp?i=recurring">Submit a Recurring Field Meeting</a>
+														</li>
+														<li>
+															<a href="https://www.arbonne.com/ic/events/meetingform.asp?i=recurring">Contact Field Meetings</a>
+														</li>
+													</ul>
+												</div>
+												<div class="six columns no_margins"> 		
+													<h5>Mercedes-Benz Presentations</h5>	
+													<ul>		
+														<li>
+															<a href="https://www.arbonne.com/ic/events/mbPresentations.asp">Mercedes-Benz Presentations</a>
+														</li>				
+														<li>
+															<a href="https://www.arbonne.com/ic/events/meetingform.asp?i=benz">Submit a Mercedes-Benz Presentation</a>
+														</li>
+													</ul>
+												</div>
+											</div>						
+											<div class="row subnav_footer">	
+											</div>
+										</div>
+									</li>		
+								</ul>
+							</li>				
+						</ul>
+					</div>	
+					<!-- end nav -->
+
+
+			</div>
+
+		
+			<div class="row space_before ">&nbsp;</div>
+
+		</div>
+		<!-- end center content -->
+	</div>
+
+<!-- end main content -->
+
+<!-- footer -->
+	<div id="footerinclude"></div>
+<!-- end footer -->
+
+</div>
+
+
+
+
+</body>
+</html>

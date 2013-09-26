@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>UX + Design Guidelines - Web Components - Video Tab</title>
+	<link rel="shortcut icon" href="http://www.arbonne.com/favicon.png" type="image/x-icon" />
+
+  
+	<link href="../css/brand.css" rel="stylesheet" type="text/css">
+
+	<link href="../css/ui.css" rel="stylesheet" type="text/css" >
+	<link href="../css/styleguide.css" rel="stylesheet" type="text/css" >
+
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/brand.js"></script>
+	<script src="../js/ui.js"></script>
+
+
+	<script src="../js/includes.js"></script>
+
+
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+	
+	});
+
+</script>
+
+
+</head>
+<body>
+
+
+<div id="container">
+
+	<div class="header_content">
+		<!-- Login Bar - START -->
+		<div id="loginbarinclude"></div>
+
+		<!-- Login Bar - END -->
+
+		<!-- Logo Area - START --> 
+		<div id="logoinclude"></div>
+		<!-- Logo Area - END --> 
+		<!-- start nav -->
+
+		<!-- Main Navigation - START -->
+			<!-- include mainnav -->
+		<div id="mainnav"></div>
+		<!-- Main Navigation - END -->
+	</div>
+	<!-- end header -->
+
+<!-- main content -->
+
+	<div id="centerrow">
+
+		<!-- side navbar -->
+		<div id="sidenavinclude"></div>
+
+		<!-- center content -->
+		<div id="center_content">
+			<div class="row space_before">
+				<ul class="breadcrumbs">
+					<li><a href="index.htm">Home</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Web</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Components</a></li>
+					<li class="separator">/</li>
+					<li class="active"><a href="#">Video Tab</a></li>
+				</ul>
+			</div>
+
+			<div class="row space_after space_before overflow-visible" >
+				<h4 class="space_after">Video Tab</h4>
+					<p></p>
+
+	
+				<div class="row space_after" style="height:450px;overflow:visible" >
+				<h6 class="space_before ">Example:</h6>		
+				<ul  class="tabgroup columns" >
+					<li class="videoTab">
+						<a href="javascript:void(0)" class="title">Videos</a>
+						<div class="body"  >
+								<div class="videoContainer">
+									<h5>Videos</h5>
+									<div class="videoPlayer">
+										<iframe id="YTFrame"  width="100%" height="100%" src="" frameborder="0" allowfullscreen></iframe>
+									</div>
+								</div>
+								<div class="videoLinksPane">
+									<a class="up arrow"></a>
+									<div class="videoList">
+										<a class="youtubeLink" href="http://www.youtube.com/watch?v=vAR6KRV2sIo" title="Watch Video">The Arbonne Opportunity</a>
+										<a class="youtubeLink" href="http://www.youtube.com/watch?v=ID3W4kVBDIA" title="Watch Video">We Are Arbonne</a>
+										<a class="youtubeLink" href="http://www.youtube.com/watch?v=cgG3KefE5bI" title="Watch Video">Arbonne Essentials</a>
+										<a class="youtubeLink" href="http://www.youtube.com/watch?v=ZtXOU5hoPms" title="Watch Video">Pure Vibrance</a>
+										<a class="youtubeLink" href="http://www.youtube.com/watch?v=HtPNJYBVRbc" title="Watch Video">Arbonne Essentials - 30 Days to Fit</a>
+										<a class="youtubeLink" href="http://www.youtube.com/watch?v=zblWjr62dfA" title="Watch Video">The Millionaire Mom | Adventures in Arbonne</a>
+										<a class="youtubeLink" href="http://www.youtube.com/watch?v=ZXgtH5lN-as" title="Watch Video">The Roller Queen | Adventures in Arbonne</a>
+									</div>
+									<a class="down arrow"></a>
+								</div>
+						</div>	
+					</li>									
+				</ul>	
+
+			</div>
+				<div class="spacer"></div>
+
+				<h6 class="space_before">Usage:</h6>
+						<ul>
+							<li>Inside the tab body, add the video player containers as shown in the example code.</li>
+							<li>In the videoList container, add all the video links with the href attributes pointing to the YouTube page. Each link requires a class="youtubelink" to automatically insert the thumbnail image and to allow it to play inside the tab. Otherwise it will be an external link.</li>
+							<li>The video title is required for each of the video links.</li>
+							<li>The interface can support any number of videos and will scroll 3 thumbnails at a time.</li>	
+						</ul>
+
+								<h6 class="space_before">Code Sample:</h6>
+<code><pre>
+&lt;ul  class="tabgroup columns" &gt;
+ &lt;li class="videoTab"&gt;
+  &lt;a href="javascript:void(0)" class="title"&gt;Videos&lt;/a&gt;
+  &lt;div class="body"  &gt;
+   &lt;div class="videoContainer"&gt;
+    &lt;h5&gt;Videos&lt;/h5&gt;
+     &lt;div class="videoPlayer"&gt;
+      &lt;iframe id="YTFrame"  width="100%" height="100%" src="" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+     &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="videoLinksPane"&gt;
+     &lt;a class="up arrow"&gt;&lt;/a&gt;
+     &lt;div class="videoList"&gt;
+      &lt;a class="youtubeLink" href="http://www.youtube.com/watch?v=vAR6KRV2sIo" title="Watch Video"&gt;The Arbonne Opportunity&lt;/a&gt;
+     &lt;/div&gt;
+     &lt;a class="down arrow"&gt;&lt;/a&gt;
+    &lt;/div&gt;
+   &lt;/div&gt;	
+ &lt;/li&gt;									
+&lt;/ul&gt;	
+</pre></code>
+
+
+				</div>
+
+	<h6 class="space_before">CMS options:</h6>
+
+<div class="row tall space_before"><strong>List all the videos in the order they should appear:</strong></div>
+	<div class="row">
+		<div class="column three tall"><strong>Video Title</strong></div>
+		<div class="column eight tall">String</div>
+	</div>
+	<div class="row">
+		<div class="column three tall"><strong>Video YouTube Link</strong></div>
+		<div class="column eight tall">URL</div>
+	</div>
+
+
+		<h6 class="space_before">CMS Template:</h6>
+<code><pre>
+
+The video tab module is one tab in a tab group module
+
+&lt;li class="videoTab"&gt;
+  &lt;a href="javascript:void(0)" class="title"&gt;Videos&lt;/a&gt;
+  &lt;div class="body"  &gt;
+   &lt;div class="videoContainer"&gt;
+    &lt;h5&gt;Videos&lt;/h5&gt;
+     &lt;div class="videoPlayer"&gt;
+      &lt;iframe id="YTFrame"  width="100%" height="100%" src="" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+     &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="videoLinksPane"&gt;
+     &lt;a class="up arrow"&gt;&lt;/a&gt;
+     &lt;div class="videoList"&gt;
+      <*VIDEOLINK*>
+      <*VIDEOLINK*>
+      <*VIDEOLINK*>
+      <*VIDEOLINK*>
+      <*VIDEOLINK*>
+      <*VIDEOLINK*>
+      <*VIDEOLINK*>
+      <*VIDEOLINK*>
+     &lt;/div&gt;
+     &lt;a class="down arrow"&gt;&lt;/a&gt;
+    &lt;/div&gt;
+   &lt;/div&gt;	
+ &lt;/li&gt;									
+
+
+<*VIDEOLINK*> = 
+
+&lt;a class="youtubeLink" href="<*URL>" title="Watch Video"&gt;<*TITLE*>&lt;/a&gt;
+
+Variables:
+YouTube URL: <*URL*>
+Video Title: <*TITLE*>
+
+</pre></code>
+
+		
+			<div class="row space_before ">&nbsp;</div>
+
+		</div>
+		<!-- end center content -->
+	</div>
+
+<!-- end main content -->
+
+<!-- footer -->
+	<div id="footerinclude"></div>
+<!-- end footer -->
+
+</div>
+
+
+
+
+</body>
+</html>

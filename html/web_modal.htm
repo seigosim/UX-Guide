@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>UX + Design Guidelines - Web  - Components - Modal Window</title>
+	<link rel="shortcut icon" href="http://www.arbonne.com/favicon.png" type="image/x-icon" />
+
+
+	<link href="../css/brand.css" rel="stylesheet" type="text/css">
+
+	<link href="../css/ui.css" rel="stylesheet" type="text/css" >
+	<link href="../css/styleguide.css" rel="stylesheet" type="text/css" >
+
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/brand.js"></script>
+	<script src="../js/ui.js"></script>
+
+
+	<script src="../js/includes.js"></script>
+
+<script type="text/javascript">
+
+
+$(document).ready(function(){
+
+	/*	*/
+
+	$('#window1').modalWindow('#click1',{'windowtype':'rounded','darken':false});
+	$('#window3').modalWindow('#click2',{'windowtype':'rounded','darken':true});
+	var win2 = $('#window2').modalWindow('#click3',{'windowtype':'rounded','darken':false,'clickbg':false,'closeicon':false});
+
+	$('#window4').modalWindow('#click4',{'windowtype':'rounded','darken':false,'padding': false});
+
+	//setTimeout(function(){modal1.closeWindow()},5000);
+
+	$().modalWindow('#click5',{'darken':true,'imgsrc':'../img/shop_home_banner_FPO.jpg'});
+
+	$(win2).find('a').click(function(){
+		$(win2).find('.message').html('<b>Thank you!</b>');
+		setTimeout(function(){win2.closeWindow();},1500);
+	});
+
+
+
+});
+
+
+
+</script>
+<style>
+
+
+</style>
+
+</head>
+<body>
+
+
+<div id="container">
+
+	<div class="header_content">
+		<!-- Login Bar - START -->
+		<div id="loginbarinclude"></div>
+
+		<!-- Login Bar - END -->
+
+		<!-- Logo Area - START --> 
+		<div id="logoinclude"></div>
+		<!-- Logo Area - END --> 
+		<!-- start nav -->
+
+		<!-- Main Navigation - START -->
+			<!-- include mainnav -->
+		<div id="mainnav"></div>
+		<!-- Main Navigation - END -->
+	</div>
+	<!-- end header -->
+
+<!-- main content -->
+
+	<div id="centerrow">
+
+		<!-- side navbar -->
+		<div id="sidenavinclude"></div>
+
+		<!-- center content -->
+		<div id="center_content">
+			<div class="row space_before">
+				<ul class="breadcrumbs">
+					<li><a href="index.htm">Home</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Web</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Components</a></li>
+					<li class="separator">/</li>
+					<li class="active"><a href="#">Modal Window</a></li>
+				</ul>
+			</div>
+
+
+
+
+		
+			<div class="row space_after space_before" >
+				<h4 class="space_after">Modal Window</h4>
+					<p></p>
+
+			</div>
+				<h6 class="space_before ">Example:</h6>		
+
+
+				<a href="javascript:void(0)" id="click1">Click to open modal dialog</a><br><br>
+
+<a href="javascript:void(0)" id="click3">Click to open a required dialog</a><br><br>
+
+				<a href="javascript:void(0)" id="click2">Click to open lightbox modal window</a><br><br>
+
+				<a href="javascript:void(0)" id="click4">Click to open modal dialog with padding removed</a><br><br>
+
+				<div class="modal_content" id="window1" >
+					<h2 class="title">Title</h2>
+					<p class="space_before">This is a modal window. I can be triggered to cover the web page.</p>
+
+					<p>You can close it by clicking the "X" icon in the upper right corner or use the "Close" button.</p>
+
+
+					<p>You can use any HTML inside the modal window.</p>
+
+					<div class="center-align"><a href="javascript:void(0)" class="close_button button">CLOSE</a></div>
+				</div>
+
+				<div class="modal_content" id="window3" >
+					<h2 class="title">Title</h2>
+					<p class="space_before">This is a modal window. I can be triggered to cover the web page.</p>
+
+					<p>You can close it by clicking the "X" icon in the upper right corner or use the "Close" button.</p>
+
+
+					<p>You can use any HTML inside the modal window.</p>
+
+					<div class="center-align"><a href="javascript:void(0)" class="close_button button">CLOSE</a></div>
+				</div>
+
+				<div class="modal_content" id="window2" style="width:350px; height: 150px">
+					<h2>Please Make a Selection</h2>
+
+					<p>Choose one of these options to close the dialog box:</p>
+
+					<div class="message"></div>
+
+					<div class="right"><a href="javascript:void(0)" class="button" >CANCEL</a>
+						<a href="javascript:void(0)" class="button">OK</a>
+
+					</div>
+				</div>
+
+				<div class="modal_content" id="window4" style="width:600px; height:226px">
+				<img src="../img/050113_HP_Banner_US-EN_4.jpg" width="598" />
+
+						<a href="javascript:void(0)" class="close_button button">CLOSE</a>
+				</div>
+
+
+
+
+
+
+				<div class="spacer"></div>
+				<a href="javascript:void(0)" id="click5">Click for lightbox image</a>
+				<div class="spacer"></div>
+								
+				<h6 class="space_before">Usage:</h6>
+
+				<p>Create the modal content container anywhere in the document. Add a class="modal_content".</p>
+				<p>Add a height & width style to the modal content element.</p>
+				<p>The modal window will be automatically created using the contents of the container but the container itself will be discarded.</p>
+
+				<p>Any links with class="close_button" will be assigned the close dialog action. The dialog can also be dismissed by the close icon in the upper right corner or by clicking the background.</p>
+				<p>Insert the JQuery command inside a document.ready() block to create the modal.</p>
+				
+
+				<p>To open the window via scripting, use: modal1.openWindow(). Close with modal1.closeWindow()</p>
+
+				<p><strong>Modal Dialog: </strong>$('#window1').modalWindow($('#click1'),{'darken':true,'clickbg':true,'windowtype':'rounded','closeicon':true,'height':'300px','width':'500px'}); <br>Where winodw1 is the ID of the modal content container and click1 is the ID of the link that opens the dialog.</p>
+
+				<p><strong>Image Lightbox: </strong> $().modalWindow('#click2',{'darken':true,'imgsrc':'../img/shop_home_banner_FPO.jpg'}); <br>Where click2 is the link that opens the image and the image source is specified in the options.</p>
+
+
+
+				<h6 class="space_before">Options:</h6>
+					<ul>
+						<li>Darken background - darken: true (default true)</li>
+						<li>Click on background to close - clickbg: true  (default true)</li>
+						<li>Rounded Corners - windowtype: 'rounded' (default is square)</li>
+						<li>No close icon in corner - closeicon: false (default true)</li>
+						<li>Specify Height - height: '300px' (default is to use modal content's size)</li>
+						<li>Specify Width - width: '300px' (default is to use modal content's size)</li>
+						<li>Image Source - imgsrc: '[URL]' (default none). This is used for lightbox style images</li>
+						<li>Remove padding - padding: false (default true). Remove padding if you want an image to stretch to the edges of the window.
+
+					</ul>
+
+					<p>By default the window is closable by clicking outside of the window. If you require forcing a confirmation  in the dialog box, use these options: {'clickbg':false,'closeicon':false}. You can then use the scripting command to close the window after the action has completed.</p>
+
+
+<h6 class="space_before">Code Sample:</h6>
+<code id="code"><pre>
+&lt;script&gt;
+ $(document).ready(function(){
+	var modal1 =$('#window1').modalWindow($('#click1'),{'windowtype':'rounded'});
+ });
+&lt;/script&gt;
+
+&lt;a href="javascript:void(0)" id="click1"&gt;Click to open modal window&lt;/a&gt;
+
+&lt;div id="window1" class="modal_contents" style="width: 500px;"&gt;
+  &lt;p&gt;Modal window contents.&lt;/p&gt;
+  &lt;div class="center-align"&gt;&lt;a href="javascript:void(0)" class="close_button button"&gt;CLOSE&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+
+You could also have the window pop open on page load by chaining the the openWindow() command:
+var modal1 = $('#window1').modalWindow('#click1',{'windowtype':'rounded'}).openWindow();
+</pre></code>						
+
+
+
+			<div class="row space_before " style="height:600px">&nbsp;</div>
+
+		</div>
+		<!-- end center content -->
+	</div>
+
+<!-- end main content -->
+
+<!-- footer -->
+	<div id="footerinclude"></div>
+<!-- end footer -->
+
+</div>
+
+
+
+
+</body>
+</html>

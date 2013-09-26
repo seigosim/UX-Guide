@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>UX + Design Guidelines - Web - Basic - Forms</title>
+	<link rel="shortcut icon" href="http://www.arbonne.com/favicon.png" type="image/x-icon" />
+
+    <link href='../css/camera.css' rel='stylesheet' type='text/css'> 
+	<link href="../css/brand.css" rel="stylesheet" type="text/css">
+
+	<link href="../css/ui.css" rel="stylesheet" type="text/css" >
+	<link href="../css/styleguide.css" rel="stylesheet" type="text/css" >
+
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/brand.js"></script>
+	<script src="../js/ui.js"></script>
+
+
+	<script src="../js/includes.js"></script>
+
+
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+	});
+
+</script>
+
+
+</head>
+<body>
+
+
+<div id="container">
+
+	<div class="header_content">
+		<!-- Login Bar - START -->
+		<div id="loginbarinclude"></div>
+
+		<!-- Login Bar - END -->
+
+		<!-- Logo Area - START --> 
+		<!-- Logo Area - START --> 
+		<div id="logoinclude"></div>
+		<!-- Logo Area - END --> 
+		<!-- Logo Area - END --> 
+		<!-- start nav -->
+
+		<!-- Main Navigation - START -->
+			<!-- include mainnav -->
+		<div id="mainnav"></div>
+		<!-- Main Navigation - END -->
+	</div>
+	<!-- end header -->
+
+<!-- main content -->
+
+	<div id="centerrow">
+
+		<!-- side navbar -->
+		<div id="sidenavinclude"></div>
+
+		<!-- center content -->
+		<div id="center_content">
+			<div class="row space_before">
+				<ul class="breadcrumbs">
+					<li><a href="index.htm">Home</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Web</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Basic</a></li>
+					<li class="separator">/</li>
+					<li class="active"><a href="#">Forms</a></li>
+				</ul>
+			</div>
+
+			<div class="row space_after space_before" >
+
+				<h2 class="underline">Forms</h2>
+				<p>The preferred layout for form elements is to use the Top Labels format. </p>
+				<div class="spacer"></div>
+
+			<div class="row">
+						<div class="column six">
+
+						<h5 class="underline space_after">Top Labels</h5>
+						<form>
+						<div class="fieldset top">
+							<label for="text" class="col3 nowrap">Text Field:</label>
+							<input type="text" name="text" value="Text Field" style="width:200px" >
+						</div>
+						<div class="fieldset top">
+							<label for="text" class="col3 nowrap">Select Menu:</label>
+							<select name="select" style="width:200px" >
+								<option value="Option 1">Option 1</option>
+								<option value="Option 2">Option 2</option>
+								<option value="Option 3">Option 3</option>
+								<option value="Option 4">Option 4</option>
+								<option value="Option 5">Option 5</option>
+							</select>
+						</div>
+						<div class="fieldset top">
+							<label for="text" class="col3">Checkbox:</label>
+							<input type="checkbox" name="check" value="1" > Yes<br/>
+							<input type="checkbox" name="check" value="0" > No<br/>
+						</div>
+						<div class="fieldset top">
+							<label for="text" class="col3">Radio:</label>
+							<input type="radio" name="rdo" value="10" checked > 10<br/>
+							<input type="radio" name="rdo" value="100" > 100<br/>
+						</div>
+							<div class="fieldset top">
+							<label for="text" class="col3 nowrap">Text Area:</label>
+							<textarea name="area" style="width:200px" >Text Area
+							</textarea>
+						</div>
+						<div class="fieldset top">
+							<label for="text" class="col3">Error:</label>
+							<input type="text" name="text" value="Error" style="width:200px" class="error" >
+						</div>
+						<div class="fieldset top">
+							<div class="column three" style="width:200px; text-align:right"><input type="submit" value="Submit"  ></div>
+						</div>
+					</form>
+				</div>
+
+										<div class="column six">
+
+						<h5 class="underline space_after">Disabled</h5>
+						<form>
+						<div class="fieldset top">
+							<label for="text" class="col3 nowrap">Text Field:</label>
+							<input type="text" name="text" value="Text Field" style="width:200px"  disabled>
+						</div>
+						<div class="fieldset top">
+							<label for="text" class="col3 nowrap">Select Menu:</label>
+							<select name="select" style="width:200px"  disabled>
+								<option value="Option 1">Option 1</option>
+								<option value="Option 2">Option 2</option>
+								<option value="Option 3">Option 3</option>
+								<option value="Option 4">Option 4</option>
+								<option value="Option 5">Option 5</option>
+							</select>
+						</div>
+						<div class="fieldset top">
+							<label for="text" class="col3">Checkbox:</label>
+							<input type="checkbox" name="check" value="1"  disabled> Yes<br/>
+							<input type="checkbox" name="check" value="0"  disabled> No<br/>
+						</div>
+						<div class="fieldset top">
+							<label for="text" class="col3">Radio:</label>
+							<input type="radio" name="rdo" value="10" checked  disabled> 10<br/>
+							<input type="radio" name="rdo" value="100"  disabled> 100<br/>
+						</div>
+							<div class="fieldset top">
+							<label for="text" class="col3 nowrap">Text Area:</label>
+							<textarea name="area" style="width:200px"  disabled>Text Area
+							</textarea>
+						</div>
+						<div class="fieldset top">
+							<label for="text" class="col3">Error:</label>
+							<input type="text" name="text" value="Error" style="width:200px" class="error"  disabled>
+						</div>
+						<div class="fieldset top">
+							<div class="column three" style="width:200px; text-align:right"><input type="submit" value="Submit"  disabled ></div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+
+
+			<div class="spacer"></div><div class="spacer"></div>
+			<div class="row">
+
+
+				<div class="column six">
+					<h5 class="underline space_after">Left Side Labels</h5>
+					<form class="padding-right">
+						<div class="fieldset">
+							<label for="text" class="col3 nowrap">Text Field:</label>
+							<input type="text" name="text" value="Text Field" style="width:200px">
+						</div>
+						<div class="fieldset">
+							<label for="text" class="col3 nowrap">Select Menu:</label>
+							<select name="select" style="width:200px">
+								<option value="Option 1">Option 1</option>
+								<option value="Option 2">Option 2</option>
+								<option value="Option 3">Option 3</option>
+								<option value="Option 4">Option 4</option>
+								<option value="Option 5">Option 5</option>
+							</select>
+						</div>
+						<div class="fieldset">
+							<label for="text" class="col3">Checkbox:</label>
+							<input type="checkbox" name="check" value="1"> Yes<br/>
+							<input type="checkbox" name="check" value="0"> No<br/>
+						</div>
+						<div class="fieldset">
+							<label for="text" class="col3">Radio:</label>
+							<input type="radio" name="rdo" value="10" checked> 10<br/>
+							<input type="radio" name="rdo" value="100"> 100<br/>
+						</div>
+							<div class="fieldset">
+							<label for="text" class="col3 nowrap">Text Area:</label>
+							<textarea name="area" style="width:200px">Text Area
+							</textarea>
+						</div>
+						<div class="fieldset">
+							<label for="text" class="col3">Error:</label>
+							<input type="text" name="text" value="Error" style="width:200px" class="error">
+						</div>
+						<div class="fieldset">
+							<div class="column three">&nbsp;</div>
+							<div class="column four" style="width:200px; text-align:right"><input type="submit" value="Submit" ></div>
+						</div>
+					</form>
+				</div>
+
+					<div class="column six">
+						<h5 class="underline space_after">Disabled</h5>
+						<form>
+						<div class="fieldset">
+							<label for="text" class="col3 nowrap">Text Field:</label>
+							<input type="text" name="text" value="Text Field" style="width:200px" disabled>
+						</div>
+						<div class="fieldset">
+							<label for="text" class="col3 nowrap">Select Menu:</label>
+							<select name="select" style="width:200px" disabled>
+								<option value="Option 1">Option 1</option>
+								<option value="Option 2">Option 2</option>
+								<option value="Option 3">Option 3</option>
+								<option value="Option 4">Option 4</option>
+								<option value="Option 5">Option 5</option>
+							</select>
+						</div>
+						<div class="fieldset">
+							<label for="text" class="col3">Checkbox:</label>
+							<input type="checkbox" name="check" value="1" disabled> Yes<br/>
+							<input type="checkbox" name="check" value="0" disabled> No<br/>
+						</div>
+						<div class="fieldset">
+							<label for="text" class="col3">Radio:</label>
+							<input type="radio" name="rdo" value="10" checked disabled> 10<br/>
+							<input type="radio" name="rdo" value="100" disabled> 100<br/>
+						</div>
+							<div class="fieldset">
+							<label for="text" class="col3 nowrap">Text Area:</label>
+							<textarea name="area" style="width:200px" disabled>Text Area
+							</textarea>
+						</div>
+						<div class="fieldset">
+							<label for="text" class="col3">Error:</label>
+							<input type="text" name="text" value="Error" style="width:200px" class="error" disabled>
+						</div>
+						<div class="fieldset">
+							<div class="column three">&nbsp;</div>
+							<div class="column four" style="width:200px; text-align:right"><input type="submit" value="Submit"  disabled></div>
+						</div>
+					</form>
+				</div>
+			</div>
+
+
+<div class="spacer"></div>
+
+
+			</div>
+		
+			<div class="row space_before ">&nbsp;</div>
+
+		</div>
+		<!-- end center content -->
+	</div>
+
+<!-- end main content -->
+
+<!-- footer -->
+	<div id="footerinclude"></div>
+<!-- end footer -->
+
+</div>
+
+
+
+
+</body>
+</html>

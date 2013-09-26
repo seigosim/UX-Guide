@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>UX + Design Guidelines - Web Components - Accordion</title>
+	<link rel="shortcut icon" href="http://www.arbonne.com/favicon.png" type="image/x-icon" />
+
+	<link href="../css/brand.css" rel="stylesheet" type="text/css">
+
+	<link href="../css/ui.css" rel="stylesheet" type="text/css" >
+	<link href="../css/styleguide.css" rel="stylesheet" type="text/css" >
+
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/brand.js"></script>
+<script src="../js/ui.js"></script>
+
+
+	<script src="../js/includes.js"></script>
+
+
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+
+	});
+
+
+</script>
+
+
+</head>
+<body>
+
+
+<div id="container">
+
+	<div class="header_content">
+		<!-- Login Bar - START -->
+		<div id="loginbarinclude"></div>
+
+		<!-- Login Bar - END -->
+
+		<!-- Logo Area - START --> 
+		<div id="logoinclude"></div>
+		<!-- Logo Area - END --> 
+		<!-- start nav -->
+
+		<!-- Main Navigation - START -->
+			<!-- include mainnav -->
+		<div id="mainnav"></div>
+		<!-- Main Navigation - END -->
+	</div>
+	<!-- end header -->
+
+<!-- main content -->
+
+	<div id="centerrow">
+
+		<!-- side navbar -->
+		<div id="sidenavinclude"></div>
+
+		<!-- center content -->
+		<div id="center_content">
+			<div class="row space_before">
+				<ul class="breadcrumbs">
+					<li><a href="index.htm">Home</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Web</a></li>
+					<li class="separator">/</li>
+					<li><a href="#">Components</a></li>
+					<li class="separator">/</li>
+					<li class="active"><a href="#">Accordion</a></li>
+				</ul>
+			</div>
+
+			<div class="row space_after space_before" >
+				<h4 class="space_after">Accordion</h4>
+					<p>The <strong>Accordion component</strong> is a variation on the Tab Group component.  
+					The "tabs" are stacked vertically with on the titles showing by default. Titles can be clicked to expand its contents which also closes any previously-opened tab.</p>
+
+					<h6>Properties:</h6>
+						<ul>
+							<li>Minimum tab: 2</li>
+							<li>Maximum tabs: no maximum</li>
+							<li>One tab can optionally be specifed to be open on page load.</li>
+							<li>In "toggle" mode, more than one tab can be open at a time.</li>
+						</ul>
+
+
+				<h6 class="space_before ">Example:</h6>		
+				<ul class="tabgroup accordion " >
+					<li class="active">
+						<a href="javascript:void(0)" class="title">Tab One</a>
+						<div class="body">
+							<h6>Tab One</h6>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec felis est, varius id ultrices ac, condimentum vel nunc. Integer tellus turpis, sagittis sit amet faucibus eu, molestie quis arcu. Mauris rutrum lorem nec erat tempor mattis. Quisque sed neque odio, ut tempor mauris. Nulla massa turpis, interdum a pellentesque quis, fringilla eget augue. </p>
+							<p>Nullam nec nisi quis velit volutpat pulvinar. In facilisis, tortor vitae pretium luctus, lectus augue volutpat quam, in placerat quam dolor ac mi. Aenean eu lacinia lectus. Nunc imperdiet ante ut eros mollis non accumsan augue ultricies. Nullam in consectetur est</p>
+							<p>Nullam nec nisi quis velit volutpat pulvinar. In facilisis, tortor vitae pretium luctus, lectus augue volutpat quam, in placerat quam dolor ac mi. Aenean eu lacinia lectus. Nunc imperdiet ante ut eros mollis non accumsan augue ultricies. Nullam in consectetur est</p>
+						</div>	
+					</li>									
+					<li>
+						<a href="javascript:void(0)" class="title">Tab Two</a>
+						<div class="body">
+							<h6>Tab Two</h6>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec felis est, varius id ultrices ac, condimentum vel nunc. Integer tellus turpis, sagittis sit amet faucibus eu, molestie quis arcu. Mauris rutrum lorem nec erat tempor mattis. Quisque sed neque odio, ut tempor mauris. Nulla massa turpis, interdum a pellentesque quis, fringilla eget augue. </p>
+							<p>Nullam nec nisi quis velit volutpat pulvinar. In facilisis, tortor vitae pretium luctus, lectus augue volutpat quam, in placerat quam dolor ac mi. Aenean eu lacinia lectus. Nunc imperdiet ante ut eros mollis non accumsan augue ultricies. Nullam in consectetur est</p>
+							<p>Nullam nec nisi quis velit volutpat pulvinar. In facilisis, tortor vitae pretium luctus, lectus augue volutpat quam, in placerat quam dolor ac mi. Aenean eu lacinia lectus. Nunc imperdiet ante ut eros mollis non accumsan augue ultricies. Nullam in consectetur est</p>
+						</div>	
+					</li>										
+					<li>
+						<a href="javascript:void(0)" class="title">Tab Three</a>
+							<div class="body">
+							<h6>Tab Three</h6>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec felis est, varius id ultrices ac, condimentum vel nunc. Integer tellus turpis, sagittis sit amet faucibus eu, molestie quis arcu. Mauris rutrum lorem nec erat tempor mattis. Quisque sed neque odio, ut tempor mauris. Nulla massa turpis, interdum a pellentesque quis, fringilla eget augue. </p>
+							
+						</div>	
+					</li>
+					<li>
+						<a href="javascript:void(0)" class="title">Tab Four</a>
+						<div class="body">
+							<h6>Tab Four</h6>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec felis est, varius id ultrices ac, condimentum vel nunc. Integer tellus turpis, sagittis sit amet faucibus eu, molestie quis arcu. Mauris rutrum lorem nec erat tempor mattis. Quisque sed neque odio, ut tempor mauris. Nulla massa turpis, interdum a pellentesque quis, fringilla eget augue. </p>
+							<p>Nullam nec nisi quis velit volutpat pulvinar. In facilisis, tortor vitae pretium luctus, lectus augue volutpat quam, in placerat quam dolor ac mi. Aenean eu lacinia lectus. Nunc imperdiet ante ut eros mollis non accumsan augue ultricies. Nullam in consectetur est</p>
+							<p>Nullam nec nisi quis velit volutpat pulvinar. In facilisis, tortor vitae pretium luctus, lectus augue volutpat quam, in placerat quam dolor ac mi. Aenean eu lacinia lectus. Nunc imperdiet ante ut eros mollis non accumsan augue ultricies. Nullam in consectetur est</p>
+						</div>	
+					</li>				
+				</ul>	
+
+				<h6 class="space_before">Usage:</h6>
+						<ul>
+							<li>The accordion is a type of tab group and is built around the unordered list element (&lt;ul&gt;)</li>
+							<li>Add class="accordion" to the tabgroup</li>
+							<li>Each tab must contain one element with class="title"</li>
+							<li>Each tab must contain one element with class="body"</li>		
+							<li>To open one tab by default, class="active" to only that &lt;li&gt;.</li>	
+							<li>By default, ony one tab can be open at a time. To have multiple tabs open, add class="toggle" to the tabgroup element. Each tab can still be collapsed by clicking its title.</li>	
+							<li>The tabgroup element can have multiple classes assigned to it, simply leave a space between the classs names. Example: class="tabgroup accordion toggle" will define an accordion component that has toggled tabs.</li>
+
+						</ul>
+
+
+<h6 class="space_before">Code Sample:</h6>
+<code><pre>
+
+
+
+&lt;ul class="tabgroup accordion"&gt;
+ &lt;li class="active"&gt;
+  &lt;a href="#" class="title"&gt;Item 1&lt;/a&gt;
+  &lt;div class="body"&gt;
+   Accordion Content Here
+  &lt;/div&gt;
+ &lt;/li&gt;
+ &lt;li"&gt;
+  &lt;a href="#" class="title"&gt;Item 2&lt;/a&gt;
+  &lt;div class="body" style="height:350px"&gt;
+   Accordion Content Here
+  &lt;/div&gt;
+ &lt;/li&gt;
+&lt;/ul&gt;
+</pre></code>						
+
+
+	
+
+
+				</div>
+
+
+
+
+			</div>
+		
+			<div class="row space_before ">&nbsp;</div>
+
+		</div>
+		<!-- end center content -->
+	</div>
+
+<!-- end main content -->
+
+<!-- footer -->
+	<div id="footerinclude"></div>
+<!-- end footer -->
+
+</div>
+
+
+
+
+</body>
+</html>

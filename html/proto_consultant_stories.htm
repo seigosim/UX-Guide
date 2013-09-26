@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>UX + Design Guidelines - Prototype - Consultant Stories</title>
+	<link rel="shortcut icon" href="http://www.arbonne.com/favicon.png" type="image/x-icon" />
+
+	<link href="../css/brand.css" rel="stylesheet" type="text/css">
+
+	<link href="../css/ui.css" rel="stylesheet" type="text/css" >
+	<link href="../css/styleguide.css" rel="stylesheet" type="text/css" >
+	
+	<script src="../js/jquery.js"></script>
+	<script src="../js/brand.js"></script>
+<script src="../js/ui.js"></script>
+
+	<script src="../js/real_includes.js"></script>
+<script>
+
+$(document).ready(function(){
+
+	$('.preview_pane .read_more').each(function(){
+		var storypane = $(this).data('story');
+		if(storypane){
+			$(this).on('click',function(){
+				$(this).parents('.preview_pane').fadeOut(200,function(){
+					$('#' + storypane).fadeIn(200);
+				});
+			});
+		}
+	
+	});
+
+});
+
+
+</script>
+
+
+<style>
+
+.vplist {margin-top:4px; max-height:240px; overflow:auto; padding:8px; background-color:#FFFFFF;-webkit-box-shadow: inset 0px 0px 3px rgba(0,0,0,0.4); -moz-box-shadow: inset 0px 0px 3px rgba(0,0,0,0.42); box-shadow: inset 0px 0px 3px rgba(0,0,0,0.4);-webkit-border-radius: 2px;-moz-border-radius: 2px;border-radius: 2px;}
+.vplist ul {margin:0;}
+
+.vplist ul > li > a:hover {background-color:#F1F1F1;}
+
+
+.filter {margin:0 ;padding:0;;}
+.filter > li {margin:3px 0 0 3px ; padding:0px 2px; display:inline-block; text-align:center;  border:1px solid #999999;  background-color:#FFFFFF;cursor:pointer;}
+.filter > li.active, .filter > li.active:hover {color:#FFFFFF;  background-color:#3d9b35 ; font-weight: normal;}
+.filter > li:hover {background-color:#e5e5e5;}
+
+
+
+.preview_pane {padding-bottom:24px; margin-bottom:8px; border-bottom:1px dotted #BBB;}
+
+.preview_pane img {max-width:80px;}
+
+.preview_pane h6 {margin-bottom:16px;}
+
+
+.story_pane .heading {padding:8px; margin-bottom:8px; background-color:#DBD6AD;overflow:hidden;}
+.story_pane .heading *  {color:#595747;}
+.story_pane .heading h4 {font-size:20px;margin-top:24px;}
+.story_pane p {line-height:1.6em;}
+
+@media only screen and (max-width:768px) {
+
+	.search_pane.col5 {width:100%;}
+	.search_pane.col5 > div {margin-left:0;margin-top:16px;}
+
+}
+
+
+	</style>
+
+
+</head>
+<body>
+
+
+<div id="container">
+
+	<div class="header_content">
+		<!-- Login Bar - START -->
+		<div id="loginbarinclude"></div>
+
+		<!-- Login Bar - END -->
+
+
+		<!-- Logo Area - START --> 
+		<div id="logoinclude"></div>
+		<!-- Logo Area - END --> 
+		<!-- Logo Area - END --> 
+		<!-- start nav -->
+
+		<!-- Main Navigation - START -->
+			<!-- include mainnav -->
+		<div id="mainnav"></div>
+		<!-- Main Navigation - END -->
+	</div>
+	<!-- end header -->
+
+<!-- main content -->
+
+	<div id="centerrow">
+
+		<!-- side navbar -->
+			<div id="sidenavbar" >
+
+			<ul class="nav rows space_above">
+				<li class="heading">Sharing Success</li>
+				<li class="active">
+					<a href="proto_consultant_stories.htm">Consultant Stories</a>
+				</li>
+				<li >
+					<a href="proto_transformed.htm">My Life, Transformed</a>
+				</li>
+			</ul>
+
+			</div>
+
+		<!-- center content -->
+		<div id="center_content" class="consultant_stories">
+			<div class="right"><a href="#" class="button primary">Join Now</a></div>
+				<h1 class="space_above">Consultant Stories</h1>
+				
+				<div class="row">
+					<div class="col7">
+						<div class="preview_pane">
+							<div class="left" style="margin:0 12px 8px 0"><img src="../img/opportunity/l_humphrey.jpg" alt="Leslie Humphrey" /></div>
+
+							<div>
+
+								<h4 class="lightfont">Leslie Humphrey</h4>
+								<h6>New Independent Consultant & National Vice President</h6>
+								 	
+								<p>Commit to yourself that YOU WILL... UNTIL. Give yourself permission to be fabulous, because you are.</p>
+
+								<p>Leslie Humphrey and her husband Kevin, of Valrico, Florida, seemed to be living the American dream — business owners, parents to five wonderful children. Indeed, Leslie was living her lifelong personal dream of being a stay-at-home mom. But as their business grew, Leslie saw work encroaching on their family's time, and more success leading only to more stress. Then her best friend introduced Leslie to Arbonne — and everything changed!</p>
+
+
+								<div class="space_above clear"><a class="button read_more" data-story="l_humphrey">Read Full Story</a></div>
+
+							</div>
+
+						</div>
+						<div id="l_humphrey" class="clear story_pane" style="display:none">
+							<div class="heading">
+								<div class="left" style="margin:0 12px 0px 0"><img src="../img/opportunity/l_humphrey.jpg" alt="Leslie Humphrey" /></div>
+
+										<h4 class="lightfont">Leslie Humphrey</h4>
+										<h6>New Independent Consultant,Executive National Vice President</h6>
+										<span>Humphrey Nation; Valrico, FL</span>						
+							</div>
+
+							<div class="clear"><a href="#">View Photo Gallery</a></div>
+							<div><a href="#">Download this story as PDF</a></div>
+
+
+							<div class="divider"></div>
+
+		                  	<p>SUCCESS STRATEGY:</p>
+							<p><strong>“Commit to yourself that YOU WILL... UNTIL. Give yourself permission to be fabulous, because you are.”</strong></p>
+
+							<p>Leslie Humphrey and her husband Kevin, of Valrico, Florida, seemed to be living the American dream —  business owners, parents to five wonderful children. Indeed, Leslie was living her lifelong personal dream of being a stay-at-home mom. But as their business grew, Leslie saw work encroaching on their family's time, and more success leading only to more stress. Then her best friend introduced Leslie to Arbonne — and everything changed!</p>
+
+							<p>If ever I had to predict what I would do in my life to become the woman I was called to be, this would probably be the furthest thing from my mind. As a wife and stay-at-home mother of five, I was doing what I thought was my life's calling. I had no idea there could be more to it. As a matter of fact, I knew growing up and going through college that my dream was to be a mom. Living that dream, I was introduced to Arbonne by my best friend. I had no idea at the time that this introduction was one of the most pivotal moments in my life.</p><p>My husband and I were small business owners, constantly struggling to balance work and family. I was the devoted homemaker and he was the driven entrepreneur. We were sure we were on the right track and came to the conclusion that in order to have the financial security we wanted we would have to sacrifice our family life for a season. As the business owner, my husband would work endless hours, seven days a week, knowing that if things were going to work he would be the one to work it. Instead of the business creating freedom and balance, it brought tremendous stress and golden handcuffs. There was absolutely no one to share the burden of the business — no one to call, no one to take over so my husband could have time off. There was no way to shut off the stress of the responsibility. I watched my husband become a different person due to the high demands and internal pressure. As thankful as I was to have financial success as well as be able to be at home with my kids, life felt like a hopeless trap. We had followed the rules. We went to college, started our own business, and created what seemed like the American dream. Now what? We believed this was it. As good as it would get without trading more time — which we didn't have — for money.</p><p>My best friend brought the incredible Arbonne products to me. I fell in love with them and for the first time became excited about taking care of my skin. I used Arbonne's Clear Advantage product line, which cleared up my adult acne and made my skin look better than it ever had. My friend then shared with me that her new business was going to allow her to be home with her kids and give her the opportunity to create a substantial income. I immediately shut down. That was great for her but not anything I would ever consider. First, we had a business and adding anything else to my life seemed absolutely insane.  Time was my truest commodity. Secondly, a home-based business could never create the income I was looking for. Lastly, I was not a person who could reach out to other people and build a business like that. For a short time I wouldn't even consider the opportunity.</p><p>I watched my friend, RVP Sharise Deimeke, earn her white Mercedes-Benz and quit her job at the hospital. I saw her changing from someone I knew into someone who was becoming more dynamic, outgoing, and driven. It was, all of a sudden, not a home-based hobby but something that had a life of its own and created life in others. I was drawn in and intrigued. I found myself wanting to experience my own growth, both through financial independence as well as personally. I loved the idea of owning my own business. But was this really a business? Was it for me? Could it really provide a lifestyle with both time and freedom? Was I really capable of allowing myself to reach out to others? Was it okay to be more than a stay-at-home mom?</p><p>I started my business, nervous and skeptical but in love with the possibility. I wasn't the most impressive at it. My skills were awkward at best and my self-confidence was below moderate, but I did it. As I worked, I researched the network marketing business model in depth and this is where my fuel began to burn. I may not have had all I needed to get to the top right away, but there was definitely something intriguing to this. I knew our personal experience with business ownership could not be the best there is to offer. Network marketing seemed to have the rest of the picture. You could build a business without spending tens of thousands of dollars to get started. You could work at your own pace. There was no overhead, no risk, and no emergencies. You could leverage your time but not have employees. At the end of the day, you had the possibility of earning an extraordinary income. This was truly the smartest way to do business I had ever seen.</p><p>Arbonne became ingrained in me because it brought out the best in me. The business challenged me to become more aware of my mindset and potential, and of the people around me. It gave me a voice and a purpose outside myself. I started this business for what it had to offer my family and me. Now I specialize in empowering people to open their eyes to a different way of thinking — to lock arms with people to make a difference first in themselves and then in the lives of others. I am a hope dealer and am forever grateful that this opportunity was gifted to me so that I can gift others with it.</p><p>Gift yourself with the chance to see things a little differently. Look through the lens of "What if?"</p><p>No matter what you bring to the table in the beginning, you can succeed. If you want something different in your life, if you want more for yourself, your family, and others, and if you are intrigued and curious, yet unsure, you should jump in. There is nothing to lose and everything to gain. I started with faith the size of a mustard seed. I believed there had to be another way. I committed to build my business to the very top, no matter how long it took. Plenty of people did it faster, more gracefully, and better — but I did it. I learned how to be convicted and tenacious. I learned how to be a life long learner. I learned that giving is way better than receiving. I learned I have a voice that is called to share. I learned that I am a servant heart. I learned that dreams really do come true. I learned that where we've been does not have to determine where we go. And I've learned that just because we don't know doesn't give us a reason not to learn. I am a better person because of the growth I've experienced as a result of needing to learn.</p><p>I want to thank my amazing husband, DM Kevin Humphrey, for giving me the freedom to become the person I was called to be. Thank you to my kids, Annie, Allie, Ben, Jack, and Ty. You all have inspired me to be better for all the right reasons. You have been encouraging and supportive and have given me my inner strength. Ty, thank you for watching me grow up in this business and keeping me on track. You are such a gift to me and I cannot wait to have you in my business.</p><p>Thank you to my Sponsor, ERVP Sharise Deimeke, for sharing this incredible gift with me. You were the difference-maker for me. ENVP Christy Dreiling, thank you for being the constant encourager. You taught me how to dream and how to give. I love you for all you've done and cherish our friendship.</p><p>Lastly, thank you to my incredible team! You are the biggest gift ever! Thank you for allowing me to grow and serve. I love you all so much and I'm committed helping you achieve your dreams.</p>
+
+							<div class="boxed">
+							The Arbonne Independent Consultant featured in this EOA has achieved the rank of Regional Vice President. The average number of active Arbonne Independent Consultants who achieved this rank and average compensation is described further in the Independent Consultant Compensation Summary (ICCS) available at arbonne.com > The Company > Corporate Information > 2011 Independent Consultant Compensation Summary. The testimonial in this EOA is for illustrative purposes only and does not represent income projections. The results discussed in this EOA by the featured Arbonne Independent Consultant are not typical and should not be relied upon by prospective or current Arbonne Independent Consultants as an indication of what they should expect to earn. Actual results for each Arbonne Independent Consultant will vary depending upon individual effort, time, skills and resources. Arbonne makes no guarantees regarding income.
+							</div>
+						</div>
+
+					</div>
+					<div class="col5 search_pane">
+						<div class=" inner gray-background margin-left" style="min-height:350px;padding:8px">
+						<h5>Search</h5>
+							<form>
+								<label for="search">By Consultant Name:</label>
+								<input name="search" id="search" rel="search" type="text" style="width:175px" placeholder="Consultant's Name">
+							</form>
+
+							<form>
+							<label for="">By Category:</label>
+								 <select name="search_category" id="search_category" style="max-width:98%">
+          
+									<option value="X">-- Select --</option>
+									<option value="/company/opportunity/people/arbonne-people.asp" selected="">New VPs</option>
+									<option value="?oc=16">Accounting</option>
+									<option value="?oc=9">Advertising, Marketing, PR</option>
+									<option value="?oc=7">Airline</option>
+									<option value="?oc=13">Arts, Entertainment, Media</option>
+									<option value="?oc=17">Banking</option>
+									<option value="?oc=3">Corporate</option>
+									<option value="?oc=14">Education, Training, Library</option>
+									<option value="?oc=22">Engineering</option>
+									<option value="?oc=5">Entrepreneur, Business Owner</option>
+									<option value="?oc=6">Fashion, Design</option>
+									<option value="?oc=27">Healthcare</option>
+									<option value="?oc=23">Healthcare -- Administration</option>
+									<option value="?oc=8">Healthcare -- Certifed Assistants, Aides</option>
+									<option value="?oc=29">Healthcare -- Medical and Dental Practitioners</option>
+									<option value="?oc=28">Healthcare -- Mental Health</option>
+									<option value="?oc=11">Healthcare -- Nursing</option>
+									<option value="?oc=26">Healthcare -- Radiology, Imaging</option>
+									<option value="?oc=24">Healthcare -- Social Services</option>
+									<option value="?oc=21">Healthcare -- Therapy, Rehab Services</option>
+									<option value="?oc=2">Hospitality, Restaurant and Food Service</option>
+									<option value="?oc=18">Legal</option>
+									<option value="?oc=10">Other</option>
+									<option value="?oc=15">Personal Care and Services</option>
+									<option value="?oc=20">Public Services</option>
+									<option value="?oc=30">Real Estate</option>
+									<option value="?oc=25">Retail</option>
+									<option value="?oc=1">Retiree</option>
+									<option value="?oc=12">Sales</option>
+									<option value="?oc=4">Stay-at-home mom, Child care provider</option>
+									<option value="?oc=19">Student</option>
+									</select>
+							</form>
+
+								<div class="spacer"></div>
+
+								<h5>New National Vice Presidents:</h5>
+
+								<a href="#">Leslie Humphrey</a>
+
+								<div class="spacer"></div>
+
+
+								<h5>Consultant Stories Archive:</h5>
+
+								<div>
+								<h6>National Vice Presidents:</h6>
+
+								<ul class="filter nvpfilter">
+									<li class="active">A-D</li>
+									<li>E-H</li>
+									<li>I-L</li>
+									<li>M-P</li>
+									<li>Q-T</li>
+									<li>U-Z</li>
+								</ul>
+
+									<div id="nvplist" class="vplist">
+											<ul class="nav rows">
+											<li class="f_A"><a href="/company/opportunity/people/eoa.asp?vp=adler_fnvp">Fran Adler</a></li>
+											<li class="f_A"><a href="/company/opportunity/people/eoa.asp?vp=aldrich_cnvp">Christy Aldrich</a></li>
+											<li class="f_A"><a href="/company/opportunity/people/eoa.asp?vp=alexander_envp">Emily Alexander</a></li>
+											<li class="f_A"><a href="/company/opportunity/people/eoa.asp?vp=anderson_mnvp">Michael Anderson</a></li>
+											<li class="f_A"><a href="/company/opportunity/people/eoa.asp?vp=anderson_snvp">Stephanie Anderson</a></li>
+											<li class="f_A"><a href="/company/opportunity/people/eoa.asp?vp=argote_snvp">Shanna Argote</a></li>
+											<li class="f_A"><a href="/company/opportunity/people/eoa-construction.asp">Barbara Armstrong</a></li>
+											<li class="f_A"><a href="/company/opportunity/people/eoa.asp?vp=auen_lnvp">Lisa Auen</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=baker_h2">Hope Baker</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=baker_h_nvp">Hope Baker</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=ballew_gnvp">Gina Ballew</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa-construction.asp">Marsha Bane</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa-construction.asp">Kathy Barker</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=barkley_mnvp">Meloni Barkley</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=barlak_lnvp">Liz Barlak</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=barnes_knvp">Kim Barnes</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=barns_bnvp">Becki Barns</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=barthuly_mnvp">Marita Barthuly</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=bartz_knvp">Karin Bartz</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=beaty_bnvp">Barbara Beaty</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=beicker_lnvp">Lisa Beicker</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=bell_envp">Edward Bell</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=bell_mnvp">Mariam Bell</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=bennyhoff_nnvp">Nicole Bennyhoff</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=berger_a_envp">Audra Berger</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=best_pnvp">Paula Best</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=betts_lnvp">LaGenna Betts</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa-construction.asp">Linda Blum Huntington</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa-construction.asp">Kathleen Bono</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=bowdell_cnvp">Carol Bowdell</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=bowles_anvp">Anna Bowles</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=bradley_dnvp">Donna Bradley</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=brandsma_tnvp">Tarrah Brandsma</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=brandt_tnvp">Tory Brandt</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=brenner_lnvp">Linda Brenner</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=brewka_cnvp">Carol Brewka</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=brown_jnvp">Jill Brown</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=bufton_tnvp">Tiffany Bufton</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=burcham_mnvp">Miranda Burcham</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=burd_anvp">Amy Burd</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa-construction.asp">Cheryl Burnett</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa-construction.asp">Marti Burton</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa-construction.asp">Greg/Jill Bush</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=buss_lnvp">Lori Buss</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=butcher_snvp">Susan Butcher</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa-construction.asp">Jill Caputo</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa.asp?vp=carrion_lnvp">Lilian Carrion</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa-construction.asp">Heather Cash</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa.asp?vp=cassidy_snvp">Sue Cassidy</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa.asp?vp=castle_a">Ashley Castle</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa-construction.asp">Angie Cella</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa.asp?vp=chelette_cnvp">Cheree Chelette</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa-construction.asp">Krista Cheslock</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa-construction.asp">Theresa Chiaravalle</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa.asp?vp=clark_lonvp">Lori Clark</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa.asp?vp=clarke-maly_cnvp">Cleary Clarke-Maly</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa.asp?vp=clinton_t_envp">Tammy Clinton</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa-construction.asp">Patricia Cohen</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa.asp?vp=coker_wnvp">Wani Coker</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa.asp?vp=cole_mnvp">Melissa Cole</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa.asp?vp=cole_tnvp">Tanja Cole</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa-construction.asp">Dana Collins</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa.asp?vp=conley_cnvp">Carey Conley</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa-construction.asp">Teena Conway</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa-construction.asp">Donna Corbin</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa-construction.asp">Hillary Corcoran</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa.asp?vp=cox_anvp">Ann Cox</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa-construction.asp">Doreen Crow</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa-construction.asp">Cirina  Culberson</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa.asp?vp=cullum_a">Ann Cullum</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa.asp?vp=curney_anvp">Aleana Curney</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=dace_snvp">Sherry Dace</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=danks_lnvp">Lisa Danks</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=davenport_s_nvp">Scott/Sara Davenport</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=davies_nnvp">Nis&eacute; Davies</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=davis_gnvp">Griffin Davis</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa-construction.asp">Lucinete De Paula</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=delninno_jnvp">Judith DelNinno</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa-construction.asp">Danielle Derosier-Pearson</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=dewey_anvp">Alicia Dewey</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=dezenski_tnvp">Trisha Dezenski</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa-construction.asp">Lisa Dickerson</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=doherty_j_nvp">Jenni Doherty</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=donoghue_bnvp">Brenda Donoghue</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=draelos_knvp">Kay Draelos</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=dreiling_c_envp">Christy Dreiling</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=driskill_knvp">Karla Driskill</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=duber_anvp">Alice Marie Duber</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=dugan_anvp">Anne Dugan</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=dwyer_k_nvp">Katie Dwyer</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=dye_lnvp">Lois Dye</a></li>
+											</ul>
+
+									</div>
+
+								</div>
+								<div class="space_above">
+								<h6>Regional Vice Presidents:</h6>
+
+								<ul class="filter rvpfilter">
+									<li class="active">A-D</li>
+									<li>E-H</li>
+									<li>I-L</li>
+									<li>M-P</li>
+									<li>Q-T</li>
+									<li>U-Z</li>
+								</ul>
+
+									<div id="nvplist" class="vplist">
+											<ul class="nav rows">
+											<li class="f_A"><a href="/company/opportunity/people/eoa.asp?vp=adler_fnvp">Fran Adler</a></li>
+											<li class="f_A"><a href="/company/opportunity/people/eoa.asp?vp=aldrich_cnvp">Christy Aldrich</a></li>
+											<li class="f_A"><a href="/company/opportunity/people/eoa.asp?vp=alexander_envp">Emily Alexander</a></li>
+											<li class="f_A"><a href="/company/opportunity/people/eoa.asp?vp=anderson_mnvp">Michael Anderson</a></li>
+											<li class="f_A"><a href="/company/opportunity/people/eoa.asp?vp=anderson_snvp">Stephanie Anderson</a></li>
+											<li class="f_A"><a href="/company/opportunity/people/eoa.asp?vp=argote_snvp">Shanna Argote</a></li>
+											<li class="f_A"><a href="/company/opportunity/people/eoa-construction.asp">Barbara Armstrong</a></li>
+											<li class="f_A"><a href="/company/opportunity/people/eoa.asp?vp=auen_lnvp">Lisa Auen</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=baker_h2">Hope Baker</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=baker_h_nvp">Hope Baker</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=ballew_gnvp">Gina Ballew</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa-construction.asp">Marsha Bane</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa-construction.asp">Kathy Barker</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=barkley_mnvp">Meloni Barkley</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=barlak_lnvp">Liz Barlak</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=barnes_knvp">Kim Barnes</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=barns_bnvp">Becki Barns</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=barthuly_mnvp">Marita Barthuly</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=bartz_knvp">Karin Bartz</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=beaty_bnvp">Barbara Beaty</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=beicker_lnvp">Lisa Beicker</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=bell_envp">Edward Bell</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=bell_mnvp">Mariam Bell</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=bennyhoff_nnvp">Nicole Bennyhoff</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=berger_a_envp">Audra Berger</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=best_pnvp">Paula Best</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=betts_lnvp">LaGenna Betts</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa-construction.asp">Linda Blum Huntington</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa-construction.asp">Kathleen Bono</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=bowdell_cnvp">Carol Bowdell</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=bowles_anvp">Anna Bowles</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=bradley_dnvp">Donna Bradley</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=brandsma_tnvp">Tarrah Brandsma</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=brandt_tnvp">Tory Brandt</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=brenner_lnvp">Linda Brenner</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=brewka_cnvp">Carol Brewka</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=brown_jnvp">Jill Brown</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=bufton_tnvp">Tiffany Bufton</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=burcham_mnvp">Miranda Burcham</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=burd_anvp">Amy Burd</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa-construction.asp">Cheryl Burnett</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa-construction.asp">Marti Burton</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa-construction.asp">Greg/Jill Bush</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=buss_lnvp">Lori Buss</a></li>
+											<li class="f_B"><a href="/company/opportunity/people/eoa.asp?vp=butcher_snvp">Susan Butcher</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa-construction.asp">Jill Caputo</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa.asp?vp=carrion_lnvp">Lilian Carrion</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa-construction.asp">Heather Cash</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa.asp?vp=cassidy_snvp">Sue Cassidy</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa.asp?vp=castle_a">Ashley Castle</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa-construction.asp">Angie Cella</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa.asp?vp=chelette_cnvp">Cheree Chelette</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa-construction.asp">Krista Cheslock</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa-construction.asp">Theresa Chiaravalle</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa.asp?vp=clark_lonvp">Lori Clark</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa.asp?vp=clarke-maly_cnvp">Cleary Clarke-Maly</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa.asp?vp=clinton_t_envp">Tammy Clinton</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa-construction.asp">Patricia Cohen</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa.asp?vp=coker_wnvp">Wani Coker</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa.asp?vp=cole_mnvp">Melissa Cole</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa.asp?vp=cole_tnvp">Tanja Cole</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa-construction.asp">Dana Collins</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa.asp?vp=conley_cnvp">Carey Conley</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa-construction.asp">Teena Conway</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa-construction.asp">Donna Corbin</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa-construction.asp">Hillary Corcoran</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa.asp?vp=cox_anvp">Ann Cox</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa-construction.asp">Doreen Crow</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa-construction.asp">Cirina  Culberson</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa.asp?vp=cullum_a">Ann Cullum</a></li>
+											<li class="f_C"><a href="/company/opportunity/people/eoa.asp?vp=curney_anvp">Aleana Curney</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=dace_snvp">Sherry Dace</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=danks_lnvp">Lisa Danks</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=davenport_s_nvp">Scott/Sara Davenport</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=davies_nnvp">Nis&eacute; Davies</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=davis_gnvp">Griffin Davis</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa-construction.asp">Lucinete De Paula</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=delninno_jnvp">Judith DelNinno</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa-construction.asp">Danielle Derosier-Pearson</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=dewey_anvp">Alicia Dewey</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=dezenski_tnvp">Trisha Dezenski</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa-construction.asp">Lisa Dickerson</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=doherty_j_nvp">Jenni Doherty</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=donoghue_bnvp">Brenda Donoghue</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=draelos_knvp">Kay Draelos</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=dreiling_c_envp">Christy Dreiling</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=driskill_knvp">Karla Driskill</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=duber_anvp">Alice Marie Duber</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=dugan_anvp">Anne Dugan</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=dwyer_k_nvp">Katie Dwyer</a></li>
+											<li class="f_D"><a href="/company/opportunity/people/eoa.asp?vp=dye_lnvp">Lois Dye</a></li>
+											</ul>
+
+									</div>
+
+								</div>
+						</div>
+					</div>
+
+				</div>
+
+
+			<div class="spacer" style="height:300px"> </div>
+
+
+			<div class="row space_before ">&nbsp;</div>
+
+
+		</div>
+		<!-- end center content -->
+	</div>
+
+<!-- end main content -->
+
+<!-- footer -->
+	<div id="footerinclude"></div>
+<!-- end footer -->
+
+</div>
+
+
+
+
+</body>
+</html>
